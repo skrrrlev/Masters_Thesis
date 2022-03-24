@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue name="CAT-HATLAS">
+    <targets>
+        <target>
+            <id>HATLAS J084933 W</id>
+            <RA>132.38736</RA>
+            <DEC>2.24435</DEC>
+            <z>2.4</z>
+        </target>
+        <target>
+            <id>HATLAS J084933 T</id>
+            <RA>132.38736</RA>
+            <DEC>2.24435</DEC>
+            <z>2.4</z>
+        </target>
+    </targets>
+    <data-sources>
+        <source name="Ivyson et al" link="https://iopscience.iop.org/article/10.1088/0004-637X/772/2/137/meta">
+            <observation target="XMM01" name="S250" unit="mJy" type="EXTRA">
+                <flux>180</flux>
+                <error>7</error>
+                <typeval>250</typeval>
+            </observation>
+            <observation target="XMM01" name="S350" unit="mJy" type="EXTRA">
+                <flux>192</flux>
+                <error>8</error>
+                <typeval>350</typeval>
+            </observation>
+            <observation target="XMM01" name="S500" unit="mJy" type="EXTRA">
+                <flux>132</flux>
+                <error>7</error>
+                <typeval>500</typeval>
+            </observation>
+            <observation target="XMM01" name="S870" unit="mJy" type="EXTRA">
+                <flux>29</flux>
+                <error>3</error>
+                <typeval>870</typeval>
+            </observation>
+        </source>
+    </data-sources>
+</catalogue>

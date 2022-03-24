@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue name="CAT-XMM">
+    <targets>
+        <target>
+            <name>XMM01</name>
+            <id>24131301</id>
+            <RA>35.069221</RA>
+            <DEC>-6.028653</DEC>
+            <z>2.3079</z>
+            <Mstar source="Fu et al">4E11</Mstar>
+            <comment>rare merger of two massive submillimetre bright galaxies</comment>
+        </target>
+        <target>
+            <name>XMM05</name>
+            <id>24131305</id>
+            <RA>36.449425</RA>
+            <DEC>-4.297444</DEC>
+            <z>2.985</z>
+        </target>
+    </targets>
+    <data-sources>
+        <source name="The GADOT Galaxy Survey" link="https://iopscience.iop.org/article/10.3847/1538-4357/abf6d7">
+        <observation target="24131301" name="ALMA-NOEMA/290um" unit="mJy" type="E">
+                <flux>27.92</flux>
+                <error>0.97</error>
+                <typeval>290</typeval>
+            </observation>
+            <observation target="24131301" name="Herschel/SPIRE/250um" unit="mJy" type="F">
+                <flux>180</flux>
+                <error>7</error>
+                <typeval>331</typeval>
+            </observation>
+            <observation target="24131301" name="Herschel/SPIRE/350um" unit="mJy" type="F">
+                <flux>192</flux>
+                <error>8</error>
+                <typeval>332</typeval>
+            </observation>
+            <observation target="24131301" name="Herschel/SPIRE/500um" unit="mJy" type="F">
+                <flux>132</flux>
+                <error>7</error>
+                <typeval>333</typeval>
+            </observation>
+            <observation target="24131301" name="SMA/870um" unit="mJy" type="E">
+                <flux>29</flux>
+                <error>3</error>
+                <typeval>870</typeval>
+            </observation>
+        </source>
+        <source name="Wardlow et al (PACS)" link="https://iopscience.iop.org/article/10.3847/1538-4357/837/1/12/meta">
+            <observation target="24131301" name="Herschel/PACS/70um" unit="mJy" type="F">
+                <flux>10</flux>
+                <error>3</error>
+                <typeval>328</typeval>
+            </observation>
+            <observation target="24131301" name="Herschel/PACS/160um" unit="mJy" type="F">
+                <flux>123</flux>
+                <error>12</error>
+                <typeval>330</typeval>
+            </observation>
+        </source>
+        <source name="Wardlow et al (Multi-band)" link="https://iopscience.iop.org/article/10.1088/0004-637X/762/1/59">
+            <observation target="24131301" name="Spitzer/MIPS/24um" unit="mJy" type="F">
+                <flux>0.57</flux>
+                <error>0.02</error>
+                <typeval>325</typeval>
+            </observation>
+            <observation target="24131301" name="Spitzer/MIPS/70um" unit="mJy" type="F">
+                <flux>17.9</flux>
+                <error>0.03</error>
+                <typeval>326</typeval>
+            </observation>
+            <observation target="24131301" name="Spitzer/MIPS/160um" unit="mJy" type="F">
+                <flux>88.3</flux>
+                <error>1.04</error>
+                <typeval>327</typeval>
+            </observation>
+             <observation target="24131301" name="PdBI/2000um" unit="mJy" type="E">
+                <flux>1.1</flux>
+                <error>0.3</error>
+                <typeval>2000</typeval>
+            </observation>
+            <observation target="24131301" name="PdBI/2300um" unit="mJy" type="E">
+                <flux>0.55</flux>
+                <error>0.1</error>
+                <typeval>2300</typeval>
+            </observation>
+        </source>
+        <source name="Leung et al" link="https://iopscience.iop.org/article/10.3847/1538-4357/aaf860/meta">
+            <observation target="24131305" name="Spitzer/IRAC/5.8" unit="uJy" type="F">
+                <flux>8.61</flux>
+                <error>1.54</error>
+                <typeval>20</typeval>
+            </observation>
+            <observation target="24131305" name="Spitzer/IRAC/8.0" unit="uJy" type="F">
+                <flux>8.14</flux>
+                <error>4.48</error>
+                <typeval>21</typeval>
+            </observation>
+            <observation target="24131305" name="Spitzer/MIPS/24um" unit="mJy" type="F">
+                <flux>1.08</flux>
+                <error>0.02</error>
+                <typeval>325</typeval>
+            </observation>
+            <observation target="24131305" name="Herschel/PACS/160um" unit="mJy" type="F">
+                <flux>86.3</flux>
+                <error>17.9</error>
+                <typeval>330</typeval>
+            </observation>
+            <observation target="24131305" name="Herschel/SPIRE/250um" unit="mJy" type="F">
+                <flux>106</flux>
+                <error>7</error>
+                <typeval>331</typeval>
+            </observation>
+            <observation target="24131305" name="Herschel/SPIRE/350um" unit="mJy" type="F">
+                <flux>120</flux>
+                <error>10</error>
+                <typeval>332</typeval>
+            </observation>
+            <observation target="24131305" name="Herschel/SPIRE/500um" unit="mJy" type="F">
+                <flux>92.1</flux>
+                <error>7.6</error>
+                <typeval>333</typeval>
+            </observation>
+            <observation target="24131305" name="ALMA/635um" unit="mJy" type="E">
+                <flux>52.5</flux>
+                <error>5.9</error>
+                <typeval>635</typeval>
+            </observation>
+            <observation target="24131305" name="ALMA/870um" unit="mJy" type="E">
+                <flux>18.0</flux>
+                <error>0.4</error>
+                <typeval>870</typeval>
+            </observation>
+            <observation target="24131305" name="SMA/870um" unit="mJy" type="E">
+                <flux>21.5</flux>
+                <error>3.1</error>
+                <typeval>870</typeval>
+            </observation>
+            <observation target="24131305" name="ALMA-ACA/1037um" unit="mJy" type="E">
+                <flux>11.8</flux>
+                <error>0.8</error>
+                <typeval>1037</typeval>
+            </observation>
+            <observation target="24131305" name="MAMBO/1200um" unit="mJy" type="E">
+                <flux>8.9</flux>
+                <error>0.9</error>
+                <typeval>1200</typeval>
+            </observation>
+            <observation target="24131305" name="CARMA/3000um" unit="mJy" type="E">
+                <flux>0.5</flux>
+                <error>0.11</error>
+                <typeval>3000</typeval>
+            </observation>
+            <observation target="24131305" name="VLA/9586.8um" unit="mJy" type="E">
+                <flux>0.0184</flux>
+                <error>0.00314</error>
+                <typeval>9586.8</typeval>
+            </observation>
+        </source>
+        <source name="Bussmann et al" link="https://iopscience.iop.org/article/10.1088/0004-637X/779/1/25/pdf">
+            <observation target="24131301" name="SDSS/i" unit="ABmag" type="F">
+                <flux>20.32</flux>
+                <error>0.06</error>
+                <typeval>76</typeval>
+            </observation>
+        </source>
+    </data-sources>
+</catalogue>
