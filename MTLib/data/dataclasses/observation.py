@@ -5,7 +5,7 @@ from typing import Union
 
 # relative imports
 from .filter import Filter
-from .columntype import ColumnType
+from C4S.dataclasses import ColumnType
 
 class Observation:
     '''Class containing a single observation.'''

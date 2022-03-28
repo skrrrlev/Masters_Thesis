@@ -178,7 +178,6 @@ def main(ctf: stardust.main.ctf):
 
     print('Extracting data...')
     mstar = np.log10(ctf.tab['mstar'])
-    print(f'emstar = {ctf.tab["e_mstar"]}')
     ID = ctf.tab['id']
 
     print('Creating figures ...')

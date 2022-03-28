@@ -38,10 +38,10 @@ class Parser:
     def load_observations(file: str):
         tree = ET.parse(file)
         root = tree.getroot()
-        sources = root[1]
+        sources_node = root[1]
         observations: "list[dict[str,Union[str,float]]]" = []
 
-        for source in sources:
+        for source in sources_node:
             for observation in source:
                 temp = {}
                 for key in observation.attrib:
@@ -54,6 +54,29 @@ class Parser:
                 observations.append(temp)
 
         return observations
+
+    @staticmethod
+    def load_sources(file: str):
+        tree = ET.parse(file)
+        root = tree.getroot()
+        sources_node = root[1]
+        sources: "dict[str,list[dict[str,Union[str,float]]]]" = {}
+
+        for source in sources_node:
+            obs_list = []
+            for observation in source:
+                obs = {}
+                for key in observation.attrib:
+                    obs[key] = observation.attrib[key]
+                for item in observation:
+                    try:
+                        obs[item.tag] = float(item.text)
+                    except ValueError:
+                        obs[item.tag] = item.text
+                    obs_list.append(obs)
+            sources[source.attrib['name']] = obs_list
+
+        return sources
 
     def get_targets(self):
         return self.targets
@@ -68,3 +91,4 @@ if __name__ == '__main__':
     print(test.get_observations())
     print('observations')
     print(Parser.load_observations('Data/XMM/XMM.xml'))
+    print(Parser.load_sources('Data/XMM/XMM.xml'))

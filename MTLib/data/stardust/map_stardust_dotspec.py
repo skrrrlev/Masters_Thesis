@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from astropy import units as U
 
 # relative imports
-from .dataclasses import Filter
+from ..dataclasses import Filter
 
 def get_cosmos_dotspec_map():
     '''Returns a list of filters that are in the correct order of the .spec files supplied for the COSMOS survey.'''

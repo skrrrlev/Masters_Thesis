@@ -7,7 +7,7 @@ from typing import NoReturn
 
 # private imports
 from C4S import Cataloguer
-from MTLib.data.xml import Parser as xmlpar
+from MTLib.data.xmlp import Parser as xmlpar
 
 def usage() -> NoReturn:
     docs = """
@@ -72,7 +72,14 @@ def main():
 
     # Add observations of targets
     for observation in observations:
-        if observation['unit'] == 'ABmag':
+        unit = observation['unit']
+        flux = observation['flux']
+        error = observation['error']
+        
+        if flux == error:
+            continue
+        
+        if unit == 'ABmag':
             unit = 'Jy'
             mag = observation['flux']
             mag_err = observation['flux']
@@ -80,10 +87,6 @@ def main():
             flux = (mag * U.ABmag).to(U.Jy).value
             _df_dm = - ( 3631 * np.log(10) * np.exp(-mag * np.log(10) / 2.5) ) / 2.5
             error = np.sqrt((_df_dm * mag_err)**2)
-        else:
-            unit = observation['unit']
-            flux = observation['flux']
-            error = observation['error']
         
         if observation['type'] == 'F':
             cat.add_observation(

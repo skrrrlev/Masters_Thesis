@@ -35,7 +35,7 @@ def main():
     
     """Add custom filters to the filter set of Stardust. 
     They have to be updated if the stardust package has been reinstalled."""
-    csf.add_file('Data/COSMOS/extra_filters.txt')
+    csf.add_file('Data/stardust/extra_filters.txt')
     
     name, path = setup()
     cat = Cataloguer(name,path)
