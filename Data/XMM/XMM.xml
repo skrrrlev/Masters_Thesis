@@ -11,6 +11,22 @@
             <comment>rare merger of two massive submillimetre bright galaxies</comment>
         </target>
         <target>
+            <name>X01N</name>
+            <id>241313011</id>
+            <RA>35.069221</RA>
+            <DEC>-6.028653</DEC>
+            <z>2.3079</z>
+            <comment>Northern galaxy of the two mergers</comment>
+        </target>
+        <target>
+            <name>X01S</name>
+            <id>241313012</id>
+            <RA>35.069221</RA>
+            <DEC>-6.028653</DEC>
+            <z>2.3079</z>
+            <comment>Southern galaxy of the two mergers</comment>
+        </target>
+        <target>
             <name>XMM05</name>
             <id>24131305</id>
             <RA>36.449425</RA>
@@ -74,15 +90,266 @@
                 <error>1.04</error>
                 <typeval>327</typeval>
             </observation>
-             <observation target="24131301" name="PdBI/2000um" unit="mJy" type="E">
+             <observation target="24131301" name="IRAM/PdBI/2000um" unit="mJy" type="E">
                 <flux>1.1</flux>
                 <error>0.3</error>
                 <typeval>2000</typeval>
             </observation>
-            <observation target="24131301" name="PdBI/2300um" unit="mJy" type="E">
+            <observation target="24131301" name="IRAM/PdBI/2300um" unit="mJy" type="E">
                 <flux>0.55</flux>
                 <error>0.1</error>
                 <typeval>2300</typeval>
+            </observation>
+        </source>
+        <source name="Fu et al" link="https://arxiv.org/pdf/1305.4930.pdf">
+            <observation target="24131301" name="GALEX/NUV/0.23um" unit="uJy" type="F">
+                <flux>0.5</flux>
+                <error>0.5</error>
+                <typeval>121</typeval>
+            </observation>
+            <observation target="24131301" name="CFHT/u*" unit="uJy" type="F">
+                <flux>0.5</flux>
+                <error>0.1</error>
+                <typeval>352</typeval>
+            </observation>
+            <observation target="24131301" name="CFHT/g" unit="uJy" type="F">
+                <flux>1.3</flux>
+                <error>0.1</error>
+                <typeval>74</typeval>
+            </observation>
+            <observation target="24131301" name="CFHT/r" unit="uJy" type="F">
+                <flux>1.3</flux>
+                <error>0.1</error>
+                <typeval>75</typeval>
+            </observation>
+            <observation target="24131301" name="CFHT/i" unit="uJy" type="F">
+                <flux>2.5</flux>
+                <error>0.3</error>
+                <typeval>76</typeval>
+            </observation>
+            <observation target="24131301" name="CFHT/z" unit="uJy" type="F">
+                <flux>3.8</flux>
+                <error>0.6</error>
+                <typeval>77</typeval>
+            </observation>
+            <observation target="24131301" name="HST/wfc3/F110W/1.16um" unit="uJy" type="F">
+                <flux>6.2</flux>
+                <error>0.4</error>
+                <typeval>241</typeval>
+            </observation>
+            <observation target="24131301" name="WHT/LIRIS/J" unit="uJy" type="F">
+                <flux>6.8</flux>
+                <error>0.8</error>
+                <typeval>354</typeval>
+                <!-- William Herschel Telescope / LIRIS / J band-->
+                <!-- https://www.ing.iac.es/Astronomy/instruments/liris/config.html -->
+            </observation>
+            <observation target="241313011" name="WHT/LIRIS/Ks" unit="uJy" type="F">
+                <flux>22.5</flux>
+                <error>3.4</error>
+                <typeval>355</typeval>
+                <!-- William Herschel Telescope / LIRIS / Ks band-->
+                <!-- https://www.ing.iac.es/Astronomy/instruments/liris/config.html -->
+            </observation>
+            <observation target="24131301" name="Spitzer/IRAC/3.6" unit="uJy" type="F">
+                <flux>48.5</flux>
+                <error>5.8</error>
+                <typeval>18</typeval>
+            </observation>
+            <observation target="24131301" name="Spitzer/IRAC/4.5" unit="uJy" type="F">
+                <flux>64.1</flux>
+                <error>5.9</error>
+                <typeval>19</typeval>
+            </observation>
+            <observation target="24131301" name="Spitzer/IRAC/5.8" unit="uJy" type="F">
+                <flux>111.9</flux>
+                <error>12.0</error>
+                <typeval>20</typeval>
+            </observation>
+            <observation target="24131301" name="Spitzer/IRAC/8.0" unit="uJy" type="F">
+                <flux>86.9</flux>
+                <error>12.7</error>
+                <typeval>21</typeval>
+            </observation>
+            <observation target="24131301" name="Herschel/PACS/100um" unit="uJy" type="F">
+                <flux>31700</flux>
+                <error>3000</error>
+                <typeval>329</typeval>
+            </observation>
+            <observation target="24131301" name="IRAM/MAMBO/1200um" unit="uJy" type="E">
+                <flux>11200</flux>
+                <error>1900</error>
+                <typeval>1200</typeval>
+            </observation>
+            <observation target="24131301" name="IRAM/PdBI/2100um" unit="uJy" type="E">
+                <flux>1220</flux>
+                <error>240</error>
+                <typeval>2141.31</typeval>
+            </observation>
+            <observation target="24131301" name="VLA/1.4GHz" unit="uJy" type="E">
+                <flux>420</flux>
+                <error>420</error>
+                <typeval>210000.0</typeval>
+            </observation>
+            <!-- Northern object-->
+            <observation target="241313011" name="GALEX/NUV/0.23um" unit="uJy" type="F">
+                <flux>0.5</flux>
+                <error>0.5</error>
+                <typeval>121</typeval>
+            </observation>
+            <observation target="241313011" name="CFHT/u*" unit="uJy" type="F">
+                <flux>0.2</flux>
+                <error>0.2</error>
+                <typeval>352</typeval>
+            </observation>
+            <observation target="241313011" name="CFHT/g" unit="uJy" type="F">
+                <flux>0.2</flux>
+                <error>0.2</error>
+                <typeval>74</typeval>
+            </observation>
+            <observation target="241313011" name="CFHT/r" unit="uJy" type="F">
+                <flux>0.2</flux>
+                <error>0.1</error>
+                <typeval>75</typeval>
+            </observation>
+            <observation target="241313011" name="CFHT/i" unit="uJy" type="F">
+                <flux>0.5</flux>
+                <error>0.5</error>
+                <typeval>76</typeval>
+            </observation>
+            <observation target="241313011" name="CFHT/z" unit="uJy" type="F">
+                <flux>0.6</flux>
+                <error>0.3</error>
+                <typeval>77</typeval>
+            </observation>
+            <observation target="241313011" name="HST/wfc3/F110W/1.16um" unit="uJy" type="F">
+                <flux>1.6</flux>
+                <error>0.2</error>
+                <typeval>241</typeval>
+            </observation>
+            <observation target="241313011" name="WHT/LIRIS/J" unit="uJy" type="F">
+                <flux>1.7</flux>
+                <error>0.5</error>
+                <typeval>354</typeval>
+                <!-- William Herschel Telescope / LIRIS / J band-->
+                <!-- https://www.ing.iac.es/Astronomy/instruments/liris/config.html -->
+            </observation>
+            <observation target="241313011" name="WHT/LIRIS/Ks" unit="uJy" type="F">
+                <flux>7.6</flux>
+                <error>2.0</error>
+                <typeval>355</typeval>
+                <!-- William Herschel Telescope / LIRIS / Ks band-->
+                <!-- https://www.ing.iac.es/Astronomy/instruments/liris/config.html -->
+            </observation>
+            <observation target="241313011" name="Spitzer/IRAC/3.6" unit="uJy" type="F">
+                <flux>22.2</flux>
+                <error>5.0</error>
+                <typeval>18</typeval>
+            </observation>
+            <observation target="241313011" name="Spitzer/IRAC/4.5" unit="uJy" type="F">
+                <flux>29.4</flux>
+                <error>5.0</error>
+                <typeval>19</typeval>
+            </observation>
+            <observation target="241313011" name="Spitzer/IRAC/5.8" unit="uJy" type="F">
+                <flux>51.5</flux>
+                <error>6.8</error>
+                <typeval>20</typeval>
+            </observation>
+            <observation target="241313011" name="Spitzer/IRAC/8.0" unit="uJy" type="F">
+                <flux>41.1</flux>
+                <error>6.7</error>
+                <typeval>21</typeval>
+            </observation>
+            <observation target="241313011" name="SMA/880um" unit="uJy" type="E">
+                <flux>9300</flux>
+                <error>1200</error>
+                <typeval>876.50</typeval>
+            </observation>
+            <observation target="241313011" name="VLA/1.4GHz" unit="uJy" type="E">
+                <flux>420</flux>
+                <error>420</error>
+                <typeval>210000.0</typeval>
+            </observation>
+            <!-- Southern object-->
+            <observation target="241313012" name="GALEX/NUV/0.23um" unit="uJy" type="F">
+                <flux>0.5</flux>
+                <error>0.5</error>
+                <typeval>121</typeval>
+            </observation>
+            <observation target="241313012" name="CFHT/u*" unit="uJy" type="F">
+                <flux>0.5</flux>
+                <error>0.1</error>
+                <typeval>352</typeval>
+            </observation>
+            <observation target="241313012" name="CFHT/g" unit="uJy" type="F">
+                <flux>1.2</flux>
+                <error>0.1</error>
+                <typeval>74</typeval>
+            </observation>
+            <observation target="241313012" name="CFHT/r" unit="uJy" type="F">
+                <flux>2.1</flux>
+                <error>0.2</error>
+                <typeval>75</typeval>
+            </observation>
+            <observation target="241313012" name="CFHT/i" unit="uJy" type="F">
+                <flux>2.3</flux>
+                <error>0.3</error>
+                <typeval>76</typeval>
+            </observation>
+            <observation target="241313012" name="CFHT/z" unit="uJy" type="F">
+                <flux>3.2</flux>
+                <error>0.6</error>
+                <typeval>77</typeval>
+            </observation>
+            <observation target="241313012" name="HST/wfc3/F110W/1.16um" unit="uJy" type="F">
+                <flux>4.7</flux>
+                <error>0.3</error>
+                <typeval>241</typeval>
+            </observation>
+            <observation target="241313012" name="WHT/LIRIS/J" unit="uJy" type="F">
+                <flux>5.1</flux>
+                <error>0.6</error>
+                <typeval>354</typeval>
+                <!-- William Herschel Telescope / LIRIS / J band-->
+                <!-- https://www.ing.iac.es/Astronomy/instruments/liris/config.html -->
+            </observation>
+            <observation target="241313012" name="WHT/LIRIS/Ks" unit="uJy" type="F">
+                <flux>14.9</flux>
+                <error>2.7</error>
+                <typeval>355</typeval>
+                <!-- William Herschel Telescope / LIRIS / Ks band-->
+                <!-- https://www.ing.iac.es/Astronomy/instruments/liris/config.html -->
+            </observation>
+            <observation target="241313012" name="Spitzer/IRAC/3.6" unit="uJy" type="F">
+                <flux>26.4</flux>
+                <error>2.8</error>
+                <typeval>18</typeval>
+            </observation>
+            <observation target="241313012" name="Spitzer/IRAC/4.5" unit="uJy" type="F">
+                <flux>34.7</flux>
+                <error>2.9</error>
+                <typeval>19</typeval>
+            </observation>
+            <observation target="241313012" name="Spitzer/IRAC/5.8" unit="uJy" type="F">
+                <flux>60.4</flux>
+                <error>9.6</error>
+                <typeval>20</typeval>
+            </observation>
+            <observation target="241313012" name="Spitzer/IRAC/8.0" unit="uJy" type="F">
+                <flux>45.8</flux>
+                <error>10.6</error>
+                <typeval>21</typeval>
+            </observation>
+            <observation target="241313012" name="SMA/880um" unit="uJy" type="E">
+                <flux>8300</flux>
+                <error>1100</error>
+                <typeval>876.50</typeval>
+            </observation>
+            <observation target="241313012" name="VLA/1.4GHz" unit="uJy" type="E">
+                <flux>420</flux>
+                <error>420</error>
+                <typeval>210000.0</typeval>
             </observation>
         </source>
         <source name="Leung et al" link="https://iopscience.iop.org/article/10.3847/1538-4357/aaf860/meta">
@@ -141,7 +408,7 @@
                 <error>0.8</error>
                 <typeval>1037</typeval>
             </observation>
-            <observation target="24131305" name="MAMBO/1200um" unit="mJy" type="E">
+            <observation target="24131305" name="IRAM/MAMBO/1200um" unit="mJy" type="E">
                 <flux>8.9</flux>
                 <error>0.9</error>
                 <typeval>1200</typeval>

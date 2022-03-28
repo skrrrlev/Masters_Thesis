@@ -2,39 +2,234 @@
 <catalogue name="CAT-HATLAS">
     <targets>
         <target>
-            <id>HATLAS J084933 W</id>
+            <name>HATLAS-J084933.4+021442-1</name>
+            <id>8120121191</id>
             <RA>132.38736</RA>
             <DEC>2.24435</DEC>
             <z>2.4</z>
         </target>
         <target>
-            <id>HATLAS J084933 T</id>
+            <name>HATLAS-J084933.4+021442-2</name>
+            <id>8120121192</id>
             <RA>132.38736</RA>
             <DEC>2.24435</DEC>
             <z>2.4</z>
         </target>
     </targets>
     <data-sources>
-        <source name="Ivyson et al" link="https://iopscience.iop.org/article/10.1088/0004-637X/772/2/137/meta">
-            <observation target="XMM01" name="S250" unit="mJy" type="EXTRA">
-                <flux>180</flux>
-                <error>7</error>
-                <typeval>250</typeval>
+        <source name="IPAC Infrared Science Archive (IRSA)" link="./h-atlas1">
+            <!-- Target  1 -->
+            <observation target="HATLAS-J084933.4+021442-1" name="250um" unit="Jy" type="F">
+                <flux>0.216741</flux>
+                <error>0.007489</error>
+                <typeval>???</typeval>
             </observation>
-            <observation target="XMM01" name="S350" unit="mJy" type="EXTRA">
-                <flux>192</flux>
-                <error>8</error>
-                <typeval>350</typeval>
+            <observation target="HATLAS-J084933.4+021442-1" name="350um" unit="Jy" type="F">
+                <flux>0.248528</flux>
+                <error>0.008158</error>
+                <typeval>???</typeval>
             </observation>
-            <observation target="XMM01" name="S500" unit="mJy" type="EXTRA">
-                <flux>132</flux>
-                <error>7</error>
-                <typeval>500</typeval>
+            <observation target="HATLAS-J084933.4+021442-1" name="500um" unit="Jy" type="F">
+                <flux>0.208613</flux>
+                <error>0.008631</error>
+                <typeval>???</typeval>
             </observation>
-            <observation target="XMM01" name="S870" unit="mJy" type="EXTRA">
-                <flux>29</flux>
-                <error>3</error>
-                <typeval>870</typeval>
+            <observation target="HATLAS-J084933.4+021442-1" name="100um" unit="Jy" type="F">
+                <flux>...</flux>
+                <error>...</error>
+                <typeval>???</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="160um" unit="Jy" type="F">
+                <flux>0.180838</flux>
+                <error>0.050342</error>
+                <typeval>???</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="GALEX/NUV" unit="Jy" type="F">
+                <flux>...</flux>
+                <error>...</error>
+                <typeval>121</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="GALEX/FUV" unit="Jy" type="F">
+                <flux>...</flux>
+                <error>...</error>
+                <typeval>120</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="SDSS/u" unit="Jy" type="F">
+                <flux>0.000004</flux>
+                <error>0.000005</error>
+                <typeval>156</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="SDSS/g" unit="Jy" type="F">
+                <flux>0.000012</flux>
+                <error>0.000002</error>
+                <typeval>157</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="SDSS/r" unit="Jy" type="F">
+                <flux>0.000028</flux>
+                <error>0.000003</error>
+                <typeval>158</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="SDSS/i" unit="Jy" type="F">
+                <flux>0.000048</flux>
+                <error>0.000004</error>
+                <typeval>159</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="SDSS/z" unit="Jy" type="F">
+                <flux>0.000062</flux>
+                <error>0.000015</error>
+                <typeval>160</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="VISTA/Z" unit="Jy" type="F">
+                <flux>0.000060</flux>
+                <error>0.000002</error>
+                <typeval>???</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="VISTA/Y" unit="Jy" type="F">
+                <flux>0.000067</flux>
+                <error>0.000003</error>
+                <typeval>256</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="VISTA/J" unit="Jy" type="F">
+                <flux>0.000079</flux>
+                <error>0.000004</error>
+                <typeval>257</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="VISTA/H" unit="Jy" type="F">
+                <flux>0.000129</flux>
+                <error>0.000009</error>
+                <typeval>258</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="VISTA/Ks" unit="Jy" type="F">
+                <flux>0.000096</flux>
+                <error>0.000009</error>
+                <typeval>259</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="WISE/band-1" unit="Jy" type="F">
+                <flux>0.000365</flux>
+                <error>0.000021</error>
+                <typeval>244</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="WISE/band-2" unit="Jy" type="F">
+                <flux>0.000352</flux>
+                <error>0.000028</error>
+                <typeval>245</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="WISE/band-3" unit="Jy" type="F">
+                <flux>0.000352</flux>
+                <error>0.000121</error>
+                <typeval>246</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-1" name="WISE/band-4" unit="Jy" type="F">
+                <flux>0.002392</flux>
+                <error>0.000895</error>
+                <typeval>247</typeval>
+            </observation>
+            
+            <!-- Target  2 -->
+            <observation target="HATLAS-J084933.4+021442-2" name="250um" unit="Jy" type="F">
+                <flux>0.216741</flux>
+                <error>0.007489</error>
+                <typeval>???</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="350um" unit="Jy" type="F">
+                <flux>0.248528</flux>
+                <error>0.008158</error>
+                <typeval>???</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="500um" unit="Jy" type="F">
+                <flux>0.208613</flux>
+                <error>0.008631</error>
+                <typeval>???</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="100um" unit="Jy" type="F">
+                <flux>...</flux>
+                <error>...</error>
+                <typeval>???</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="160um" unit="Jy" type="F">
+                <flux>0.180838</flux>
+                <error>0.050342</error>
+                <typeval>???</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="GALEX/NUV" unit="Jy" type="F">
+                <flux>...</flux>
+                <error>...</error>
+                <typeval>121</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="GALEX/FUV" unit="Jy" type="F">
+                <flux>...</flux>
+                <error>...</error>
+                <typeval>120</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="SDSS/u" unit="Jy" type="F">
+                <flux>0.000004</flux>
+                <error>0.000005</error>
+                <typeval>156</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="SDSS/g" unit="Jy" type="F">
+                <flux>0.000012</flux>
+                <error>0.000002</error>
+                <typeval>157</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="SDSS/r" unit="Jy" type="F">
+                <flux>0.000028</flux>
+                <error>0.000003</error>
+                <typeval>158</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="SDSS/i" unit="Jy" type="F">
+                <flux>0.000048</flux>
+                <error>0.000004</error>
+                <typeval>159</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="SDSS/z" unit="Jy" type="F">
+                <flux>0.000062</flux>
+                <error>0.000015</error>
+                <typeval>160</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="VISTA/Z" unit="Jy" type="F">
+                <flux>0.000060</flux>
+                <error>0.000002</error>
+                <typeval>???</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="VISTA/Y" unit="Jy" type="F">
+                <flux>0.000067</flux>
+                <error>0.000003</error>
+                <typeval>256</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="VISTA/J" unit="Jy" type="F">
+                <flux>0.000079</flux>
+                <error>0.000004</error>
+                <typeval>257</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="VISTA/H" unit="Jy" type="F">
+                <flux>0.000129</flux>
+                <error>0.000009</error>
+                <typeval>258</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="VISTA/Ks" unit="Jy" type="F">
+                <flux>0.000096</flux>
+                <error>0.000009</error>
+                <typeval>259</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="WISE/band-1" unit="Jy" type="F">
+                <flux>0.000365</flux>
+                <error>0.000021</error>
+                <typeval>244</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="WISE/band-2" unit="Jy" type="F">
+                <flux>0.000352</flux>
+                <error>0.000028</error>
+                <typeval>245</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="WISE/band-3" unit="Jy" type="F">
+                <flux>0.000352</flux>
+                <error>0.000121</error>
+                <typeval>246</typeval>
+            </observation>
+            <observation target="HATLAS-J084933.4+021442-2" name="WISE/band-4" unit="Jy" type="F">
+                <flux>0.002392</flux>
+                <error>0.000895</error>
+                <typeval>247</typeval>
             </observation>
         </source>
     </data-sources>

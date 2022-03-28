@@ -1,0 +1,185 @@
+\                                                                               
+\fixlen = T
+\RowsRetrieved =                 2
+\ORIGIN  = 'IPAC Infrared Science Archive (IRSA), Caltech/JPL'
+\SIMULATED_TABLE  = 'n'
+\DATETIME= '2021-09-08 02:20:24'
+\DataTag = 'ADS/IRSA.Gator#2021/0908/022024_4287'
+\DATABASE= 'H-ATLAS All Potential Counterparts Catalog (hatlasall)'
+\EQUINOX = 'J2000'
+\SKYAREA = 'within 10 arcsec of  ra=132.38990 dec=+2.24569 Eq J2000 '
+\StatusFile = '/workspace/TMP_hTkCFm_16193/Gator/irsa/4287/log.4287.html'
+\SQL     = 'WHERE (no constraints) 
+\SQL     = 'SELECT (82 column names follow in next row.)'
+\ 
+\ hatlas_iau_id 
+\ ___ H-ATLAS IAU name
+\ idname 
+\ ___ H-ATLAS short name
+\ ra (deg) 
+\ ___ Right Ascension (J2000)
+\ dec (deg) 
+\ ___ Declination (J2000)
+\ f250 (Jy) 
+\ ___ 250 micron flux from matched filter
+\ f350 (Jy) 
+\ ___ 350 micron flux from matched filter
+\ f500 (Jy) 
+\ ___ 500 micron flux from matched filter
+\ e250 (Jy) 
+\ ___ 250um 1 sigma flux error assuming confusion noise variable with flux
+\ e350 (Jy) 
+\ ___ 350um 1 sigma flux error assuming confusion noise variable with flux
+\ e500 (Jy) 
+\ ___ 500um 1 sigma flux error assuming confusion noise variable with flux
+\ f250best (Jy) 
+\ ___ 250 micron best flux
+\ e250best (Jy) 
+\ ___ 250 micron best flux error
+\ ap250 (arcsec) 
+\ ___ 250 micron aperture radius
+\ f350best (Jy) 
+\ ___ 350 micron best flux
+\ e350best (Jy) 
+\ ___ 350 micron best flux error
+\ ap350 (arcsec) 
+\ ___ 350 micron aperture radius
+\ f500best (Jy) 
+\ ___ 500 micron best flux
+\ e500best (Jy) 
+\ ___ 500 micron best flux error
+\ ap500 (arcsec) 
+\ ___ 500 micron aperture radius
+\ f100best (Jy) 
+\ ___ 100 micron best flux from aperture photometry
+\ e100best (Jy) 
+\ ___ 100 micron best flux error
+\ ap100 (arcsec) 
+\ ___ 100 micron aperture radius
+\ f160best (Jy) 
+\ ___ 160 micron best flux from aperture photometry
+\ e160best (Jy) 
+\ ___ 160 micron best flux error
+\ ap160 (arcsec) 
+\ ___ 160 micron aperture radius
+\ ap_rmin (arcsec) 
+\ ___ minor semi-axis of customised aperture
+\ ap_pa (deg) 
+\ ___ positional angle of customised aperture
+\ opticalra (deg) 
+\ ___ RA position of the optical ID from either SDSS-II (DR7) or SDSS-III (DR9)
+\ opticaldec (deg) 
+\ ___ Dec position of the optical ID from either SDSS-II (DR7) or SDSS-III (DR9)
+\ separation_arcsec (arcsec) 
+\ ___ SPIRE-optical separation
+\ likelihood 
+\ ___ Likelihood ratio
+\ reliability 
+\ ___ Reliability
+\ gsq_flag 
+\ ___ Galaxy-star-quasar flag
+\ id_flag 
+\ ___ flag from eyeballing
+\ sdss_objid 
+\ ___ SDSS-II (DR7) or SDSS-III (DR9) ID
+\ modelmag_r (mag) 
+\ ___ SDSS MODELMAG_R
+\ modelmagerr_r (mag) 
+\ ___ MODELMAG_R error
+\ extinction_r 
+\ ___ extinction
+\ isoa_r_arcsec (arcsec) 
+\ ___ r-band isophotal semimajor axis
+\ dgb_photozbands_string 
+\ ___ Bands used for photometric redshift
+\ dgb_photozbands_int 
+\ ___ Bit code for bands used
+\ dgb_photozbands_count 
+\ ___ Number of bands used for photometric redshift
+\ dgb_annz_photoz 
+\ ___ Photometric redshift
+\ dgb_annz_photozerr 
+\ ___ Photometric redshift error
+\ z_spec 
+\ ___ Spectroscopic redshift
+\ z_qual 
+\ ___ Redshift quality
+\ z_source 
+\ ___ Redshift source
+\ cataid_gama 
+\ ___ GAMA-II ID
+\ fuv_flux_gama (Jy) 
+\ ___ Extinction corrected GALEX FUV flux
+\ fuv_fluxerr_gama (Jy) 
+\ ___ Error in extinction corrected GALEX FUV flux
+\ nuv_flux_gama (Jy) 
+\ ___ Extinction corrected GALEX NUV flux
+\ nuv_fluxerr_gama (Jy) 
+\ ___ Error in extinction corrected GALEX NUV flux
+\ u_flux_gama (Jy) 
+\ ___ Extinction corrected SDSS u band flux
+\ u_fluxerr_gama (Jy) 
+\ ___ Error in extinction corrected SDSS u band flux
+\ g_flux_gama (Jy) 
+\ ___ Extinction corrected SDSS g band flux
+\ g_fluxerr_gama (Jy) 
+\ ___ Error in extinction corrected SDSS g band flux
+\ r_flux_gama (Jy) 
+\ ___ Extinction corrected SDSS r band flux
+\ r_fluxerr_gama (Jy) 
+\ ___ Error in extinction corrected SDSS r band flux
+\ i_flux_gama (Jy) 
+\ ___ Extinction corrected SDSS i band flux
+\ i_fluxerr_gama (Jy) 
+\ ___ Error in extinction corrected SDSS i band flux
+\ z_flux_gama (Jy) 
+\ ___ Extinction corrected SDSS z band flux
+\ z_fluxerr_gama (Jy) 
+\ ___ Error in extinction corrected SDSS z band flux
+\ x_flux_gama (Jy) 
+\ ___ Extinction correctd VISTA Z band flux
+\ x_fluxerr_gama (Jy) 
+\ ___ Error in extinction corrected VISTA Z band flux
+\ y_flux_gama (Jy) 
+\ ___ Extinction correctd VISTA Y band flux
+\ y_fluxerr_gama (Jy) 
+\ ___ Error in extinction corrected VISTA Y band flux
+\ j_flux_gama (Jy) 
+\ ___ Extinction correctd VISTA J band flux
+\ j_fluxerr_gama (Jy) 
+\ ___ Error in extinction corrected VISTA J band flux
+\ h_flux_gama (Jy) 
+\ ___ Extinction correctd VISTA H band flux
+\ h_fluxerr_gama (Jy) 
+\ ___ Error in extinction corrected VISTA H band flux
+\ k_flux_gama (Jy) 
+\ ___ Extinction correctd VISTA Ks band flux
+\ k_fluxerr_gama (Jy) 
+\ ___ Error in extinction corrected VISTA Ks band flux
+\ w1_flux_gama (Jy) 
+\ ___ WISE band 1 flux
+\ w1_fluxerr_gama (Jy) 
+\ ___ Error in WISE band 1 flux
+\ w2_flux_gama (Jy) 
+\ ___ WISE band 2 flux
+\ w2_fluxerr_gama (Jy) 
+\ ___ Error in WISE band 2 flux
+\ w3_flux_gama (Jy) 
+\ ___ WISE band 3 flux
+\ w3_fluxerr_gama (Jy) 
+\ ___ Error in WISE band 3 flux
+\ w4_flux_gama (Jy) 
+\ ___ WISE band 4 flux
+\ w4_fluxerr_gama (Jy) 
+\ ___ Error in WISE band 4 flux
+\ dist (arcsec) 
+\ ___ Distance between the target position and each source in arcsec.
+\ angle (deg) 
+\ ___ Position Angle in degree.
+\ 
+|             hatlas_iau_id|          idname|         ra|        dec|         f250|         f350|         f500|         e250|         e350|         e500|     f250best|     e250best|        ap250|     f350best|     e350best|        ap350|     f500best|     e500best|        ap500|     f100best|     e100best|        ap100|     f160best|     e160best|        ap160|      ap_rmin|        ap_pa|    opticalra|   opticaldec| separation_arcsec|   likelihood|  reliability|     gsq_flag|  id_flag|           sdss_objid|   modelmag_r| modelmagerr_r| extinction_r| isoa_r_arcsec|  dgb_photozbands_string| dgb_photozbands_int| dgb_photozbands_count| dgb_annz_photoz| dgb_annz_photozerr|       z_spec|      z_qual|    z_source| cataid_gama| fuv_flux_gama| fuv_fluxerr_gama| nuv_flux_gama| nuv_fluxerr_gama|  u_flux_gama| u_fluxerr_gama|  g_flux_gama| g_fluxerr_gama|  r_flux_gama| r_fluxerr_gama|  i_flux_gama| i_fluxerr_gama|  z_flux_gama| z_fluxerr_gama|  x_flux_gama| x_fluxerr_gama|  y_flux_gama| y_fluxerr_gama|  j_flux_gama| j_fluxerr_gama|  h_flux_gama| h_fluxerr_gama|  k_flux_gama| k_fluxerr_gama| w1_flux_gama| w1_fluxerr_gama| w2_flux_gama| w2_fluxerr_gama| w3_flux_gama| w3_fluxerr_gama| w4_flux_gama| w4_fluxerr_gama|           dist|       angle|
+|                      char|            char|     double|     double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|       double|            double|       double|       double|       double|     char|                 long|       double|        double|       double|        double|                    char|                 int|                   int|          double|             double|       double|         int|         int|        long|        double|           double|        double|           double|       double|         double|       double|         double|       double|         double|       double|         double|       double|         double|       double|         double|       double|         double|       double|         double|       double|         double|       double|         double|       double|          double|       double|          double|       double|          double|       double|          double|         double|      double|
+|                          |                |        deg|        deg|           Jy|           Jy|           Jy|           Jy|           Jy|           Jy|           Jy|           Jy|       arcsec|           Jy|           Jy|       arcsec|           Jy|           Jy|       arcsec|           Jy|           Jy|       arcsec|           Jy|           Jy|       arcsec|       arcsec|          deg|          deg|          deg|            arcsec|             |             |             |         |                     |          mag|           mag|             |        arcsec|                        |                    |                      |                |                   |             |            |            |            |            Jy|               Jy|            Jy|               Jy|           Jy|             Jy|           Jy|             Jy|           Jy|             Jy|           Jy|             Jy|           Jy|             Jy|           Jy|             Jy|           Jy|             Jy|           Jy|             Jy|           Jy|             Jy|           Jy|             Jy|           Jy|              Jy|           Jy|              Jy|           Jy|              Jy|           Jy|              Jy|         arcsec|         deg|
+|                      null|            null|       null|       null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|         null|              null|         null|         null|         null|     null|                 null|         null|          null|         null|          null|                    null|                null|                  null|            null|               null|         null|        null|        null|        null|          null|             null|          null|             null|         null|           null|         null|           null|         null|           null|         null|           null|         null|           null|         null|           null|         null|           null|         null|           null|         null|           null|         null|           null|         null|            null|         null|            null|         null|            null|         null|            null|           null|        null|
+    HATLAS J084933.4+021442      G09.DR1.131  132.389337    2.245264      0.216741      0.248528      0.208613      0.007489      0.008158      0.008631      0.216741      0.007489          null      0.248528      0.008158          null      0.208613      0.008631          null     -0.001366      0.045448     11.410000      0.180838      0.050342     13.696000          null          null    132.389523      2.245682           1.647500      1.540400      0.777400      1.000000      null    587727944563097783     20.420708       0.034343      0.082636       1.992530                -grizYJHK                  510                      8         0.332934            0.053978      0.000140            4           16       862747      -9.000000              null           null              null      0.000004        0.000005      0.000012        0.000002      0.000028        0.000003      0.000048        0.000004      0.000062        0.000015      0.000060        0.000002      0.000067        0.000003      0.000079        0.000004      0.000129        0.000009      0.000096        0.000009      0.000365         0.000021      0.000352         0.000028      0.000352         0.000121      0.002392         0.000895        2.540383   232.865469 
+    

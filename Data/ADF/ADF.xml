@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue name="CAT-ADF">
+    <targets>
+    <target>
+            <name>ADF22.1</name>
+            <id>010406221</id>
+            <RA>334.3851344</RA>
+            <DEC>0.2955399</DEC>
+            <z>3.09</z>
+        </target>
+        <target>
+            <name>ADF22.7</name>
+            <id>010406227</id>
+            <RA>334.384167</RA>
+            <DEC>0.293223</DEC>
+            <z>3.09</z>
+        </target>
+        <target>
+            <name>ADF22.5</name>
+            <id>010406225</id>
+            <RA>334.3811670</RA>
+            <DEC>0.2994450</DEC>
+            <z>3.09</z>
+        </target>
+    </targets>
+    <data-sources>
+        <source name="SSA22" link="https://ui.adsabs.harvard.edu/abs/2018PASJ...70...65U/abstract">
+            <observation target="010406227" name="ALMA/1140um" unit="mJy" type="E">
+                <flux>1.65</flux>
+                <error>0.07</error>
+                <typeval>1140</typeval>
+            </observation>
+            <observation target="010406225" name="ALMA/1140um" unit="mJy" type="E">
+                <flux>2.43</flux>
+                <error>0.20</error>
+                <typeval>1140</typeval>
+            </observation>
+            <observation target="010406221" name="ALMA/1140um" unit="mJy" type="E">
+                <flux>5.60</flux>
+                <error>0.13</error>
+                <typeval>1140</typeval>
+            </observation>
+        </source>
+    </data-sources>
+</catalogue>

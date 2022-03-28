@@ -1,0 +1,700 @@
+SIMPLE  =                    T / Standard FITS format                           BITPIX  =                    8 / Character data                                 NAXIS   =                    1 / Text string                                    NAXIS1  =                38198 / Number of characters                           VOTMETA =                    T / Table metadata in VOTable format               EXTEND  =                    T / There are standard extensions                  COMMENT                                                                         COMMENT The data in this primary HDU consists of bytes which                    COMMENT comprise a VOTABLE document.                                            COMMENT The VOTable describes the metadata of the table contained               COMMENT in the following BINTABLE extension.                                    COMMENT Such a BINTABLE extension can be used on its own as a perfectly         COMMENT good table, but the information from this HDU may provide some          COMMENT useful additional metadata.                                             COMMENT There is one following BINTABLE.                                        NTABLE  =                    1 / Number of following BINTABLE HDUs              END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             <?xml version='1.0'?>
+<VOTABLE version="1.4"
+ xmlns="http://www.ivoa.net/xml/VOTable/v1.3">
+<!--
+ !  VOTable written by STIL version 3.4-2 (uk.ac.starlink.votable.VOTableWriter)
+ !  at 2021-09-08T10:04:17
+ !-->
+<RESOURCE>
+<!-- Describes BINTABLE extensions in the following HDU.-->
+<TABLE name="Joined" nrows="1">
+<DESCRIPTION>
+ID_IAU      
+      id
+      ra 
+      dec
+      F3p6
+      err3p6
+      flag3p6
+      F4p5
+      err4p5
+      flag4p5
+      F5p8
+      err5p8
+      flag5p8
+      F8p0
+      err8p0
+      flag8p0
+      F24
+      err24_ima
+      err24_sim
+      cov24
+      F70
+      err70_ima
+      err70_sim
+      cov70
+      F100
+      err100_ima
+      err100_sim
+      cov100
+      F160
+      err160_ima
+      err160_sim
+      cov160
+      CLEAN_INDEX
+</DESCRIPTION>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="3" datatype="char" name="Match algorithm" value="Sky">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="82" datatype="char" name="Join Type" value="1 and 2 (An output row for each row represented in both input tables (INNER JOIN))">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="19" datatype="char" name="First input table" value="7: cdfs.v1.6.11.cat"/>
+<PARAM arraysize="10" datatype="char" name="Second input table" value="4: cor.txt"/>
+<PARAM arraysize="19" datatype="char" name="DATE-HDU" value="2016-11-14T17:44:52">
+<DESCRIPTION>Date of HDU creation (UTC)</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="5" datatype="char" name="STILVERS" value="3.0-8">
+<DESCRIPTION>Version of STIL software</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="42" datatype="char" name="STILCLAS" value="uk.ac.starlink.votable.FitsPlusTableWriter">
+<DESCRIPTION>Author class in STIL so</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="89" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1 (LEFT OUTER JOIN))">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="29" datatype="char" name="First input table" value="57: gs_candels_prior_f24.fits"/>
+<PARAM arraysize="12" datatype="char" name="Second input table" value="52: all.fits"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="89" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1 (LEFT OUTER JOIN))">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="33" datatype="char" name="First input table" value="60: gs_candels_prior_f24_all.fits"/>
+<PARAM arraysize="46" datatype="char" name="Second input table" value="63: gs_candels_prior_f24_out_run1_SPIRE250.cat"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="89" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1 (LEFT OUTER JOIN))">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="16" datatype="char" name="First input table" value="64: match(60,63)"/>
+<PARAM arraysize="46" datatype="char" name="Second input table" value="66: gs_candels_prior_f24_out_run2_SPIRE250.cat"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="103" datatype="char" name="Join Type" value="1 or 2 (An output row for each row represented in either or both of the input tables (FULL OUTER JOIN))">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="16" datatype="char" name="First input table" value="67: match(64,66)"/>
+<PARAM arraysize="46" datatype="char" name="Second input table" value="68: gs_candels_prior_f24_out_run2_SPIRE250.cat"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="103" datatype="char" name="Join Type" value="1 or 2 (An output row for each row represented in either or both of the input tables (FULL OUTER JOIN))">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="16" datatype="char" name="First input table" value="69: match(67,68)"/>
+<PARAM arraysize="46" datatype="char" name="Second input table" value="70: gs_candels_prior_f24_out_run2_SPIRE350.cat"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="103" datatype="char" name="Join Type" value="1 or 2 (An output row for each row represented in either or both of the input tables (FULL OUTER JOIN))">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="16" datatype="char" name="First input table" value="73: match(69,70)"/>
+<PARAM arraysize="46" datatype="char" name="Second input table" value="74: gs_candels_prior_f24_out_run2_SPIRE500.cat"/>
+<PARAM datatype="int" name="NAXIS1" value="109086390">
+<DESCRIPTION>width of single row in bytes</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="19" datatype="char" name="DATE-HDU" value="2016-09-23T08:55:42">
+<DESCRIPTION>Date of HDU creation (UTC)</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="5" datatype="char" name="STILVERS" value="3.0-5">
+<DESCRIPTION>Version of STIL software</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="38" datatype="char" name="STILCLAS" value="uk.ac.starlink.fits.ColFitsTableWriter">
+<DESCRIPTION>Author class in STIL softwa</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="89" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1 (LEFT OUTER JOIN))">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="16" datatype="char" name="First input table" value="75: match(73,74)"/>
+<PARAM arraysize="45" datatype="char" name="Second input table" value="76: gs_all_tf_h_130520a_multi_allinfo_v1.fits"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="3" datatype="char" name="Match algorithm" value="Sky">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="89" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1 (LEFT OUTER JOIN))">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="16" datatype="char" name="First input table" value="78: match(75,76)"/>
+<PARAM arraysize="31" datatype="char" name="Second input table" value="81: out_normal_5-5_4-5_comp.vot"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="89" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1 (LEFT OUTER JOIN))">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="16" datatype="char" name="First input table" value="82: match(78,81)"/>
+<PARAM arraysize="12" datatype="char" name="Second input table" value="84: ALMA.cat"/>
+<PARAM arraysize="19" datatype="char" name="DATE-HDU" value="2015-06-05T13:36:50">
+<DESCRIPTION>Date of HDU creation (UTC)</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="5" datatype="char" name="STILVERS" value="3.0-3">
+<DESCRIPTION>Version of STIL software</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="42" datatype="char" name="STILCLAS" value="uk.ac.starlink.votable.FitsPlusTableWriter">
+<DESCRIPTION>Author class in STIL so</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="19" datatype="char" name="DATE-HDU" value="2015-06-03T16:51:58">
+<DESCRIPTION>Date of HDU creation (UTC)</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="5" datatype="char" name="STILVERS" value="3.0-5">
+<DESCRIPTION>Version of STIL software</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="42" datatype="char" name="STILCLAS" value="uk.ac.starlink.votable.FitsPlusTableWriter">
+<DESCRIPTION>Author class in STIL so</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="15" datatype="char" name="First input table" value="66: goodss.fits"/>
+<PARAM arraysize="45" datatype="char" name="Second input table" value="61: gs_all_tf_h_130520a_multi_allinfo_v1.fits"/>
+<PARAM arraysize="22" datatype="char" name="MODTIME" value="03/11/2014 05:31:54 PM"/>
+<PARAM arraysize="22" datatype="char" name="MODTIME" value="03/12/2014 11:52:31 AM"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="29" datatype="char" name="First input table" value="2: goodss_3dhst.v4.1.cat.FITS"/>
+<PARAM arraysize="30" datatype="char" name="Second input table" value="5: goodss_3dhst.v4.1.fout.FITS"/>
+<PARAM arraysize="22" datatype="char" name="MODTIME" value="03/13/2014 10:33:49 AM"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="13" datatype="char" name="First input table" value="6: match(2,5)"/>
+<PARAM arraysize="35" datatype="char" name="Second input table" value="7: goodss_3dhst.v4.1.master.RF.FITS"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="3" datatype="char" name="Match algorithm" value="Sky">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="32" datatype="char" name="First input table" value="1: goodss_3dhst.v4.1_merged.fits"/>
+<PARAM arraysize="54" datatype="char" name="Second input table" value="3: pgh_GOODSS_070um_100um_160um_priors.DR1_revised...."/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="69" datatype="char" name="Join Type" value="1 and 2 (An output row for each row represented in both input tables)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="32" datatype="char" name="First input table" value="1: goodss_3dhst.v4.1_merged.fits"/>
+<PARAM arraysize="33" datatype="char" name="Second input table" value="5: goodss_3dhst.v4.1_f160w.galfit"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="69" datatype="char" name="Join Type" value="1 and 2 (An output row for each row represented in both input tables)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="33" datatype="char" name="First input table" value="27: goodss_3dhst.v4.1_merged.fits"/>
+<PARAM arraysize="34" datatype="char" name="Second input table" value="28: goodss_3dhst.v4.1_f160w.galfit"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="3" datatype="char" name="Match algorithm" value="Sky">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="14" datatype="char" name="First input table" value="4: goodss.fits"/>
+<PARAM arraysize="38" datatype="char" name="Second input table" value="11: goodss_3dhst.v4.1.cats.merged.fits"/>
+<PARAM arraysize="19" datatype="char" name="DATE-HDU" value="2015-05-19T09:03:02">
+<DESCRIPTION>Date of HDU creation (UTC)</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="5" datatype="char" name="STILVERS" value="3.0-3">
+<DESCRIPTION>Version of STIL software</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="42" datatype="char" name="STILCLAS" value="uk.ac.starlink.votable.FitsPlusTableWriter">
+<DESCRIPTION>Author class in STIL so</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="45" datatype="char" name="First input table" value="11: gs_all_tf_h_130520a_multi_allinfo_v1.fits"/>
+<PARAM arraysize="25" datatype="char" name="Second input table" value="14: f24_det_IR_fit_CM.cat"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="16" datatype="char" name="First input table" value="15: match(11,14)"/>
+<PARAM arraysize="30" datatype="char" name="Second input table" value="45: s_mips_1_s1_v0.30__out.cat"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="14" datatype="char" name="First input table" value="1: goodss.fits"/>
+<PARAM arraysize="44" datatype="char" name="Second input table" value="2: gs_all_tf_h_130520a_multi_allinfo_v1.fits"/>
+<PARAM arraysize="19" datatype="char" name="DATE-HDU" value="2015-05-19T09:03:02">
+<DESCRIPTION>Date of HDU creation (UTC)</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="5" datatype="char" name="STILVERS" value="3.0-3">
+<DESCRIPTION>Version of STIL software</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="42" datatype="char" name="STILCLAS" value="uk.ac.starlink.votable.FitsPlusTableWriter">
+<DESCRIPTION>Author class in STIL so</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="45" datatype="char" name="First input table" value="11: gs_all_tf_h_130520a_multi_allinfo_v1.fits"/>
+<PARAM arraysize="25" datatype="char" name="Second input table" value="14: f24_det_IR_fit_CM.cat"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="16" datatype="char" name="First input table" value="15: match(11,14)"/>
+<PARAM arraysize="30" datatype="char" name="Second input table" value="45: s_mips_1_s1_v0.30__out.cat"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="13" datatype="char" name="First input table" value="3: match(1,2)"/>
+<PARAM arraysize="44" datatype="char" name="Second input table" value="2: gs_all_tf_h_130520a_multi_allinfo_v1.fits"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="15" datatype="char" name="First input table" value="26: goodss.fits"/>
+<PARAM arraysize="32" datatype="char" name="Second input table" value="33: goodss_F160w_clean_index.txt"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="69" datatype="char" name="Join Type" value="1 and 2 (An output row for each row represented in both input tables)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="15" datatype="char" name="First input table" value="10: goodss.fits"/>
+<PARAM arraysize="31" datatype="char" name="Second input table" value="8: goodss_F160w_clean_index.txt"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="17" datatype="char" name="First input table" value="29: xue_cdfs.fits"/>
+<PARAM arraysize="15" datatype="char" name="Second input table" value="30: x_j_exp.dat"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="16" datatype="char" name="First input table" value="31: match(29,30)"/>
+<PARAM arraysize="15" datatype="char" name="Second input table" value="32: x_x_exp.dat"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="3" datatype="char" name="Match algorithm" value="Sky">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="15" datatype="char" name="First input table" value="52: goodss.fits"/>
+<PARAM arraysize="17" datatype="char" name="Second input table" value="51: xue_cdfs.fits"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="34" datatype="char" name="First input table" value="68: GH_GOODS-South_tables_DR1.fits"/>
+<PARAM arraysize="34" datatype="char" name="Second input table" value="66: pgh_GOODSS_RGB_DR1_revised.cat"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="3" datatype="char" name="Match algorithm" value="Sky">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="15" datatype="char" name="First input table" value="72: goodss.fits"/>
+<PARAM arraysize="16" datatype="char" name="Second input table" value="71: match(68,66)"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="71" datatype="char" name="Join Type" value="All from 1 (An output row for each matched or unmatched row in table 1)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="33" datatype="char" name="First input table" value="1: gs_candels_prior_f24_only.fits"/>
+<PARAM arraysize="14" datatype="char" name="Second input table" value="6: goodss.fits"/>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="69" datatype="char" name="Join Type" value="1 and 2 (An output row for each row represented in both input tables)">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="34" datatype="char" name="First input table" value="15: gs_candels_prior_f24_only.fits"/>
+<PARAM arraysize="55" datatype="char" name="Second input table" value="19: gs_candels_prior_f24_PACS_unimap_out_run1_PACS70..."/>
+<PARAM arraysize="37" datatype="char" name="Match type" value="Multi-table match performed by TOPCAT">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="11" datatype="char" name="Match algorithm" value="Exact Value">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="6" datatype="char" name="Matched table 1" value="Joined">
+<DESCRIPTION>Table on which the match was done</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="6" datatype="char" name="Matched table 2" value="Joined">
+<DESCRIPTION>Table on which the match was done</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="6" datatype="char" name="Matched table 3" value="Joined">
+<DESCRIPTION>Table on which the match was done</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="6" datatype="char" name="Matched table 4" value="Joined">
+<DESCRIPTION>Table on which the match was done</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="33" datatype="char" name="Match type" value="Pair match; Best match, symmetric">
+<DESCRIPTION>Type of match which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="3" datatype="char" name="Match algorithm" value="Sky">
+<DESCRIPTION>Matching algorithm which created this table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="82" datatype="char" name="Join Type" value="1 and 2 (An output row for each row represented in both input tables (INNER JOIN))">
+<DESCRIPTION>Determines which rows appear in output table</DESCRIPTION>
+</PARAM>
+<PARAM arraysize="13" datatype="char" name="First input table" value="8: match(7,4)"/>
+<PARAM arraysize="42" datatype="char" name="Second input table" value="1: gs_candels_prior_f24_only_infrared.fits"/>
+<FIELD datatype="short" name="id">
+<VALUES null='-32768'/>
+</FIELD>
+<FIELD datatype="double" name="ra"/>
+<FIELD datatype="double" name="dec"/>
+<FIELD datatype="float" name="iso_area"/>
+<FIELD datatype="double" name="fap_Ksall"/>
+<FIELD datatype="double" name="eap_Ksall"/>
+<FIELD datatype="double" name="apcorr"/>
+<FIELD datatype="double" name="Ks_ratio"/>
+<FIELD datatype="double" name="fapcirc07_Ksall"/>
+<FIELD datatype="double" name="eapcirc07_Ksall"/>
+<FIELD datatype="double" name="apcorr07"/>
+<FIELD datatype="double" name="fcirc07_Ksall"/>
+<FIELD datatype="double" name="ecirc07_Ksall"/>
+<FIELD datatype="double" name="fauto_Ksall"/>
+<FIELD datatype="float" name="flux50_radius"/>
+<FIELD datatype="float" name="a_vector"/>
+<FIELD datatype="float" name="b_vector"/>
+<FIELD datatype="float" name="kron_radius"/>
+<FIELD datatype="double" name="f_Ksall"/>
+<FIELD datatype="double" name="e_Ksall"/>
+<FIELD datatype="float" name="w_Ksall"/>
+<FIELD datatype="double" name="f_B"/>
+<FIELD datatype="double" name="e_B"/>
+<FIELD datatype="float" name="w_B"/>
+<FIELD datatype="double" name="f_I"/>
+<FIELD datatype="double" name="e_I"/>
+<FIELD datatype="float" name="w_I"/>
+<FIELD datatype="double" name="f_R"/>
+<FIELD datatype="double" name="e_R"/>
+<FIELD datatype="float" name="w_R"/>
+<FIELD datatype="double" name="f_U"/>
+<FIELD datatype="double" name="e_U"/>
+<FIELD datatype="float" name="w_U"/>
+<FIELD datatype="double" name="f_V"/>
+<FIELD datatype="double" name="e_V"/>
+<FIELD datatype="float" name="w_V"/>
+<FIELD datatype="double" name="f_Z"/>
+<FIELD datatype="double" name="e_Z"/>
+<FIELD datatype="float" name="w_Z"/>
+<FIELD datatype="double" name="f_Hs"/>
+<FIELD datatype="double" name="e_Hs"/>
+<FIELD datatype="float" name="w_Hs"/>
+<FIELD datatype="double" name="f_Hl"/>
+<FIELD datatype="double" name="e_Hl"/>
+<FIELD datatype="float" name="w_Hl"/>
+<FIELD datatype="double" name="f_J1"/>
+<FIELD datatype="double" name="e_J1"/>
+<FIELD datatype="float" name="w_J1"/>
+<FIELD datatype="double" name="f_J2"/>
+<FIELD datatype="double" name="e_J2"/>
+<FIELD datatype="float" name="w_J2"/>
+<FIELD datatype="double" name="f_J3"/>
+<FIELD datatype="double" name="e_J3"/>
+<FIELD datatype="float" name="w_J3"/>
+<FIELD datatype="double" name="f_Ks"/>
+<FIELD datatype="double" name="e_Ks"/>
+<FIELD datatype="float" name="w_Ks"/>
+<FIELD datatype="double" name="f_KsHI"/>
+<FIELD datatype="double" name="e_KsHI"/>
+<FIELD datatype="float" name="w_KsHI"/>
+<FIELD datatype="double" name="f_NB118"/>
+<FIELD datatype="double" name="e_NB118"/>
+<FIELD datatype="float" name="w_NB118"/>
+<FIELD datatype="double" name="f_NB209"/>
+<FIELD datatype="double" name="e_NB209"/>
+<FIELD datatype="float" name="w_NB209"/>
+<FIELD datatype="double" name="f_F098M"/>
+<FIELD datatype="double" name="e_F098M"/>
+<FIELD datatype="float" name="w_F098M"/>
+<FIELD datatype="double" name="f_F105W"/>
+<FIELD datatype="double" name="e_F105W"/>
+<FIELD datatype="float" name="w_F105W"/>
+<FIELD datatype="double" name="f_F125W"/>
+<FIELD datatype="double" name="e_F125W"/>
+<FIELD datatype="float" name="w_F125W"/>
+<FIELD datatype="double" name="f_F140W"/>
+<FIELD datatype="double" name="e_F140W"/>
+<FIELD datatype="float" name="w_F140W"/>
+<FIELD datatype="double" name="f_F160W"/>
+<FIELD datatype="double" name="e_F160W"/>
+<FIELD datatype="float" name="w_F160W"/>
+<FIELD datatype="double" name="f_F814W"/>
+<FIELD datatype="double" name="e_F814W"/>
+<FIELD datatype="float" name="w_F814W"/>
+<FIELD datatype="double" name="f_IA484"/>
+<FIELD datatype="double" name="e_IA484"/>
+<FIELD datatype="float" name="w_IA484"/>
+<FIELD datatype="double" name="f_IA527"/>
+<FIELD datatype="double" name="e_IA527"/>
+<FIELD datatype="float" name="w_IA527"/>
+<FIELD datatype="double" name="f_IA574"/>
+<FIELD datatype="double" name="e_IA574"/>
+<FIELD datatype="float" name="w_IA574"/>
+<FIELD datatype="double" name="f_IA598"/>
+<FIELD datatype="double" name="e_IA598"/>
+<FIELD datatype="float" name="w_IA598"/>
+<FIELD datatype="double" name="f_IA624"/>
+<FIELD datatype="double" name="e_IA624"/>
+<FIELD datatype="float" name="w_IA624"/>
+<FIELD datatype="double" name="f_IA651"/>
+<FIELD datatype="double" name="e_IA651"/>
+<FIELD datatype="float" name="w_IA651"/>
+<FIELD datatype="double" name="f_IA679"/>
+<FIELD datatype="double" name="e_IA679"/>
+<FIELD datatype="float" name="w_IA679"/>
+<FIELD datatype="double" name="f_IA738"/>
+<FIELD datatype="double" name="e_IA738"/>
+<FIELD datatype="float" name="w_IA738"/>
+<FIELD datatype="double" name="f_IA767"/>
+<FIELD datatype="double" name="e_IA767"/>
+<FIELD datatype="float" name="w_IA767"/>
+<FIELD datatype="double" name="f_IA797"/>
+<FIELD datatype="double" name="e_IA797"/>
+<FIELD datatype="float" name="w_IA797"/>
+<FIELD datatype="double" name="f_IA856"/>
+<FIELD datatype="double" name="e_IA856"/>
+<FIELD datatype="float" name="w_IA856"/>
+<FIELD datatype="double" name="f_WFI_V"/>
+<FIELD datatype="double" name="e_WFI_V"/>
+<FIELD datatype="float" name="w_WFI_V"/>
+<FIELD datatype="double" name="f_WFI_Rc"/>
+<FIELD datatype="double" name="e_WFI_Rc"/>
+<FIELD datatype="float" name="w_WFI_Rc"/>
+<FIELD datatype="double" name="f_WFI_U38"/>
+<FIELD datatype="double" name="e_WFI_U38"/>
+<FIELD datatype="float" name="w_WFI_U38"/>
+<FIELD datatype="double" name="f_tenisK"/>
+<FIELD datatype="double" name="e_tenisK"/>
+<FIELD datatype="float" name="w_tenisK"/>
+<FIELD datatype="double" name="f_IRAC_36"/>
+<FIELD datatype="double" name="e_IRAC_36"/>
+<FIELD datatype="float" name="w_IRAC_36"/>
+<FIELD datatype="double" name="f_IRAC_45"/>
+<FIELD datatype="double" name="e_IRAC_45"/>
+<FIELD datatype="float" name="w_IRAC_45"/>
+<FIELD datatype="double" name="f_IRAC_58"/>
+<FIELD datatype="double" name="e_IRAC_58"/>
+<FIELD datatype="float" name="w_IRAC_58"/>
+<FIELD datatype="double" name="f_IRAC_80"/>
+<FIELD datatype="double" name="e_IRAC_80"/>
+<FIELD datatype="float" name="w_IRAC_80"/>
+<FIELD datatype="float" name="wmin_optical"/>
+<FIELD datatype="float" name="wmin_hst_optical"/>
+<FIELD datatype="float" name="wmin_fs"/>
+<FIELD datatype="float" name="wmin_jhk"/>
+<FIELD datatype="float" name="wmin_hst"/>
+<FIELD datatype="double" name="wmin_irac"/>
+<FIELD datatype="float" name="wmin_all"/>
+<FIELD datatype="short" name="star">
+<VALUES null='-32768'/>
+</FIELD>
+<FIELD datatype="short" name="nearstar">
+<VALUES null='-32768'/>
+</FIELD>
+<FIELD datatype="short" name="use">
+<VALUES null='-32768'/>
+</FIELD>
+<FIELD datatype="double" name="snr"/>
+<FIELD datatype="short" name="use_nosnr">
+<VALUES null='-32768'/>
+</FIELD>
+<FIELD datatype="float" name="z_spec"/>
+<FIELD datatype="double" name="col1"/>
+<FIELD datatype="double" name="col2"/>
+<FIELD datatype="double" name="Separation_1" ucd="pos.angDistance" unit="arcsec">
+<DESCRIPTION>Distance between matched objects along a great circle</DESCRIPTION>
+</FIELD>
+<FIELD datatype="int" name="ID_all">
+<DESCRIPTION>(NULL_ID_all?ID_SPIRE500:ID_all)</DESCRIPTION>
+<VALUES null='-2147483648'/>
+</FIELD>
+<FIELD datatype="int" name="ID_H">
+<VALUES null='-2147483648'/>
+</FIELD>
+<FIELD datatype="double" name="RA_H"/>
+<FIELD datatype="double" name="DEC_H"/>
+<FIELD datatype="float" name="zbest_candels">
+<DESCRIPTION>(photo_z)</DESCRIPTION>
+</FIELD>
+<FIELD datatype="double" name="FLUX_24"/>
+<FIELD datatype="double" name="FLUXERR_24"/>
+<FIELD datatype="float" name="fout_SPIRE250"/>
+<FIELD datatype="double" name="eflux_SPIRE250"/>
+<FIELD datatype="double" name="map_rms_SPIRE250"/>
+<FIELD datatype="float" name="fout_SPIRE350"/>
+<FIELD datatype="double" name="eflux_SPIRE350"/>
+<FIELD datatype="double" name="map_rms_SPIRE350"/>
+<FIELD datatype="float" name="fout_SPIRE500"/>
+<FIELD datatype="double" name="eflux_SPIRE500"/>
+<FIELD datatype="double" name="map_rms_SPIRE500"/>
+<FIELD datatype="float" name="fout_PACS70"/>
+<FIELD datatype="double" name="eflux_PACS70"/>
+<FIELD datatype="double" name="map_rms_PACS70"/>
+<FIELD datatype="float" name="fout_PACS100"/>
+<FIELD datatype="double" name="eflux_PACS100"/>
+<FIELD datatype="double" name="map_rms_PACS100"/>
+<FIELD datatype="float" name="fout_PACS160"/>
+<FIELD datatype="double" name="eflux_PACS160"/>
+<FIELD datatype="double" name="map_rms_PACS160"/>
+<FIELD datatype="double" name="Separation" ucd="pos.angDistance" unit="arcsec">
+<DESCRIPTION>Distance between matched objects along a great circle</DESCRIPTION>
+</FIELD>
+<!-- Dummy VOTable - no DATA element -->
+</TABLE>
+</RESOURCE>
+</VOTABLE>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          XTENSION= 'BINTABLE'           / binary table extension                         BITPIX  =                    8 / 8-bit bytes                                    NAXIS   =                    2 / 2-dimensional table                            NAXIS1  =                 1186 / width of table in bytes                        NAXIS2  =                    1 / number of rows in table                        PCOUNT  =                    0 / size of special data area                      GCOUNT  =                    1 / one data group                                 TFIELDS =                  183 / number of columns                              EXTNAME = 'Joined  '           / table name                                     TTYPE1  = 'id      '           / label for column 1                             TFORM1  = 'I       '           / format for column 1                            TTYPE2  = 'ra      '           / label for column 2                             TFORM2  = 'D       '           / format for column 2                            TTYPE3  = 'dec     '           / label for column 3                             TFORM3  = 'D       '           / format for column 3                            TTYPE4  = 'iso_area'           / label for column 4                             TFORM4  = 'E       '           / format for column 4                            TTYPE5  = 'fap_Ksall'          / label for column 5                             TFORM5  = 'D       '           / format for column 5                            TTYPE6  = 'eap_Ksall'          / label for column 6                             TFORM6  = 'D       '           / format for column 6                            TTYPE7  = 'apcorr  '           / label for column 7                             TFORM7  = 'D       '           / format for column 7                            TTYPE8  = 'Ks_ratio'           / label for column 8                             TFORM8  = 'D       '           / format for column 8                            TTYPE9  = 'fapcirc07_Ksall'    / label for column 9                             TFORM9  = 'D       '           / format for column 9                            TTYPE10 = 'eapcirc07_Ksall'    / label for column 10                            TFORM10 = 'D       '           / format for column 10                           TTYPE11 = 'apcorr07'           / label for column 11                            TFORM11 = 'D       '           / format for column 11                           TTYPE12 = 'fcirc07_Ksall'      / label for column 12                            TFORM12 = 'D       '           / format for column 12                           TTYPE13 = 'ecirc07_Ksall'      / label for column 13                            TFORM13 = 'D       '           / format for column 13                           TTYPE14 = 'fauto_Ksall'        / label for column 14                            TFORM14 = 'D       '           / format for column 14                           TTYPE15 = 'flux50_radius'      / label for column 15                            TFORM15 = 'E       '           / format for column 15                           TTYPE16 = 'a_vector'           / label for column 16                            TFORM16 = 'E       '           / format for column 16                           TTYPE17 = 'b_vector'           / label for column 17                            TFORM17 = 'E       '           / format for column 17                           TTYPE18 = 'kron_radius'        / label for column 18                            TFORM18 = 'E       '           / format for column 18                           TTYPE19 = 'f_Ksall '           / label for column 19                            TFORM19 = 'D       '           / format for column 19                           TTYPE20 = 'e_Ksall '           / label for column 20                            TFORM20 = 'D       '           / format for column 20                           TTYPE21 = 'w_Ksall '           / label for column 21                            TFORM21 = 'E       '           / format for column 21                           TTYPE22 = 'f_B     '           / label for column 22                            TFORM22 = 'D       '           / format for column 22                           TTYPE23 = 'e_B     '           / label for column 23                            TFORM23 = 'D       '           / format for column 23                           TTYPE24 = 'w_B     '           / label for column 24                            TFORM24 = 'E       '           / format for column 24                           TTYPE25 = 'f_I     '           / label for column 25                            TFORM25 = 'D       '           / format for column 25                           TTYPE26 = 'e_I     '           / label for column 26                            TFORM26 = 'D       '           / format for column 26                           TTYPE27 = 'w_I     '           / label for column 27                            TFORM27 = 'E       '           / format for column 27                           TTYPE28 = 'f_R     '           / label for column 28                            TFORM28 = 'D       '           / format for column 28                           TTYPE29 = 'e_R     '           / label for column 29                            TFORM29 = 'D       '           / format for column 29                           TTYPE30 = 'w_R     '           / label for column 30                            TFORM30 = 'E       '           / format for column 30                           TTYPE31 = 'f_U     '           / label for column 31                            TFORM31 = 'D       '           / format for column 31                           TTYPE32 = 'e_U     '           / label for column 32                            TFORM32 = 'D       '           / format for column 32                           TTYPE33 = 'w_U     '           / label for column 33                            TFORM33 = 'E       '           / format for column 33                           TTYPE34 = 'f_V     '           / label for column 34                            TFORM34 = 'D       '           / format for column 34                           TTYPE35 = 'e_V     '           / label for column 35                            TFORM35 = 'D       '           / format for column 35                           TTYPE36 = 'w_V     '           / label for column 36                            TFORM36 = 'E       '           / format for column 36                           TTYPE37 = 'f_Z     '           / label for column 37                            TFORM37 = 'D       '           / format for column 37                           TTYPE38 = 'e_Z     '           / label for column 38                            TFORM38 = 'D       '           / format for column 38                           TTYPE39 = 'w_Z     '           / label for column 39                            TFORM39 = 'E       '           / format for column 39                           TTYPE40 = 'f_Hs    '           / label for column 40                            TFORM40 = 'D       '           / format for column 40                           TTYPE41 = 'e_Hs    '           / label for column 41                            TFORM41 = 'D       '           / format for column 41                           TTYPE42 = 'w_Hs    '           / label for column 42                            TFORM42 = 'E       '           / format for column 42                           TTYPE43 = 'f_Hl    '           / label for column 43                            TFORM43 = 'D       '           / format for column 43                           TTYPE44 = 'e_Hl    '           / label for column 44                            TFORM44 = 'D       '           / format for column 44                           TTYPE45 = 'w_Hl    '           / label for column 45                            TFORM45 = 'E       '           / format for column 45                           TTYPE46 = 'f_J1    '           / label for column 46                            TFORM46 = 'D       '           / format for column 46                           TTYPE47 = 'e_J1    '           / label for column 47                            TFORM47 = 'D       '           / format for column 47                           TTYPE48 = 'w_J1    '           / label for column 48                            TFORM48 = 'E       '           / format for column 48                           TTYPE49 = 'f_J2    '           / label for column 49                            TFORM49 = 'D       '           / format for column 49                           TTYPE50 = 'e_J2    '           / label for column 50                            TFORM50 = 'D       '           / format for column 50                           TTYPE51 = 'w_J2    '           / label for column 51                            TFORM51 = 'E       '           / format for column 51                           TTYPE52 = 'f_J3    '           / label for column 52                            TFORM52 = 'D       '           / format for column 52                           TTYPE53 = 'e_J3    '           / label for column 53                            TFORM53 = 'D       '           / format for column 53                           TTYPE54 = 'w_J3    '           / label for column 54                            TFORM54 = 'E       '           / format for column 54                           TTYPE55 = 'f_Ks    '           / label for column 55                            TFORM55 = 'D       '           / format for column 55                           TTYPE56 = 'e_Ks    '           / label for column 56                            TFORM56 = 'D       '           / format for column 56                           TTYPE57 = 'w_Ks    '           / label for column 57                            TFORM57 = 'E       '           / format for column 57                           TTYPE58 = 'f_KsHI  '           / label for column 58                            TFORM58 = 'D       '           / format for column 58                           TTYPE59 = 'e_KsHI  '           / label for column 59                            TFORM59 = 'D       '           / format for column 59                           TTYPE60 = 'w_KsHI  '           / label for column 60                            TFORM60 = 'E       '           / format for column 60                           TTYPE61 = 'f_NB118 '           / label for column 61                            TFORM61 = 'D       '           / format for column 61                           TTYPE62 = 'e_NB118 '           / label for column 62                            TFORM62 = 'D       '           / format for column 62                           TTYPE63 = 'w_NB118 '           / label for column 63                            TFORM63 = 'E       '           / format for column 63                           TTYPE64 = 'f_NB209 '           / label for column 64                            TFORM64 = 'D       '           / format for column 64                           TTYPE65 = 'e_NB209 '           / label for column 65                            TFORM65 = 'D       '           / format for column 65                           TTYPE66 = 'w_NB209 '           / label for column 66                            TFORM66 = 'E       '           / format for column 66                           TTYPE67 = 'f_F098M '           / label for column 67                            TFORM67 = 'D       '           / format for column 67                           TTYPE68 = 'e_F098M '           / label for column 68                            TFORM68 = 'D       '           / format for column 68                           TTYPE69 = 'w_F098M '           / label for column 69                            TFORM69 = 'E       '           / format for column 69                           TTYPE70 = 'f_F105W '           / label for column 70                            TFORM70 = 'D       '           / format for column 70                           TTYPE71 = 'e_F105W '           / label for column 71                            TFORM71 = 'D       '           / format for column 71                           TTYPE72 = 'w_F105W '           / label for column 72                            TFORM72 = 'E       '           / format for column 72                           TTYPE73 = 'f_F125W '           / label for column 73                            TFORM73 = 'D       '           / format for column 73                           TTYPE74 = 'e_F125W '           / label for column 74                            TFORM74 = 'D       '           / format for column 74                           TTYPE75 = 'w_F125W '           / label for column 75                            TFORM75 = 'E       '           / format for column 75                           TTYPE76 = 'f_F140W '           / label for column 76                            TFORM76 = 'D       '           / format for column 76                           TTYPE77 = 'e_F140W '           / label for column 77                            TFORM77 = 'D       '           / format for column 77                           TTYPE78 = 'w_F140W '           / label for column 78                            TFORM78 = 'E       '           / format for column 78                           TTYPE79 = 'f_F160W '           / label for column 79                            TFORM79 = 'D       '           / format for column 79                           TTYPE80 = 'e_F160W '           / label for column 80                            TFORM80 = 'D       '           / format for column 80                           TTYPE81 = 'w_F160W '           / label for column 81                            TFORM81 = 'E       '           / format for column 81                           TTYPE82 = 'f_F814W '           / label for column 82                            TFORM82 = 'D       '           / format for column 82                           TTYPE83 = 'e_F814W '           / label for column 83                            TFORM83 = 'D       '           / format for column 83                           TTYPE84 = 'w_F814W '           / label for column 84                            TFORM84 = 'E       '           / format for column 84                           TTYPE85 = 'f_IA484 '           / label for column 85                            TFORM85 = 'D       '           / format for column 85                           TTYPE86 = 'e_IA484 '           / label for column 86                            TFORM86 = 'D       '           / format for column 86                           TTYPE87 = 'w_IA484 '           / label for column 87                            TFORM87 = 'E       '           / format for column 87                           TTYPE88 = 'f_IA527 '           / label for column 88                            TFORM88 = 'D       '           / format for column 88                           TTYPE89 = 'e_IA527 '           / label for column 89                            TFORM89 = 'D       '           / format for column 89                           TTYPE90 = 'w_IA527 '           / label for column 90                            TFORM90 = 'E       '           / format for column 90                           TTYPE91 = 'f_IA574 '           / label for column 91                            TFORM91 = 'D       '           / format for column 91                           TTYPE92 = 'e_IA574 '           / label for column 92                            TFORM92 = 'D       '           / format for column 92                           TTYPE93 = 'w_IA574 '           / label for column 93                            TFORM93 = 'E       '           / format for column 93                           TTYPE94 = 'f_IA598 '           / label for column 94                            TFORM94 = 'D       '           / format for column 94                           TTYPE95 = 'e_IA598 '           / label for column 95                            TFORM95 = 'D       '           / format for column 95                           TTYPE96 = 'w_IA598 '           / label for column 96                            TFORM96 = 'E       '           / format for column 96                           TTYPE97 = 'f_IA624 '           / label for column 97                            TFORM97 = 'D       '           / format for column 97                           TTYPE98 = 'e_IA624 '           / label for column 98                            TFORM98 = 'D       '           / format for column 98                           TTYPE99 = 'w_IA624 '           / label for column 99                            TFORM99 = 'E       '           / format for column 99                           TTYPE100= 'f_IA651 '           / label for column 100                           TFORM100= 'D       '           / format for column 100                          TTYPE101= 'e_IA651 '           / label for column 101                           TFORM101= 'D       '           / format for column 101                          TTYPE102= 'w_IA651 '           / label for column 102                           TFORM102= 'E       '           / format for column 102                          TTYPE103= 'f_IA679 '           / label for column 103                           TFORM103= 'D       '           / format for column 103                          TTYPE104= 'e_IA679 '           / label for column 104                           TFORM104= 'D       '           / format for column 104                          TTYPE105= 'w_IA679 '           / label for column 105                           TFORM105= 'E       '           / format for column 105                          TTYPE106= 'f_IA738 '           / label for column 106                           TFORM106= 'D       '           / format for column 106                          TTYPE107= 'e_IA738 '           / label for column 107                           TFORM107= 'D       '           / format for column 107                          TTYPE108= 'w_IA738 '           / label for column 108                           TFORM108= 'E       '           / format for column 108                          TTYPE109= 'f_IA767 '           / label for column 109                           TFORM109= 'D       '           / format for column 109                          TTYPE110= 'e_IA767 '           / label for column 110                           TFORM110= 'D       '           / format for column 110                          TTYPE111= 'w_IA767 '           / label for column 111                           TFORM111= 'E       '           / format for column 111                          TTYPE112= 'f_IA797 '           / label for column 112                           TFORM112= 'D       '           / format for column 112                          TTYPE113= 'e_IA797 '           / label for column 113                           TFORM113= 'D       '           / format for column 113                          TTYPE114= 'w_IA797 '           / label for column 114                           TFORM114= 'E       '           / format for column 114                          TTYPE115= 'f_IA856 '           / label for column 115                           TFORM115= 'D       '           / format for column 115                          TTYPE116= 'e_IA856 '           / label for column 116                           TFORM116= 'D       '           / format for column 116                          TTYPE117= 'w_IA856 '           / label for column 117                           TFORM117= 'E       '           / format for column 117                          TTYPE118= 'f_WFI_V '           / label for column 118                           TFORM118= 'D       '           / format for column 118                          TTYPE119= 'e_WFI_V '           / label for column 119                           TFORM119= 'D       '           / format for column 119                          TTYPE120= 'w_WFI_V '           / label for column 120                           TFORM120= 'E       '           / format for column 120                          TTYPE121= 'f_WFI_Rc'           / label for column 121                           TFORM121= 'D       '           / format for column 121                          TTYPE122= 'e_WFI_Rc'           / label for column 122                           TFORM122= 'D       '           / format for column 122                          TTYPE123= 'w_WFI_Rc'           / label for column 123                           TFORM123= 'E       '           / format for column 123                          TTYPE124= 'f_WFI_U38'          / label for column 124                           TFORM124= 'D       '           / format for column 124                          TTYPE125= 'e_WFI_U38'          / label for column 125                           TFORM125= 'D       '           / format for column 125                          TTYPE126= 'w_WFI_U38'          / label for column 126                           TFORM126= 'E       '           / format for column 126                          TTYPE127= 'f_tenisK'           / label for column 127                           TFORM127= 'D       '           / format for column 127                          TTYPE128= 'e_tenisK'           / label for column 128                           TFORM128= 'D       '           / format for column 128                          TTYPE129= 'w_tenisK'           / label for column 129                           TFORM129= 'E       '           / format for column 129                          TTYPE130= 'f_IRAC_36'          / label for column 130                           TFORM130= 'D       '           / format for column 130                          TTYPE131= 'e_IRAC_36'          / label for column 131                           TFORM131= 'D       '           / format for column 131                          TTYPE132= 'w_IRAC_36'          / label for column 132                           TFORM132= 'E       '           / format for column 132                          TTYPE133= 'f_IRAC_45'          / label for column 133                           TFORM133= 'D       '           / format for column 133                          TTYPE134= 'e_IRAC_45'          / label for column 134                           TFORM134= 'D       '           / format for column 134                          TTYPE135= 'w_IRAC_45'          / label for column 135                           TFORM135= 'E       '           / format for column 135                          TTYPE136= 'f_IRAC_58'          / label for column 136                           TFORM136= 'D       '           / format for column 136                          TTYPE137= 'e_IRAC_58'          / label for column 137                           TFORM137= 'D       '           / format for column 137                          TTYPE138= 'w_IRAC_58'          / label for column 138                           TFORM138= 'E       '           / format for column 138                          TTYPE139= 'f_IRAC_80'          / label for column 139                           TFORM139= 'D       '           / format for column 139                          TTYPE140= 'e_IRAC_80'          / label for column 140                           TFORM140= 'D       '           / format for column 140                          TTYPE141= 'w_IRAC_80'          / label for column 141                           TFORM141= 'E       '           / format for column 141                          TTYPE142= 'wmin_optical'       / label for column 142                           TFORM142= 'E       '           / format for column 142                          TTYPE143= 'wmin_hst_optical'   / label for column 143                           TFORM143= 'E       '           / format for column 143                          TTYPE144= 'wmin_fs '           / label for column 144                           TFORM144= 'E       '           / format for column 144                          TTYPE145= 'wmin_jhk'           / label for column 145                           TFORM145= 'E       '           / format for column 145                          TTYPE146= 'wmin_hst'           / label for column 146                           TFORM146= 'E       '           / format for column 146                          TTYPE147= 'wmin_irac'          / label for column 147                           TFORM147= 'D       '           / format for column 147                          TTYPE148= 'wmin_all'           / label for column 148                           TFORM148= 'E       '           / format for column 148                          TTYPE149= 'star    '           / label for column 149                           TFORM149= 'I       '           / format for column 149                          TTYPE150= 'nearstar'           / label for column 150                           TFORM150= 'I       '           / format for column 150                          TTYPE151= 'use     '           / label for column 151                           TFORM151= 'I       '           / format for column 151                          TTYPE152= 'snr     '           / label for column 152                           TFORM152= 'D       '           / format for column 152                          TTYPE153= 'use_nosnr'          / label for column 153                           TFORM153= 'I       '           / format for column 153                          TTYPE154= 'z_spec  '           / label for column 154                           TFORM154= 'E       '           / format for column 154                          TTYPE155= 'col1    '           / label for column 155                           TFORM155= 'D       '           / format for column 155                          TTYPE156= 'col2    '           / label for column 156                           TFORM156= 'D       '           / format for column 156                          TTYPE157= 'Separation_1'       / label for column 157                           TFORM157= 'D       '           / format for column 157                          TUNIT157= 'arcsec  '           / units for column 157                           TCOMM157= 'Distance between matched objects along a great circle'               TUCD157 = 'pos.angDistance'                                                     TTYPE158= 'ID_all  '           / label for column 158                           TFORM158= 'J       '           / format for column 158                          TNULL158=          -2147483648 / blank value for column 158                     TCOMM158= '(NULL_ID_all?ID_SPIRE500:ID_all)'                                    TTYPE159= 'ID_H    '           / label for column 159                           TFORM159= 'J       '           / format for column 159                          TNULL159=          -2147483648 / blank value for column 159                     TTYPE160= 'RA_H    '           / label for column 160                           TFORM160= 'D       '           / format for column 160                          TTYPE161= 'DEC_H   '           / label for column 161                           TFORM161= 'D       '           / format for column 161                          TTYPE162= 'zbest_candels'      / label for column 162                           TFORM162= 'E       '           / format for column 162                          TCOMM162= '(photo_z)'                                                           TTYPE163= 'FLUX_24 '           / label for column 163                           TFORM163= 'D       '           / format for column 163                          TTYPE164= 'FLUXERR_24'         / label for column 164                           TFORM164= 'D       '           / format for column 164                          TTYPE165= 'fout_SPIRE250'      / label for column 165                           TFORM165= 'E       '           / format for column 165                          TTYPE166= 'eflux_SPIRE250'     / label for column 166                           TFORM166= 'D       '           / format for column 166                          TTYPE167= 'map_rms_SPIRE250'   / label for column 167                           TFORM167= 'D       '           / format for column 167                          TTYPE168= 'fout_SPIRE350'      / label for column 168                           TFORM168= 'E       '           / format for column 168                          TTYPE169= 'eflux_SPIRE350'     / label for column 169                           TFORM169= 'D       '           / format for column 169                          TTYPE170= 'map_rms_SPIRE350'   / label for column 170                           TFORM170= 'D       '           / format for column 170                          TTYPE171= 'fout_SPIRE500'      / label for column 171                           TFORM171= 'E       '           / format for column 171                          TTYPE172= 'eflux_SPIRE500'     / label for column 172                           TFORM172= 'D       '           / format for column 172                          TTYPE173= 'map_rms_SPIRE500'   / label for column 173                           TFORM173= 'D       '           / format for column 173                          TTYPE174= 'fout_PACS70'        / label for column 174                           TFORM174= 'E       '           / format for column 174                          TTYPE175= 'eflux_PACS70'       / label for column 175                           TFORM175= 'D       '           / format for column 175                          TTYPE176= 'map_rms_PACS70'     / label for column 176                           TFORM176= 'D       '           / format for column 176                          TTYPE177= 'fout_PACS100'       / label for column 177                           TFORM177= 'E       '           / format for column 177                          TTYPE178= 'eflux_PACS100'      / label for column 178                           TFORM178= 'D       '           / format for column 178                          TTYPE179= 'map_rms_PACS100'    / label for column 179                           TFORM179= 'D       '           / format for column 179                          TTYPE180= 'fout_PACS160'       / label for column 180                           TFORM180= 'E       '           / format for column 180                          TTYPE181= 'eflux_PACS160'      / label for column 181                           TFORM181= 'D       '           / format for column 181                          TTYPE182= 'map_rms_PACS160'    / label for column 182                           TFORM182= 'D       '           / format for column 182                          TTYPE183= 'Separation'         / label for column 183                           TFORM183= 'D       '           / format for column 183                          TUNIT183= 'arcsec  '           / units for column 183                           TCOMM183= 'Distance between matched objects along a great circle'               TUCD183 = 'pos.angDistance'                                                     DATE-HDU= '2021-09-08T10:04:17' / Date of HDU creation (UTC)                    STILVERS= '3.4-2   '           / Version of STIL software                       STILCLAS= 'uk.ac.starlink.votable.FitsPlusTableWriter' / STIL Author class      END                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             )x@Jä~ﬂŸÔÀ¿;◊ ã@;D(@ @F∆ù`ò?∞û˜“_¯?≈å“
+˙/@	=J‰*@@(∞Ú{≤ˇ?°!Q¥R≠w?¸d_ZŸjj@L¨îƒG√?Æe≈¨ùÉ@`˙˜e˝ä€@}„T@¢»¥@mp§A!Û∂@a—¢∏9B?œ⁄d¥Í ?‘z·@!ªÉ É¯?≤±{•°?s33@CÒ¸˝Ì I?ª∂u›“Æé?ãÖ@;xè∞‚ã{?ı˙ä≥¢Ø?ùp§@˚8<~ÿ?î«ö∑Í{(?•∏@4<PMíY?Æôπ=Ëá?Çè\@IÕ{ {π¥?¬d·Ã8RW?Ö∏@\WU¯Z?ŸÇ\|ıÕa?ä=q@_¬oÁ®?⁄~›aÓ®,?ä=q@R±èÑó‘?ÀAeXßÍr?ãÖ@R'D
+ÒÀä? pE∏F?àı√@Tÿlº¡ºœ?–ËÆ:˜â?áÆ@bÇ2kç’?·∂Ióg?Üff@a∆Öúåì!?≈]L^ÊòAÑQÏ@RL—¢£?ÿ13~≤çÜ?àı√@`Fﬁ“àŒp?ËK‡Û˘?ä=q¿X¿     ¿X¿         ¿X¿     ¿X¿         @SzÑå¬?ØmêiS≤É?„◊
+@W8Ÿ˝6˜?–Òëç[ùµ?Çè\@Zy€"–Â`?≥SG•∞ˇ?‚è\@E>ıtå?™Ç?ﬂ—õ@}p§@(ygE^Ñ?≥DrÍO?Ä  @,hÌ—’W?¥1®lb⁄6?Ä  @3BÍ»`VÇ?…ãÛ~ P?Ä  @6ñÇ—++S?≥“›º*ò?Ä  @;#èñn?∂ÕBC´Ä=?Ä  @>=KWAZh?±∏‘üÅsâ?Ä  @@iÜÇªÜ©?∂õﬂDƒ?Ä  @Co'$›(?∏}Næ3¡Ã?Ä  @EŒ”·î/?œ3%éøQ„?Ä  @Eâ“hÓ #?—ñmmtUE?Ä  @G·~πX¸õ?◊xµœ•›.?Ä  @,B·‹ˇI¯?≤˘ä€È≥?z·H@<∂nøØ?∞„›A<’?kÖ@∏spásı?Ã—˘‹uBi?p£◊@c£JÛCY?⁄–@“íêe?ÅGÆ@^UﬁX?∞í˚nÉí›?£◊@Ví7É≈ˇ?¿!∑«˙LÑ>ı¬è@U12M?Â¿"‚AŒ„?Ÿôö@Tä V–«.?Íœ◊:±N?√◊
+?kÖ@}p§?áÆ?ÅGÆ    @€‚@    ?”33     @é/åÁØ∏ ?†@Jä~˘€"—¿;◊ŸÙ”|?äa È#˝J  %  %@Jä~Û%&*¿;◊˚Ç¬Ω?†@e~∏f‰:®@p£◊
+=q<6,w?BÙœJUé®?EiÙê`4Ù<,`F??ÍÅ∫Ë?R‚∆3Uó‚;vÖ-?7™@∞ 7«?Ud;˚Ö:ÑîO?#—n=Mh?.∆î§gRı;ÄeÏ?—<û ?+öê9ûá?<(.à?#K6_7ù¸?VQÊ|°;O?~P_í#§                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
