@@ -1,0 +1,562 @@
+<?xml version='1.0' encoding='utf-8'?>
+<catalogue name="CAT-COSMOS-2">
+  <targets>
+    <target>
+      <name>1024221</name>
+      <id>1024221</id> <!--ID 10-->
+      <RA>149.7998823</RA>
+      <DEC>2.3883955</DEC>
+      <z>1.49</z>
+    </target>
+    <target>
+      <name>1452625</name>
+      <id>1452625</id> <!--ID 2-->
+      <RA>150.431917</RA>
+      <DEC>2.802611</DEC>
+      <z>0.6248</z>
+    </target>
+    <target>
+      <name>777178</name>
+      <id>777178</id> <!--ID 24-->
+      <RA>150.331442</RA>
+      <DEC>2.162369</DEC>
+      <z>2.9342</z>
+    </target>
+  </targets>
+  <data-sources>
+    <source name="spec files">
+      <observation name="Subaru/HSC/g" target="1024221" type="F" unit="mJy">
+        <flux>3.940215725909241e-06</flux>
+        <error>4.523549731450676e-06</error>
+        <typeval>314</typeval>
+      </observation>
+      <observation name="Subaru/HSC/r" target="1024221" type="F" unit="mJy">
+        <flux>3.018283294452472e-05</flux>
+        <error>5.742761348853971e-06</error>
+        <typeval>315</typeval>
+      </observation>
+      <observation name="Subaru/HSC/i" target="1024221" type="F" unit="mJy">
+        <flux>3.917418771077815e-05</flux>
+        <error>6.987172872949062e-06</error>
+        <typeval>316</typeval>
+      </observation>
+      <observation name="Subaru/HSC/z" target="1024221" type="F" unit="mJy">
+        <flux>4.9009469325754906e-05</flux>
+        <error>1.0895636958578055e-05</error>
+        <typeval>317</typeval>
+      </observation>
+      <observation name="Subaru/HSC/y" target="1024221" type="F" unit="mJy">
+        <flux>2.615290883960891e-05</flux>
+        <error>2.2643077855249056e-05</error>
+        <typeval>318</typeval>
+      </observation>
+      <observation name="VISTA/VIRCAM/Y" target="1024221" type="F" unit="mJy">
+        <flux>4.041662082817167e-05</flux>
+        <error>2.5290686775185973e-05</error>
+        <typeval>256</typeval>
+      </observation>
+      <observation name="VISTA/VIRCAM/J" target="1024221" type="F" unit="mJy">
+        <flux>4.8114945699061e-05</flux>
+        <error>3.108317684787697e-05</error>
+        <typeval>257</typeval>
+      </observation>
+      <observation name="VISTA/VIRCAM/Ks" target="1024221" type="F" unit="mJy">
+        <flux>0.00011523913771994832</flux>
+        <error>6.158439382308597e-05</error>
+        <typeval>259</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA484" target="1024221" type="F" unit="mJy">
+        <flux>2.129119315929499e-05</flux>
+        <error>4.203148762789693e-05</error>
+        <typeval>184</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA527" target="1024221" type="F" unit="mJy">
+        <flux>3.0467723104349112e-05</flux>
+        <error>4.458252774655637e-05</error>
+        <typeval>186</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB574" target="1024221" type="F" unit="mJy">
+        <flux>4.042034350794977e-05</flux>
+        <error>7.707624111614225e-05</error>
+        <typeval>188</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA679" target="1024221" type="F" unit="mJy">
+        <flux>6.708725155959414e-05</flux>
+        <error>6.335118787959626e-05</error>
+        <typeval>192</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB709" target="1024221" type="F" unit="mJy">
+        <flux>2.637059931754978e-05</flux>
+        <error>6.454037178097871e-05</error>
+        <typeval>193</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA767" target="1024221" type="F" unit="mJy">
+        <flux>4.428738116362765e-06</flux>
+        <error>9.66292235677258e-05</error>
+        <typeval>195</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB827" target="1024221" type="F" unit="mJy">
+        <flux>4.8390487796277e-05</flux>
+        <error>8.078582267631714e-05</error>
+        <typeval>197</typeval>
+      </observation>
+      <observation name="VISTA/VIRCAM/NB118" target="1024221" type="F" unit="mJy">
+        <flux>0.00016336536973052693</flux>
+        <error>0.00011780035173039443</error>
+        <typeval>321</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/B" target="1024221" type="F" unit="mJy">
+        <flux>1.536455548095212e-05</flux>
+        <error>1.2326381256409229e-05</error>
+        <typeval>114</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/V" target="1024221" type="F" unit="mJy">
+        <flux>1.5142584296693863e-05</flux>
+        <error>2.2691757146808934e-05</error>
+        <typeval>115</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/r+" target="1024221" type="F" unit="mJy">
+        <flux>1.3477210138513449e-05</flux>
+        <error>2.022132842999674e-05</error>
+        <typeval>116</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/i+" target="1024221" type="F" unit="mJy">
+        <flux>4.813267516582356e-05</flux>
+        <error>2.7186853563477765e-05</error>
+        <typeval>117</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/z++" target="1024221" type="F" unit="mJy">
+        <flux>7.03396171216243e-05</flux>
+        <error>0.00010760950747124457</error>
+        <typeval>118</typeval>
+      </observation>
+      <observation name="Spitzer/IRAC/ch1" target="1024221" type="F" unit="mJy">
+        <flux>0.00011202630197358118</flux>
+        <error>4.55032893071633e-06</error>
+        <typeval>18</typeval>
+      </observation>
+      <observation name="Spitzer/IRAC/ch2" target="1024221" type="F" unit="mJy">
+        <flux>2.951481055599226e-05</flux>
+        <error>1.2354934859354465e-05</error>
+        <typeval>19</typeval>
+      </observation>
+      <observation name="CFHT/MegaCam/u*" target="1452625" type="F" unit="mJy">
+        <flux>0.000310484554180192</flux>
+        <error>2.047317466743851e-05</error>
+        <typeval>352</typeval>
+      </observation>
+      <observation name="CFHT/MegaCam/u" target="1452625" type="F" unit="mJy">
+        <flux>0.00028397492923995374</flux>
+        <error>1.2771031023223394e-05</error>
+        <typeval>353</typeval>
+      </observation>
+      <observation name="Subaru/HSC/g" target="1452625" type="F" unit="mJy">
+        <flux>0.001114191907998592</flux>
+        <error>1.6240733788384253e-05</error>
+        <typeval>314</typeval>
+      </observation>
+      <observation name="Subaru/HSC/r" target="1452625" type="F" unit="mJy">
+        <flux>0.0044405830820510445</flux>
+        <error>2.978870630161123e-05</error>
+        <typeval>315</typeval>
+      </observation>
+      <observation name="Subaru/HSC/i" target="1452625" type="F" unit="mJy">
+        <flux>0.010566228541631799</flux>
+        <error>4.1334664383052765e-05</error>
+        <typeval>316</typeval>
+      </observation>
+      <observation name="Subaru/HSC/z" target="1452625" type="F" unit="mJy">
+        <flux>0.016088664672216865</flux>
+        <error>5.968497636524947e-05</error>
+        <typeval>317</typeval>
+      </observation>
+      <observation name="Subaru/HSC/y" target="1452625" type="F" unit="mJy">
+        <flux>0.020200401430176325</flux>
+        <error>7.884082170536194e-05</error>
+        <typeval>318</typeval>
+      </observation>
+      <observation name="VISTA/VIRCAM/Y" target="1452625" type="F" unit="mJy">
+        <flux>0.022600601616546312</flux>
+        <error>5.3793678739505516e-05</error>
+        <typeval>256</typeval>
+      </observation>
+      <observation name="VISTA/VIRCAM/J" target="1452625" type="F" unit="mJy">
+        <flux>0.03371630703091862</flux>
+        <error>6.781425284596263e-05</error>
+        <typeval>257</typeval>
+      </observation>
+      <observation name="VISTA/VIRCAM/H" target="1452625" type="F" unit="mJy">
+        <flux>0.057575802508114095</flux>
+        <error>9.454365199780279e-05</error>
+        <typeval>258</typeval>
+      </observation>
+      <observation name="VISTA/VIRCAM/Ks" target="1452625" type="F" unit="mJy">
+        <flux>0.08213343758094395</flux>
+        <error>0.00013568006576479333</error>
+        <typeval>259</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB427" target="1452625" type="F" unit="mJy">
+        <flux>0.0005802297599818717</flux>
+        <error>6.580284111097006e-05</error>
+        <typeval>181</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB464" target="1452625" type="F" unit="mJy">
+        <flux>0.0008739367453894243</flux>
+        <error>0.00010500404675916297</error>
+        <typeval>183</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA484" target="1452625" type="F" unit="mJy">
+        <flux>0.001175438739861553</flux>
+        <error>4.9821893736914774e-05</error>
+        <typeval>184</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB505" target="1452625" type="F" unit="mJy">
+        <flux>0.0012965820353826234</flux>
+        <error>6.713089971854476e-05</error>
+        <typeval>185</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA527" target="1452625" type="F" unit="mJy">
+        <flux>0.0016439174292827768</flux>
+        <error>5.5790227501302505e-05</error>
+        <typeval>186</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB574" target="1452625" type="F" unit="mJy">
+        <flux>0.0023216673827931226</flux>
+        <error>9.186220881086363e-05</error>
+        <typeval>188</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA624" target="1452625" type="F" unit="mJy">
+        <flux>0.004220462054976583</flux>
+        <error>5.240714252556065e-05</error>
+        <typeval>190</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA679" target="1452625" type="F" unit="mJy">
+        <flux>0.007082066492998423</flux>
+        <error>8.870337813051512e-05</error>
+        <typeval>192</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB709" target="1452625" type="F" unit="mJy">
+        <flux>0.008082021473398777</flux>
+        <error>8.020304150866859e-05</error>
+        <typeval>193</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA738" target="1452625" type="F" unit="mJy">
+        <flux>0.0097149372548709</flux>
+        <error>7.851666280382984e-05</error>
+        <typeval>194</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA767" target="1452625" type="F" unit="mJy">
+        <flux>0.010783506389555908</flux>
+        <error>0.00011467656469909879</error>
+        <typeval>195</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB827" target="1452625" type="F" unit="mJy">
+        <flux>0.012502590302177189</flux>
+        <error>0.00010270977142108655</error>
+        <typeval>197</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/NB711" target="1452625" type="F" unit="mJy">
+        <flux>0.00832683578606357</flux>
+        <error>0.00011206136929982851</error>
+        <typeval>322</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/NB816" target="1452625" type="F" unit="mJy">
+        <flux>0.01236858448757247</flux>
+        <error>0.00010169491696836935</error>
+        <typeval>319</typeval>
+      </observation>
+      <observation name="VISTA/VIRCAM/NB118" target="1452625" type="F" unit="mJy">
+        <flux>0.03052670993231154</flux>
+        <error>0.00035433537458943803</error>
+        <typeval>321</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/B" target="1452625" type="F" unit="mJy">
+        <flux>0.00071997928294868</flux>
+        <error>1.4978786660420745e-05</error>
+        <typeval>114</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/V" target="1452625" type="F" unit="mJy">
+        <flux>0.0019163728084740349</flux>
+        <error>2.9258441353066436e-05</error>
+        <typeval>115</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/r+" target="1452625" type="F" unit="mJy">
+        <flux>0.004668743343920169</flux>
+        <error>2.2129806594898306e-05</error>
+        <typeval>116</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/i+" target="1452625" type="F" unit="mJy">
+        <flux>0.010401117438472402</flux>
+        <error>3.4776235799552295e-05</error>
+        <typeval>117</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/z++" target="1452625" type="F" unit="mJy">
+        <flux>0.01746948088978414</flux>
+        <error>0.00016532816760400935</error>
+        <typeval>118</typeval>
+      </observation>
+      <observation name="Spitzer/IRAC/ch1" target="1452625" type="F" unit="mJy">
+        <flux>0.08675210069590167</flux>
+        <error>0.00043320172376513894</error>
+        <typeval>18</typeval>
+      </observation>
+      <observation name="Spitzer/IRAC/ch2" target="1452625" type="F" unit="mJy">
+        <flux>0.06271912632309208</flux>
+        <error>0.00023180246859878</error>
+        <typeval>19</typeval>
+      </observation>
+      <observation name="GALEX/GALEX/NUV" target="1452625" type="F" unit="mJy">
+        <flux>2.52720225258883e-05</flux>
+        <error>7.035482214921451e-05</error>
+        <typeval>121</typeval>
+      </observation>
+      <observation name="CFHT/MegaCam/u*" target="777178" type="F" unit="mJy">
+        <flux>0.00021207037288254463</flux>
+        <error>8.259990758815165e-06</error>
+        <typeval>352</typeval>
+      </observation>
+      <observation name="CFHT/MegaCam/u" target="777178" type="F" unit="mJy">
+        <flux>0.00012399380859509402</flux>
+        <error>1.2570916734429711e-05</error>
+        <typeval>353</typeval>
+      </observation>
+      <observation name="Subaru/HSC/g" target="777178" type="F" unit="mJy">
+        <flux>0.0007198466700780163</flux>
+        <error>1.3117583491730559e-05</error>
+        <typeval>314</typeval>
+      </observation>
+      <observation name="Subaru/HSC/r" target="777178" type="F" unit="mJy">
+        <flux>0.0012722135007354931</flux>
+        <error>1.6825734281788465e-05</error>
+        <typeval>315</typeval>
+      </observation>
+      <observation name="Subaru/HSC/i" target="777178" type="F" unit="mJy">
+        <flux>0.0014445081616341843</flux>
+        <error>1.681207176397515e-05</error>
+        <typeval>316</typeval>
+      </observation>
+      <observation name="Subaru/HSC/z" target="777178" type="F" unit="mJy">
+        <flux>0.0015348996957323577</flux>
+        <error>2.219225090812149e-05</error>
+        <typeval>317</typeval>
+      </observation>
+      <observation name="Subaru/HSC/y" target="777178" type="F" unit="mJy">
+        <flux>0.001585331175140538</flux>
+        <error>3.3349951781960654e-05</error>
+        <typeval>318</typeval>
+      </observation>
+      <observation name="VISTA/VIRCAM/Y" target="777178" type="F" unit="mJy">
+        <flux>0.0016348578614094108</flux>
+        <error>0.0001097697431820519</error>
+        <typeval>256</typeval>
+      </observation>
+      <observation name="VISTA/VIRCAM/J" target="777178" type="F" unit="mJy">
+        <flux>0.0020131679141538396</flux>
+        <error>0.00012419563234265232</error>
+        <typeval>257</typeval>
+      </observation>
+      <observation name="VISTA/VIRCAM/H" target="777178" type="F" unit="mJy">
+        <flux>0.003263773410772416</flux>
+        <error>0.00017639794892852737</error>
+        <typeval>258</typeval>
+      </observation>
+      <observation name="VISTA/VIRCAM/Ks" target="777178" type="F" unit="mJy">
+        <flux>0.004112633416673148</flux>
+        <error>0.00011752934541000403</error>
+        <typeval>259</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB427" target="777178" type="F" unit="mJy">
+        <flux>0.0005413523171131281</flux>
+        <error>6.319538320010486e-05</error>
+        <typeval>181</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB464" target="777178" type="F" unit="mJy">
+        <flux>0.00043195648650161265</flux>
+        <error>9.342202346170671e-05</error>
+        <typeval>183</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA484" target="777178" type="F" unit="mJy">
+        <flux>0.0004246195639463113</flux>
+        <error>3.6634119496053916e-05</error>
+        <typeval>184</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB505" target="777178" type="F" unit="mJy">
+        <flux>0.0009246981739382212</flux>
+        <error>5.414754039778456e-05</error>
+        <typeval>185</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA527" target="777178" type="F" unit="mJy">
+        <flux>0.0010733960678208784</flux>
+        <error>4.0872513946043226e-05</error>
+        <typeval>186</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB574" target="777178" type="F" unit="mJy">
+        <flux>0.001228570265249382</flux>
+        <error>7.874243175853264e-05</error>
+        <typeval>188</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA624" target="777178" type="F" unit="mJy">
+        <flux>0.0012240523724999094</flux>
+        <error>4.132982700460532e-05</error>
+        <typeval>190</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA679" target="777178" type="F" unit="mJy">
+        <flux>0.001520967730591726</flux>
+        <error>7.023679416050694e-05</error>
+        <typeval>192</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB709" target="777178" type="F" unit="mJy">
+        <flux>0.001469467549783692</flux>
+        <error>6.767245863111655e-05</error>
+        <typeval>193</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA738" target="777178" type="F" unit="mJy">
+        <flux>0.0014394613220781568</flux>
+        <error>5.5090686363961824e-05</error>
+        <typeval>194</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IA767" target="777178" type="F" unit="mJy">
+        <flux>0.0014801986371175988</flux>
+        <error>8.225993590453608e-05</error>
+        <typeval>195</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/IB827" target="777178" type="F" unit="mJy">
+        <flux>0.0014052707282097368</flux>
+        <error>9.261589488140088e-05</error>
+        <typeval>197</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/NB711" target="777178" type="F" unit="mJy">
+        <flux>0.0013467283420689376</flux>
+        <error>0.00010627422129052711</error>
+        <typeval>322</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/NB816" target="777178" type="F" unit="mJy">
+        <flux>0.0015223692389604634</flux>
+        <error>7.855200612239572e-05</error>
+        <typeval>319</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/B" target="777178" type="F" unit="mJy">
+        <flux>0.00047673825225410366</flux>
+        <error>1.2150150870573017e-05</error>
+        <typeval>114</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/V" target="777178" type="F" unit="mJy">
+        <flux>0.0011672395648042965</flux>
+        <error>2.5812852547121146e-05</error>
+        <typeval>115</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/r+" target="777178" type="F" unit="mJy">
+        <flux>0.0013131671199292751</flux>
+        <error>1.7973229723556586e-05</error>
+        <typeval>116</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/i+" target="777178" type="F" unit="mJy">
+        <flux>0.0014923819922206512</flux>
+        <error>2.4538575329279312e-05</error>
+        <typeval>117</typeval>
+      </observation>
+      <observation name="Subaru/Suprime-Cam/z++" target="777178" type="F" unit="mJy">
+        <flux>0.0015435475046772984</flux>
+        <error>0.00010422817859091485</error>
+        <typeval>118</typeval>
+      </observation>
+      <observation name="Spitzer/IRAC/ch1" target="777178" type="F" unit="mJy">
+        <flux>0.009237618020134765</flux>
+        <error>1.889674584743449e-05</error>
+        <typeval>18</typeval>
+      </observation>
+      <observation name="Spitzer/IRAC/ch2" target="777178" type="F" unit="mJy">
+        <flux>0.014046237261128318</flux>
+        <error>3.60157247837303e-05</error>
+        <typeval>19</typeval>
+      </observation>
+    </source>
+    <source name="deblended fits file">
+      <observation name="24.0um" target="1452625" type="E" unit="mJy">
+        <flux>0.3641730041503906</flux>
+        <error>0.022209800720214844</error>
+        <typeval>24.0</typeval>
+      </observation>
+      <observation name="100.0um" target="1452625" type="E" unit="mJy">
+        <flux>11.928799629211426</flux>
+        <error>1.8673900365829468</error>
+        <typeval>100.0</typeval>
+      </observation>
+      <observation name="160.0um" target="1452625" type="E" unit="mJy">
+        <flux>25.795400619506836</flux>
+        <error>3.687969923019409</error>
+        <typeval>160.0</typeval>
+      </observation>
+      <observation name="250.0um" target="1452625" type="E" unit="mJy">
+        <flux>18.69540023803711</flux>
+        <error>3.543450117111206</error>
+        <typeval>250.0</typeval>
+      </observation>
+      <observation name="JCMT/SCUBA-2/850um" target="1452625" type="F" unit="mJy">
+        <flux>2.8712399005889893</flux>
+        <error>2.0381500720977783</error>
+        <typeval>324</typeval>
+      </observation>
+      <observation name="1000.0um" target="1452625" type="E" unit="mJy">
+        <flux>0.2372400015592575</flux>
+        <error>0.09009700268507004</error>
+        <typeval>1000.0</typeval>
+      </observation>
+      <observation name="1250.0um" target="1452625" type="E" unit="mJy">
+        <flux>0.22362743318080902</flux>
+        <error>0.1447208821773529</error>
+        <typeval>1250.0</typeval>
+      </observation>
+      <observation name="100000.0um" target="1452625" type="E" unit="mJy">
+        <flux>0.029500000000000002</flux>
+        <error>0.002799999952316284</error>
+        <typeval>100000.0</typeval>
+      </observation>
+      <observation name="230000.0um" target="1452625" type="E" unit="mJy">
+        <flux>0.06373350143432617</flux>
+        <error>0.06373350143432617</error>
+        <typeval>230000.0</typeval>
+      </observation>
+      <observation name="24.0um" target="777178" type="E" unit="mJy">
+        <flux>0.17189799499511718</flux>
+        <error>0.015143699645996093</error>
+        <typeval>24.0</typeval>
+      </observation>
+      <observation name="100.0um" target="777178" type="E" unit="mJy">
+        <flux>6.276219844818115</flux>
+        <error>1.6252700090408325</error>
+        <typeval>100.0</typeval>
+      </observation>
+      <observation name="160.0um" target="777178" type="E" unit="mJy">
+        <flux>11.42300033569336</flux>
+        <error>4.361869812011719</error>
+        <typeval>160.0</typeval>
+      </observation>
+      <observation name="870.0um" target="777178" type="E" unit="mJy">
+        <flux>5.5081329345703125</flux>
+        <error>0.35002386569976807</error>
+        <typeval>870.0</typeval>
+      </observation>
+      <observation name="1250.0um" target="777178" type="E" unit="mJy">
+        <flux>0.21488657593727112</flux>
+        <error>0.020417470484972</error>
+        <typeval>1250.0</typeval>
+      </observation>
+      <observation name="3000.0um" target="777178" type="E" unit="mJy">
+        <flux>0.08386358618736267</flux>
+        <error>0.06799814850091934</error>
+        <typeval>3000.0</typeval>
+      </observation>
+      <observation name="100000.0um" target="777178" type="E" unit="mJy">
+        <flux>0.03379999923706055</flux>
+        <error>0.0029000000953674316</error>
+        <typeval>100000.0</typeval>
+      </observation>
+      <observation name="230000.0um" target="777178" type="E" unit="mJy">
+        <flux>0.09130010223388672</flux>
+        <error>0.09130010223388672</error>
+        <typeval>230000.0</typeval>
+      </observation>
+    </source>
+  </data-sources>
+</catalogue>

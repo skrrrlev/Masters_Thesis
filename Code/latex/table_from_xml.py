@@ -27,31 +27,14 @@ def usage() -> NoReturn:
 
 def setup() -> "tuple[str,str,str]":
     number_of_args = len(sys.argv) - 1
-    if not number_of_args or number_of_args > 3:
+    if not number_of_args == 1:
         usage()
-    print(number_of_args)
 
     xml_file: str = sys.argv[1].replace('\\','/')
     if not isfile(xml_file):
         usage()
-    print(xml_file)
-
-    if number_of_args > 1:
-        output_path: str = sys.argv[2]
-        if not isdir(output_path):
-            print(f'{output_path} is not a directory')
-            usage()
-    else:
-        output_path = '/'.join(xml_file.split('/')[:-1])
-    print(output_path)
-
-    if number_of_args == 3:
-        output_name: str = sys.argv[3]
-    else:
-        output_name: str = xml_file.split('/')[-1].strip('.xml')
-    print(output_name)
     
-    return xml_file, output_path, output_name
+    return xml_file
 
 to = 'uJy'
 def convert(unit,f,Δf):
@@ -81,7 +64,7 @@ def get_latex_unit(unit:str):
         raise NotImplementedError(f'Invalid unit: "{unit}"')
 
 def main():
-    xml_file, output_path, output_name = setup()
+    xml_file = setup()
 
     targets = xmlp.Parser.load_targets(xml_file)
     sources = xmlp.Parser.load_sources(xml_file)
@@ -91,6 +74,7 @@ def main():
     target_list = []
     obs_list = []
     columns = {}
+    code = {}
     source_number: dict[str,int] = {}
     for source in sources:
         n = len(source_number)
@@ -100,17 +84,23 @@ def main():
             target_of_observation = id_to_name[observation['target']]
 
             if not target_of_observation in target_list:
+                if isinstance(target_of_observation, float):
+                    target_of_observation = int(target_of_observation)
                 target_list.append(target_of_observation)
 
             if not name_of_observation in obs_list:
                 obs_list.append(name_of_observation)
-
-            f,Δf = convert(observation['unit'],float(observation['flux']),float(observation['error']))
+                if observation['type'] == 'F':
+                    code[name_of_observation] = observation['typeval']
+            try:
+                f,Δf = convert(observation['unit'],float(observation['flux']),float(observation['error']))
+            except ValueError:
+                continue
             if f == Δf:
-                fl = f'{f:.1e}'.split('e')
+                fl = f'{f:.2e}'.split('e')
                 string = f'< {fl[0]}E${"+" if (int(fl[1])>=0) else "-"}${abs(int(fl[1]))} $^{alpha_dict[n]}$'
             else:
-                fl = f'{f:.1e}'.split('e')
+                fl = f'{f:.2e}'.split('e')
                 Δfl = f'{Δf:.1e}'.split('e')
                 string = f' {fl[0]}Ε${"+" if (int(fl[1])>=0) else "-"}${abs(int(fl[1]))} ± {Δfl[0]}Ε${"+" if (int(Δfl[1])>=0) else "-"}${abs(int(Δfl[1]))} $^{alpha_dict[n]}$'
             if not target_of_observation in columns:
@@ -120,17 +110,14 @@ def main():
     
     number_of_obs = len(obs_list)
     number_of_targets = len(target_list)
-    table = '\\begin{ThreePartTable}\n\\begin{TableNotes}\n\\footnotesize\n'
-    for source in source_number:
-        table += f'\\item [${source_number[source]}$] {source}\n'
-    table += '\\end{TableNotes}\n\\begin{footnotesize}\n\\begin{longtable}{@{}l'+"c"*number_of_targets+'@{}}\n'
-    table += '\\caption{Flux densities in ' + f'${get_latex_unit(to)}$. '
-    for i,source in enumerate(source_number):
-        table += f'${source_number[source]}$:{source}'
-        if i != len(source_number)-1:
-            table += ', '
+    table = '\\begin{ThreePartTable}\n\\begin{TableNotes}\n\\scriptsize\n'
+    for source in sources:
+        if ' ' in source:
+            table += f'\\item [${source_number[source]}$] {source}\n'
         else:
-            table += '.}\n'
+            table += f'\\item [${source_number[source]}$] ' + '\\citet{' + f'{source}' + '}\n'
+    table += '\\end{TableNotes}\n\\begin{scriptsize}\n\\begin{longtable}{@{}l'+"c"*number_of_targets+'@{}}\n'
+    table += '\\caption{Flux densities in ' + f'${get_latex_unit(to)}$.' + '}\n'
     table += '\\label{tab:cat}\\\\\n\\toprule\n'
     table += 'Observation & '
     number_of_cols = len(columns)
@@ -143,6 +130,8 @@ def main():
     table += '\\endfirsthead\n%\n\\endhead\n%\n\\bottomrule\n\\endfoot\n\\bottomrule\n\\insertTableNotes\n%\n\\endlastfoot\n%\n'
     for i,obs in enumerate(obs_list):
         table += obs.replace('um','')
+        if obs in code:
+            table += '$^\\mathrm{\\color{blue}'+f'{int(code[obs])}' + '}$'
         for column in columns:
             try:
                 table += f' & {columns[column][obs]}'
@@ -152,7 +141,7 @@ def main():
         if i == len(obs_list)-1:
             table += '* \\bottomrule'
         table += '\n'
-    table += '\\end{longtable}\n\\end{footnotesize}\n\\end{ThreePartTable}'
+    table += '\\end{longtable}\n\\end{scriptsize}\n\\end{ThreePartTable}'
     print(table)
 
 if __name__ == '__main__':

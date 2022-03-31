@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue name="CAT-ESS2003">
+    <targets>
+        <target>
+            <name>Q2343-BX610</name>
+            <id>2343610</id>
+            <RA>356.53932</RA>
+            <DEC>12.82201</DEC>
+            <z>2.2</z>
+            <Mstar source="https://arxiv.org/pdf/1411.7034.pdf">15.5</Mstar>
+            <Mstar source="https://iopscience.iop.org/article/10.1088/0004-637X/809/2/175/pdf">11</Mstar>
+        </target>
+    </targets>
+    <data-sources>
+        <source name="Brisbin2019:BX610" link="https://ui.adsabs.harvard.edu/abs/2019A%26A...628A.104B/abstract">
+            <observation target="2343610" name="IRAM/PdBI/150GHz" unit="mJy" type="E">
+                <flux>0.41</flux>
+                <error>0.09</error>
+                <typeval>1998.616</typeval>
+            </observation>
+            <observation target="2343610" name="IRAM/PdBI/250GHz" unit="mJy" type="E">
+                <flux>2.39</flux>
+                <error>0.31</error>
+                <typeval>1199.17</typeval>
+            </observation>
+        </source>
+            <source name="Tacchella2015:BX610-HST-K" link="https://ui.adsabs.harvard.edu/abs/2015ApJ...802..101T/abstract">
+            <observation target="2343610" name="HST/K" unit="ABmag" type="F">
+                <flux>21.07</flux>
+                <error>0.05</error>
+                <typeval>???</typeval>
+            </observation>
+        </source>
+        </source>
+            <source name="SINS Survey" link="https://iopscience.iop.org/article/10.1088/0004-637X/706/2/1364">
+            <observation target="2343610" name="G" unit="ABmag" type="F">
+                <flux>23.79</flux>
+                <error>0.02</error>
+                <typeval>???</typeval>
+            </observation>
+            <observation target="2343610" name="H" unit="VEGAmag" type="F">
+                <flux>20.73</flux>
+                <error>0.06</error>
+                <typeval>???</typeval>
+            </observation>
+            <observation target="2343610" name="Ks" unit="VEGAmag" type="F">
+                <flux>19.20</flux>
+                <error>0.02</error>
+                <typeval>???</typeval>
+            </observation>
+        </source>
+    </data-sources>
+</catalogue>
