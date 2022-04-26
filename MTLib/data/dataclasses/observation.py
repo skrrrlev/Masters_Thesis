@@ -28,3 +28,9 @@ class Observation:
             self.column = f'{wavelength.value}{str(wavelength.unit)}'
         else:
             raise ValueError('Either specify filter or central wavelength, to create observation object')
+
+    def set_name(self, name:str) -> None:
+        self.column = name
+    
+    def get_name(self):
+        return self.column

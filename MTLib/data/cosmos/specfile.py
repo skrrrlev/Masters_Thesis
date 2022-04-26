@@ -112,6 +112,14 @@ class SpecFile:
         else:
             return index,-99
 
+    def get_zphot(self):
+        '''Load the target id, spectroscopic redshift and photometric redshift from the header of the .spec file.'''
+        with open(self.file, 'r') as f:
+            line = f.read().split('\n')[1].split(' ')
+        zphot = float(line[2])
+        return zphot
+    
+
     @classmethod
     def get_id(cls, file):
         index,_ = SpecFile.get_header(file)

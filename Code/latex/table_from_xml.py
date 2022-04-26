@@ -81,7 +81,7 @@ def main():
         source_number[source] = alpha_dict[n]
         for observation in sources[source]:
             name_of_observation = observation['name']
-            target_of_observation = id_to_name[observation['target']]
+            target_of_observation = 'ID ' + observation['target'] # id_to_name[observation['target']]
 
             if not target_of_observation in target_list:
                 if isinstance(target_of_observation, float):
@@ -94,7 +94,7 @@ def main():
                     code[name_of_observation] = observation['typeval']
             try:
                 f,Δf = convert(observation['unit'],float(observation['flux']),float(observation['error']))
-            except ValueError:
+            except (ValueError, NotImplementedError):
                 continue
             if f == Δf:
                 fl = f'{f:.2e}'.split('e')
@@ -118,7 +118,8 @@ def main():
             table += f'\\item [${source_number[source]}$] ' + '\\citet{' + f'{source}' + '}\n'
     table += '\\end{TableNotes}\n\\begin{scriptsize}\n\\begin{longtable}{@{}l'+"c"*number_of_targets+'@{}}\n'
     table += '\\caption{Flux densities in ' + f'${get_latex_unit(to)}$.' + '}\n'
-    table += '\\label{tab:cat}\\\\\n\\toprule\n'
+    label = xmlp.Parser.label(xml_file)
+    table += '\\label{tab:'+label+'}\\\\\n\\toprule\n'
     table += 'Observation & '
     number_of_cols = len(columns)
     for i,col in enumerate(columns):

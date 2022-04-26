@@ -3,42 +3,199 @@
     <targets>
     <target>
             <name>ADF22.1</name>
-            <id>010406221</id>
+            <id>26</id>
             <RA>334.3851344</RA>
             <DEC>0.2955399</DEC>
             <z>3.09</z>
         </target>
         <target>
             <name>ADF22.7</name>
-            <id>010406227</id>
+            <id>27</id>
             <RA>334.384167</RA>
             <DEC>0.293223</DEC>
             <z>3.09</z>
         </target>
         <target>
             <name>ADF22.5</name>
-            <id>010406225</id>
+            <id>28</id>
             <RA>334.3811670</RA>
             <DEC>0.2994450</DEC>
             <z>3.09</z>
         </target>
+        <target>
+            <name>AzTEC1</name> <!-- ADF22.1 (P) + ADF22.7 (S) -->
+            <id>33</id>
+            <RA>334.3851344</RA>
+            <DEC>0.2955399</DEC>
+            <z>3.09</z>
+        </target>
     </targets>
     <data-sources>
-        <source name="SSA22" link="https://ui.adsabs.harvard.edu/abs/2018PASJ...70...65U/abstract">
-            <observation target="010406227" name="ALMA/1140um" unit="mJy" type="E">
+        <source name="SSA22 2017" link="https://ui.adsabs.harvard.edu/abs/2017ApJ...835...98U/abstract">
+            <observation target="26" name="ALMA/1140um" unit="mJy" type="E">
+                <flux>5.60</flux>
+                <error>0.13</error>
+                <typeval>1140</typeval>
+            </observation>
+            <observation target="27" name="ALMA/1140um" unit="mJy" type="E">
                 <flux>1.65</flux>
                 <error>0.07</error>
                 <typeval>1140</typeval>
             </observation>
-            <observation target="010406225" name="ALMA/1140um" unit="mJy" type="E">
+            <observation target="28" name="ALMA/1140um" unit="mJy" type="E">
                 <flux>2.43</flux>
                 <error>0.20</error>
                 <typeval>1140</typeval>
             </observation>
-            <observation target="010406221" name="ALMA/1140um" unit="mJy" type="E">
+            <observation target="33" name="ASTE/AzTEC/1100" unit="mJy" type="E">
+                <flux>11.3</flux>
+                <error>0.9</error>
+                <typeval>1100</typeval>
+            </observation>
+        </source>
+        <!--<source name="SSA22 2015" link="https://ui.adsabs.harvard.edu/abs/2015ApJ...815L...8U/abstract">
+            <observation target="26" name="ALMA/1100um" unit="mJy" type="E">
+                <flux>6.4</flux>
+                <error>0.2</error>
+                <typeval>1100</typeval>
+            </observation>
+            <observation target="27" name="ALMA/1100um" unit="mJy" type="E">
+                <flux>2.0</flux>
+                <error>0.1</error>
+                <typeval>1100</typeval>
+            </observation>
+        </source>
+        <source name="SSA22 2014" link="https://ui.adsabs.harvard.edu/abs/2014MNRAS.440.3462U/abstract">
+            <observation target="26" name="ASTE/AzTEC/1100um" unit="mJy" type="E">
+                <flux>11.9</flux>
+                <error>0.7</error>
+                <typeval>1100</typeval>
+            </observation>
+        </source>
+        <source name="SSA22 2016" link="https://ui.adsabs.harvard.edu/abs/2017ApJ...835...98U/abstract">
+            <observation target="26" name="ALMA/1100" unit="mJy" type="E">
                 <flux>5.60</flux>
                 <error>0.13</error>
                 <typeval>1140</typeval>
+            </observation>
+            <observation target="27" name="ALMA/1100" unit="mJy" type="E">
+                <flux>1.65</flux>
+                <error>0.07</error>
+                <typeval>1140</typeval>
+            </observation>
+            <observation target="28" name="ALMA/1100" unit="mJy" type="E">
+                <flux>2.43</flux>
+                <error>0.20</error>
+                <typeval>1140</typeval>
+            </observation>
+        </source>-->
+        <source name="SSA22 AzTEC1" link="https://ui.adsabs.harvard.edu/abs/2010ApJ...724.1270T/abstract">
+            <observation target="33" name="VLA/200000" unit="uJy" type="E">
+                <flux>42</flux>
+                <error>12</error>
+                <typeval>200000</typeval>
+            </observation>
+            <observation target="33" name="ASTE/AzTEC/1100/db" unit="mJy" type="E">
+                <flux>8.2</flux> <!--Deboosted:  flux density corrected for the flux bias due to confusion noise, with the 68% confidence interval.-->
+                <error>1</error>
+                <typeval>1100</typeval>
+            </observation>
+            <observation target="33" name="SMA/860" unit="mJy" type="E">
+                <flux>12.2</flux> <!--Deboosted:  flux density corrected for the flux bias due to confusion noise, with the 68% confidence interval.-->
+                <error>2.7</error>
+                <typeval>860</typeval>
+            </observation>
+            <observation target="33" name="SPITZER/MIPS/24" unit="uJy" type="F">
+                <flux>142</flux>
+                <error>18</error>
+                <typeval>325</typeval>
+            </observation>
+            <observation target="33" name="SPITZER/IRAC/8.0" unit="uJy" type="F">
+                <flux>32.59</flux>
+                <error>2.27</error>
+                <typeval>21</typeval>
+            </observation>
+            <observation target="33" name="SPITZER/IRAC/5.8" unit="uJy" type="F">
+                <flux>22.24</flux>
+                <error>1.87</error>
+                <typeval>20</typeval>
+            </observation>
+            <observation target="33" name="SPITZER/IRAC/4.5" unit="uJy" type="F">
+                <flux>14.46</flux>
+                <error>0.76</error>
+                <typeval>19</typeval>
+            </observation>
+            <observation target="33" name="SPITZER/IRAC/3.6" unit="uJy" type="F">
+                <flux>7.8</flux>
+                <error>0.5</error>
+                <typeval>18</typeval>
+            </observation>
+            <observation target="33" name="Subaru/MOIRCS/Ks" unit="uJy" type="F">
+                <flux>2.71</flux>
+                <error>0.63</error>
+                <typeval>226</typeval>
+            </observation>
+            <observation target="33" name="Subaru/MOIRCS/H" unit="uJy" type="F">
+                <flux>2.13</flux>
+                <error>0.71</error>
+                <typeval>225</typeval>
+            </observation>
+            <observation target="33" name="Subaru/MOIRCS/J" unit="uJy" type="F">
+                <flux>1.12</flux>
+                <error>1.12</error>
+                <typeval>224</typeval>
+            </observation>
+            <observation target="33" name="Subaru/S-CAM/z'" unit="uJy" type="F">
+                <flux>0.080</flux>
+                <error>0.080</error>
+                <typeval>199</typeval>
+            </observation>
+            <observation target="33" name="Subaru/S-CAM/i'" unit="uJy" type="F">
+                <flux>0.042</flux>
+                <error>0.042</error>
+                <typeval>195</typeval>
+            </observation>
+            <observation target="33" name="Subaru/S-CAM/R" unit="uJy" type="F">
+                <flux>0.032</flux>
+                <error>0.032</error>
+                <typeval>162</typeval>
+            </observation>
+            <observation target="33" name="Subaru/S-CAM/V" unit="uJy" type="F">
+                <flux>0.035</flux>
+                <error>0.035</error>
+                <typeval>187</typeval>
+            </observation>
+            <observation target="33" name="Subaru/S-CAM/NB497" unit="uJy" type="F">
+                <flux>0.050</flux>
+                <error>0.050</error>
+                <typeval>000</typeval>
+            </observation>
+            <observation target="33" name="Subaru/S-CAM/B" unit="uJy" type="F">
+                <flux>0.038</flux>
+                <error>0.038</error>
+                <typeval>182</typeval>
+            </observation>
+        </source>
+        <source name="Vizier Simbad" link="">
+            <observation target="27" name="SPITZER/IRAC/8.0" unit="Jy" type="F">
+                <flux>12.3E-6</flux>
+                <error>0.8E-6</error>
+                <typeval>21</typeval>
+            </observation>
+            <observation target="27" name="SPITZER/IRAC/5.8" unit="Jy" type="F">
+                <flux>7.76E-6</flux>
+                <error>0.44E-6</error>
+                <typeval>20</typeval>
+            </observation>
+            <observation target="27" name="SPITZER/IRAC/4.5" unit="Jy" type="F">
+                <flux>6.77E-6</flux>
+                <error>0.09E-6</error>
+                <typeval>19</typeval>
+            </observation>
+            <observation target="27" name="SPITZER/IRAC/3.6" unit="Jy" type="F">
+                <flux>5.46E-6</flux>
+                <error>0.06E-6</error>
+                <typeval>18</typeval>
             </observation>
         </source>
     </data-sources>

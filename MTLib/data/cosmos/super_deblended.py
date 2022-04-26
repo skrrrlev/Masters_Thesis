@@ -29,35 +29,35 @@ def get_data(unit: U.Quantity=U.mJy) -> "list[Observation]":
         ir_dict = {line[0]:{'RA':line[1],'DEC':line[2]} for line in ir.data}
         ir_data = ir.data
 
-    keys = ['f24','f100','f160','f250','f850','f870','f1000','f1250','f3000','f10cm','f20cm','f23cm']
+    keys = ['SPITZER/MIPS/24','Herschel/PACS/100','Herschel/PACS/160','Herschel/SPIRE/250','JCMT/SCUBA-2/850','ALMA/870','ALMA/1000','ALMA/1250','ALMA/3000','VLA/3GHz','VLA/1.5GHz','Meerkat/1.3GHz']
 
     λ = {
-        'f24': 24*U.um,
-        'f100': 100*U.um,
-        'f160': 160*U.um,
-        'f250': 250*U.um,
-        'f850': 850*U.um,
-        'f870': 870*U.um,  
-        'f1000': 1000*U.um,
-        'f1250': 1250*U.um,
-        'f3000': 3000*U.um,
-        'f10cm': 10*U.cm,
-        'f20cm': 20*U.cm,
-        'f23cm': 23*U.cm,
+        'SPITZER/MIPS/24': 24*U.um,
+        'Herschel/PACS/100': 100*U.um,
+        'Herschel/PACS/160': 160*U.um,
+        'Herschel/SPIRE/250': 250*U.um,
+        'JCMT/SCUBA-2/850': 850*U.um,
+        'ALMA/870': 870*U.um,  
+        'ALMA/1000': 1000*U.um,
+        'ALMA/1250': 1250*U.um,
+        'ALMA/3000': 3000*U.um,
+        'VLA/3GHz': 10*U.cm,
+        'VLA/1.5GHz': 20*U.cm,
+        'Meerkat/1.3GHz': 23*U.cm,
     }
-    code = {
-        'f24': None,
-        'f100': None,
-        'f160': None,
-        'f250': None,
-        'f850': Filter('SCUBA-2','JCMT','850um',850*U.um,0*U.m,324),
-        'f870': None,  
-        'f1000': None,
-        'f1250': None,
-        'f3000': None,
-        'f10cm': None,
-        'f20cm': None,
-        'f23cm': None,
+    code: dict[str,Filter] = {
+        'SPITZER/MIPS/24': Filter('MIPS','SPITZER','24',850*U.um,0*U.m,325),
+        'Herschel/PACS/100': Filter('PACS','Herschel','100',100*U.um,0*U.m,329), # Herschel/PACS/100
+        'Herschel/PACS/160': Filter('PACS','Herschel','160',160*U.um,0*U.m,330), # Herschel/PACS/100
+        'Herschel/SPIRE/250': Filter('SPIRE','Herschel','250',250*U.um,0*U.m,331), # Herschel/SPIRE/250um 331
+        'JCMT/SCUBA-2/850': Filter('SCUBA-2','JCMT','850um',850*U.um,0*U.m,324),
+        'ALMA/870': None,  
+        'ALMA/1000': None,
+        'ALMA/1250': None,
+        'ALMA/3000': None,
+        'VLA/3GHz': None,
+        'VLA/1.5GHz': None,
+        'Meerkat/1.3GHz': None,
     }
 
     for line in ir_data:
@@ -70,37 +70,37 @@ def get_data(unit: U.Quantity=U.mJy) -> "list[Observation]":
             continue
         
         obs = {
-            'f24': line[15] * U.uJy, # MIPS Spitzer
-            'f100': line[17] * U.mJy, # Herschel PACS
-            'f160': line[19] * U.mJy, # Herschel PACS
-            'f250': line[21] * U.mJy, # spire 250 μm
+            'SPITZER/MIPS/24': line[15] * U.uJy, # MIPS Spitzer
+            'Herschel/PACS/100': line[17] * U.mJy, # Herschel PACS
+            'Herschel/PACS/160': line[19] * U.mJy, # Herschel PACS
+            'Herschel/SPIRE/250': line[21] * U.mJy, # spire 250 μm
             # SCUBA2
-            'f850': line[23] * U.mJy,
+            'JCMT/SCUBA-2/850': line[23] * U.mJy,
             # ALMA
-            'f870': line[25] * U.mJy,  
-            'f1000': line[27] * U.mJy,
-            'f1250': line[29] * U.mJy,
-            'f3000': line[31] * U.mJy,
+            'ALMA/870': line[25] * U.mJy,  
+            'ALMA/1000': line[27] * U.mJy,
+            'ALMA/1250': line[29] * U.mJy,
+            'ALMA/3000': line[31] * U.mJy,
             # VLA
-            'f10cm': line[33] * U.uJy,
-            'f20cm': line[35] * U.uJy,
+            'VLA/3GHz': line[33] * U.uJy,
+            'VLA/1.5GHz': line[35] * U.uJy,
             # Meerkat
-            'f23cm': line[37] * U.uJy,
+            'Meerkat/1.3GHz': line[37] * U.uJy,
         }
 
         err = {
-            'f24': line[16] * U.uJy,
-            'f100': line[18] * U.mJy,
-            'f160': line[20] * U.mJy,
-            'f250': line[22] * U.mJy,
-            'f850': line[24] * U.mJy,
-            'f870': line[26] * U.mJy,
-            'f1000': line[28] * U.mJy,
-            'f1250': line[30] * U.mJy,
-            'f3000': line[32] * U.mJy,
-            'f10cm': line[34] * U.uJy,
-            'f20cm': line[36] * U.uJy,
-            'f23cm': line[37] * U.uJy,
+            'SPITZER/MIPS/24': line[16] * U.uJy,
+            'Herschel/PACS/100': line[18] * U.mJy,
+            'Herschel/PACS/160': line[20] * U.mJy,
+            'Herschel/SPIRE/250': line[22] * U.mJy,
+            'JCMT/SCUBA-2/850': line[24] * U.mJy,
+            'ALMA/870': line[26] * U.mJy,
+            'ALMA/1000': line[28] * U.mJy,
+            'ALMA/1250': line[30] * U.mJy,
+            'ALMA/3000': line[32] * U.mJy,
+            'VLA/3GHz': line[34] * U.uJy,
+            'VLA/1.5GHz': line[36] * U.uJy,
+            'Meerkat/1.3GHz': line[37] * U.uJy,
         }
         for key in keys:
             if obs[key].value == -99:
@@ -113,6 +113,7 @@ def get_data(unit: U.Quantity=U.mJy) -> "list[Observation]":
                     unit = unit,
                     wavelength = λ[key].to(U.um)
                 )
+                new_obs.set_name(key)
             else:
                 new_obs = Observation(
                     target_id = idx,

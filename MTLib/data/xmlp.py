@@ -78,6 +78,19 @@ class Parser:
 
         return sources
 
+    @staticmethod
+    def label(file: str):
+        tree = ET.parse(file)
+        root = tree.getroot()
+        print(root.attrib)
+        return root.attrib['label']
+
+    @staticmethod
+    def name(file: str):
+        tree = ET.parse(file)
+        root = tree.getroot()
+        return root.attrib['name']
+
     def get_targets(self):
         return self.targets
 

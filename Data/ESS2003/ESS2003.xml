@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalogue name="CAT-ESS2003">
+<catalogue name="CAT-ESS2003" label="BX610:photometry">
     <targets>
         <target>
             <name>Q2343-BX610</name>
-            <id>2343610</id>
+            <id>14</id>
             <RA>356.53932</RA>
             <DEC>12.82201</DEC>
             <z>2.2</z>
@@ -13,40 +13,88 @@
     </targets>
     <data-sources>
         <source name="Brisbin2019:BX610" link="https://ui.adsabs.harvard.edu/abs/2019A%26A...628A.104B/abstract">
-            <observation target="2343610" name="IRAM/PdBI/150GHz" unit="mJy" type="E">
+            <observation target="14" name="IRAM/PdBI/150GHz" unit="mJy" type="E">
                 <flux>0.41</flux>
                 <error>0.09</error>
                 <typeval>1998.616</typeval>
             </observation>
-            <observation target="2343610" name="IRAM/PdBI/250GHz" unit="mJy" type="E">
+            <observation target="14" name="IRAM/PdBI/250GHz" unit="mJy" type="E">
                 <flux>2.39</flux>
                 <error>0.31</error>
                 <typeval>1199.17</typeval>
             </observation>
         </source>
-            <source name="Tacchella2015:BX610-HST-K" link="https://ui.adsabs.harvard.edu/abs/2015ApJ...802..101T/abstract">
-            <observation target="2343610" name="HST/K" unit="ABmag" type="F">
+        <source name="Tacchella2015:BX610-HST-K" link="https://ui.adsabs.harvard.edu/abs/2015ApJ...802..101T/abstract">
+            <observation target="14" name="HST/K" unit="ABmag" type="F">
                 <flux>21.07</flux>
                 <error>0.05</error>
-                <typeval>???</typeval>
+                <typeval>000</typeval>
             </observation>
         </source>
-        </source>
-            <source name="SINS Survey" link="https://iopscience.iop.org/article/10.1088/0004-637X/706/2/1364">
-            <observation target="2343610" name="G" unit="ABmag" type="F">
+        <source name="SINS Survey" link="https://iopscience.iop.org/article/10.1088/0004-637X/706/2/1364">
+            <observation target="14" name="G" unit="ABmag" type="F">
                 <flux>23.79</flux>
                 <error>0.02</error>
-                <typeval>???</typeval>
+                <typeval>000</typeval>
             </observation>
-            <observation target="2343610" name="H" unit="VEGAmag" type="F">
+            <observation target="14" name="H" unit="VEGAmag" type="F">
                 <flux>20.73</flux>
                 <error>0.06</error>
-                <typeval>???</typeval>
+                <typeval>000</typeval>
             </observation>
-            <observation target="2343610" name="Ks" unit="VEGAmag" type="F">
+            <observation target="14" name="Ks" unit="VEGAmag" type="F">
                 <flux>19.20</flux>
                 <error>0.02</error>
-                <typeval>???</typeval>
+                <typeval>000</typeval>
+            </observation>
+        </source>
+        <source name="Erb, Dawn K." link="https://ui.adsabs.harvard.edu/abs/2006ApJ...646..107E/abstract">
+            <observation target="14" name="NIRSPEC/G" unit="ABmag" type="F">
+                <flux>23.92</flux>
+                <error>000</error>
+                <typeval>000</typeval>
+            </observation>
+            <observation target="14" name="NIRSPEC/R" unit="ABmag" type="F">
+                <flux>23.58</flux>
+                <error>000</error>
+                <typeval>000</typeval>
+            </observation>
+            <observation target="14" name="NIRSPEC/Un" unit="ABmag" type="F">
+                <flux>24.67</flux>
+                <error>000</error>
+                <typeval>000</typeval>
+            </observation>
+            <observation target="14" name="WIRC/Ks" unit="VEGAmag" type="F">
+                <flux>19.21</flux>
+                <error>000</error>
+                <typeval>000</typeval>
+            </observation>
+            <observation target="14" name="WIRC/J" unit="VEGAmag" type="F">
+                <flux>21.45</flux>
+                <error>000</error>
+                <typeval>000</typeval>
+            </observation>
+        </source>
+        <source name="Vizier Simbad" link="">
+            <observation target="14" name="SPITZER/MIPS/24" unit="Jy" type="F">
+                <flux>561E-6</flux>
+                <error>14E-6</error>
+                <typeval>325</typeval>
+            </observation>
+            <observation target="14" name="SPITZER/IRAC/4.5" unit="Jy" type="F">
+                <flux>30.6E-6</flux>
+                <error>0.4E-6</error>
+                <typeval>19</typeval>
+            </observation>
+            <observation target="14" name="WISE/band-1" unit="Jy" type="F">
+                <flux>16.4E-6</flux>
+                <error>2.1E-6</error>
+                <typeval>244</typeval>
+            </observation>
+            <observation target="14" name="WISE/band-2" unit="Jy" type="F">
+                <flux>26.3E-6</flux>
+                <error>4.0E-6</error>
+                <typeval>245</typeval>
             </observation>
         </source>
     </data-sources>

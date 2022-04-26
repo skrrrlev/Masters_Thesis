@@ -39,8 +39,19 @@ def setup():
         else:
             raise ValueError(f'Input {input_index} ({file}) is not a valid FITS file.')
     
-
-
+cosmos_id_to_project_id = {
+    877661:3,
+    1024221:10,
+    911594:29,
+    832735:13,
+    1452625:2,
+    970128:20,
+    884363:30,
+    777178:24,
+    970358:22,
+    972923:19
+}
+project_id_to_cosmos_id = {cosmos_id_to_project_id[key]:key for key in cosmos_id_to_project_id}
 
 # main script
 
@@ -68,7 +79,7 @@ def main():
     # Load catalogue value
     print('Loading catalogue masses... ')
     cat = cosmos.Catalogue()
-    cat_mass = {idx:float(cat.get_property([idx], 'ez_mass')[0]) for idx in ids}
+    cat_mass = {idx:float(cat.get_property([project_id_to_cosmos_id[idx]], 'ez_mass')[0]) for idx in ids}
     print(cat_mass)
     print('... Done!')
 

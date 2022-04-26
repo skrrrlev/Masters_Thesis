@@ -3,7 +3,7 @@
     <targets>
         <target>
             <name>XMM01</name>
-            <id>24131301</id>
+            <id>31</id>
             <RA>35.069221</RA>
             <DEC>-6.028653</DEC>
             <z>2.3079</z>
@@ -12,7 +12,7 @@
         </target>
         <target>
             <name>X01N</name>
-            <id>241313011</id>
+            <id>15</id>
             <RA>35.069221</RA>
             <DEC>-6.028653</DEC>
             <z>2.3079</z>
@@ -20,7 +20,7 @@
         </target>
         <target>
             <name>X01S</name>
-            <id>241313012</id>
+            <id>16</id>
             <RA>35.069221</RA>
             <DEC>-6.028653</DEC>
             <z>2.3079</z>
@@ -28,7 +28,7 @@
         </target>
         <target>
             <name>XMM05</name>
-            <id>24131305</id>
+            <id>25</id>
             <RA>36.449425</RA>
             <DEC>-4.297444</DEC>
             <z>2.985</z>
@@ -36,396 +36,396 @@
     </targets>
     <data-sources>
         <source name="Riechers2021:GADOT-XMM" link="https://iopscience.iop.org/article/10.3847/1538-4357/abf6d7">
-            <observation target="24131301" name="ALMA-NOEMA/290um" unit="mJy" type="E">
+            <observation target="31" name="ALMA-NOEMA/290um" unit="mJy" type="E">
                 <flux>27.92</flux>
                 <error>0.97</error>
                 <typeval>290</typeval>
             </observation>
-            <observation target="24131301" name="Herschel/SPIRE/250um" unit="mJy" type="F">
+            <observation target="31" name="Herschel/SPIRE/250um" unit="mJy" type="F">
                 <flux>180</flux>
                 <error>7</error>
                 <typeval>331</typeval>
             </observation>
-            <observation target="24131301" name="Herschel/SPIRE/350um" unit="mJy" type="F">
+            <observation target="31" name="Herschel/SPIRE/350um" unit="mJy" type="F">
                 <flux>192</flux>
                 <error>8</error>
                 <typeval>332</typeval>
             </observation>
-            <observation target="24131301" name="Herschel/SPIRE/500um" unit="mJy" type="F">
+            <observation target="31" name="Herschel/SPIRE/500um" unit="mJy" type="F">
                 <flux>132</flux>
                 <error>7</error>
                 <typeval>333</typeval>
             </observation>
-            <observation target="24131301" name="SMA/870um" unit="mJy" type="E">
+            <observation target="31" name="SMA/870um" unit="mJy" type="E">
                 <flux>29</flux>
                 <error>3</error>
                 <typeval>870</typeval>
             </observation>
         </source>
         <source name="Wardlow2017:XMM-PACS" link="https://iopscience.iop.org/article/10.3847/1538-4357/837/1/12/meta">
-            <observation target="24131301" name="Herschel/PACS/70um" unit="mJy" type="F">
+            <observation target="31" name="Herschel/PACS/70um" unit="mJy" type="F">
                 <flux>10</flux>
                 <error>3</error>
                 <typeval>328</typeval>
             </observation>
-            <observation target="24131301" name="Herschel/PACS/160um" unit="mJy" type="F">
+            <observation target="31" name="Herschel/PACS/160um" unit="mJy" type="F">
                 <flux>123</flux>
                 <error>12</error>
                 <typeval>330</typeval>
             </observation>
         </source>
         <source name="Wardlow2012:XMM-MultiBand" link="https://iopscience.iop.org/article/10.1088/0004-637X/762/1/59">
-            <observation target="24131301" name="Spitzer/MIPS/24um" unit="mJy" type="F">
+            <observation target="31" name="Spitzer/MIPS/24um" unit="mJy" type="F">
                 <flux>0.57</flux>
                 <error>0.02</error>
                 <typeval>325</typeval>
             </observation>
-            <observation target="24131301" name="Spitzer/MIPS/70um" unit="mJy" type="F">
+            <observation target="31" name="Spitzer/MIPS/70um" unit="mJy" type="F">
                 <flux>17.9</flux>
                 <error>0.03</error>
                 <typeval>326</typeval>
             </observation>
-            <observation target="24131301" name="Spitzer/MIPS/160um" unit="mJy" type="F">
+            <observation target="31" name="Spitzer/MIPS/160um" unit="mJy" type="F">
                 <flux>88.3</flux>
                 <error>1.04</error>
                 <typeval>327</typeval>
             </observation>
-             <observation target="24131301" name="IRAM/PdBI/2000um" unit="mJy" type="E">
+             <observation target="31" name="IRAM/PdBI/2000um" unit="mJy" type="E">
                 <flux>1.1</flux>
                 <error>0.3</error>
                 <typeval>2000</typeval>
             </observation>
-            <observation target="24131301" name="IRAM/PdBI/2300um" unit="mJy" type="E">
+            <observation target="31" name="IRAM/PdBI/2300um" unit="mJy" type="E">
                 <flux>0.55</flux>
                 <error>0.1</error>
                 <typeval>2300</typeval>
             </observation>
         </source>
         <source name="Fu2013:XMM" link="https://arxiv.org/pdf/1305.4930.pdf">
-            <observation target="24131301" name="GALEX/NUV/0.23um" unit="uJy" type="F">
+            <observation target="31" name="GALEX/NUV/0.23um" unit="uJy" type="F">
                 <flux>0.5</flux>
                 <error>0.5</error>
                 <typeval>121</typeval>
             </observation>
-            <observation target="24131301" name="CFHT/u*" unit="uJy" type="F">
+            <observation target="31" name="CFHT/u*" unit="uJy" type="F">
                 <flux>0.5</flux>
                 <error>0.1</error>
                 <typeval>352</typeval>
             </observation>
-            <observation target="24131301" name="CFHT/g" unit="uJy" type="F">
+            <observation target="31" name="CFHT/g" unit="uJy" type="F">
                 <flux>1.3</flux>
                 <error>0.1</error>
                 <typeval>74</typeval>
             </observation>
-            <observation target="24131301" name="CFHT/r" unit="uJy" type="F">
+            <observation target="31" name="CFHT/r" unit="uJy" type="F">
                 <flux>1.3</flux>
                 <error>0.1</error>
                 <typeval>75</typeval>
             </observation>
-            <observation target="24131301" name="CFHT/i" unit="uJy" type="F">
+            <observation target="31" name="CFHT/i" unit="uJy" type="F">
                 <flux>2.5</flux>
                 <error>0.3</error>
                 <typeval>76</typeval>
             </observation>
-            <observation target="24131301" name="CFHT/z" unit="uJy" type="F">
+            <observation target="31" name="CFHT/z" unit="uJy" type="F">
                 <flux>3.8</flux>
                 <error>0.6</error>
                 <typeval>77</typeval>
             </observation>
-            <observation target="24131301" name="HST/wfc3/F110W/1.16um" unit="uJy" type="F">
+            <observation target="31" name="HST/wfc3/F110W/1.16um" unit="uJy" type="F">
                 <flux>6.2</flux>
                 <error>0.4</error>
                 <typeval>241</typeval>
             </observation>
-            <observation target="24131301" name="WHT/LIRIS/J" unit="uJy" type="F">
+            <observation target="31" name="WHT/LIRIS/J" unit="uJy" type="F">
                 <flux>6.8</flux>
                 <error>0.8</error>
                 <typeval>354</typeval>
                 <!-- William Herschel Telescope / LIRIS / J band-->
                 <!-- https://www.ing.iac.es/Astronomy/instruments/liris/config.html -->
             </observation>
-            <observation target="241313011" name="WHT/LIRIS/Ks" unit="uJy" type="F">
+            <observation target="15" name="WHT/LIRIS/Ks" unit="uJy" type="F">
                 <flux>22.5</flux>
                 <error>3.4</error>
                 <typeval>355</typeval>
                 <!-- William Herschel Telescope / LIRIS / Ks band-->
                 <!-- https://www.ing.iac.es/Astronomy/instruments/liris/config.html -->
             </observation>
-            <observation target="24131301" name="Spitzer/IRAC/3.6" unit="uJy" type="F">
+            <observation target="31" name="Spitzer/IRAC/3.6" unit="uJy" type="F">
                 <flux>48.5</flux>
                 <error>5.8</error>
                 <typeval>18</typeval>
             </observation>
-            <observation target="24131301" name="Spitzer/IRAC/4.5" unit="uJy" type="F">
+            <observation target="31" name="Spitzer/IRAC/4.5" unit="uJy" type="F">
                 <flux>64.1</flux>
                 <error>5.9</error>
                 <typeval>19</typeval>
             </observation>
-            <observation target="24131301" name="Spitzer/IRAC/5.8" unit="uJy" type="F">
+            <observation target="31" name="Spitzer/IRAC/5.8" unit="uJy" type="F">
                 <flux>111.9</flux>
                 <error>12.0</error>
                 <typeval>20</typeval>
             </observation>
-            <observation target="24131301" name="Spitzer/IRAC/8.0" unit="uJy" type="F">
+            <observation target="31" name="Spitzer/IRAC/8.0" unit="uJy" type="F">
                 <flux>86.9</flux>
                 <error>12.7</error>
                 <typeval>21</typeval>
             </observation>
-            <observation target="24131301" name="Herschel/PACS/100um" unit="uJy" type="F">
+            <observation target="31" name="Herschel/PACS/100um" unit="uJy" type="F">
                 <flux>31700</flux>
                 <error>3000</error>
                 <typeval>329</typeval>
             </observation>
-            <observation target="24131301" name="IRAM/MAMBO/1200um" unit="uJy" type="E">
+            <observation target="31" name="IRAM/MAMBO/1200um" unit="uJy" type="E">
                 <flux>11200</flux>
                 <error>1900</error>
                 <typeval>1200</typeval>
             </observation>
-            <observation target="24131301" name="IRAM/PdBI/2100um" unit="uJy" type="E">
+            <observation target="31" name="IRAM/PdBI/2100um" unit="uJy" type="E">
                 <flux>1220</flux>
                 <error>240</error>
                 <typeval>2141.31</typeval>
             </observation>
-            <observation target="24131301" name="VLA/1.4GHz" unit="uJy" type="E">
+            <observation target="31" name="VLA/1.4GHz" unit="uJy" type="E">
                 <flux>420</flux>
                 <error>420</error>
                 <typeval>210000.0</typeval>
             </observation>
             <!-- Northern object-->
-            <observation target="241313011" name="GALEX/NUV/0.23um" unit="uJy" type="F">
+            <observation target="15" name="GALEX/NUV/0.23um" unit="uJy" type="F">
                 <flux>0.5</flux>
                 <error>0.5</error>
                 <typeval>121</typeval>
             </observation>
-            <observation target="241313011" name="CFHT/u*" unit="uJy" type="F">
+            <observation target="15" name="CFHT/u*" unit="uJy" type="F">
                 <flux>0.2</flux>
                 <error>0.2</error>
                 <typeval>352</typeval>
             </observation>
-            <observation target="241313011" name="CFHT/g" unit="uJy" type="F">
+            <observation target="15" name="CFHT/g" unit="uJy" type="F">
                 <flux>0.2</flux>
                 <error>0.2</error>
                 <typeval>74</typeval>
             </observation>
-            <observation target="241313011" name="CFHT/r" unit="uJy" type="F">
+            <observation target="15" name="CFHT/r" unit="uJy" type="F">
                 <flux>0.2</flux>
                 <error>0.1</error>
                 <typeval>75</typeval>
             </observation>
-            <observation target="241313011" name="CFHT/i" unit="uJy" type="F">
+            <observation target="15" name="CFHT/i" unit="uJy" type="F">
                 <flux>0.5</flux>
                 <error>0.5</error>
                 <typeval>76</typeval>
             </observation>
-            <observation target="241313011" name="CFHT/z" unit="uJy" type="F">
+            <observation target="15" name="CFHT/z" unit="uJy" type="F">
                 <flux>0.6</flux>
                 <error>0.3</error>
                 <typeval>77</typeval>
             </observation>
-            <observation target="241313011" name="HST/wfc3/F110W/1.16um" unit="uJy" type="F">
+            <observation target="15" name="HST/wfc3/F110W/1.16um" unit="uJy" type="F">
                 <flux>1.6</flux>
                 <error>0.2</error>
                 <typeval>241</typeval>
             </observation>
-            <observation target="241313011" name="WHT/LIRIS/J" unit="uJy" type="F">
+            <observation target="15" name="WHT/LIRIS/J" unit="uJy" type="F">
                 <flux>1.7</flux>
                 <error>0.5</error>
                 <typeval>354</typeval>
                 <!-- William Herschel Telescope / LIRIS / J band-->
                 <!-- https://www.ing.iac.es/Astronomy/instruments/liris/config.html -->
             </observation>
-            <observation target="241313011" name="WHT/LIRIS/Ks" unit="uJy" type="F">
+            <observation target="15" name="WHT/LIRIS/Ks" unit="uJy" type="F">
                 <flux>7.6</flux>
                 <error>2.0</error>
                 <typeval>355</typeval>
                 <!-- William Herschel Telescope / LIRIS / Ks band-->
                 <!-- https://www.ing.iac.es/Astronomy/instruments/liris/config.html -->
             </observation>
-            <observation target="241313011" name="Spitzer/IRAC/3.6" unit="uJy" type="F">
+            <observation target="15" name="Spitzer/IRAC/3.6" unit="uJy" type="F">
                 <flux>22.2</flux>
                 <error>5.0</error>
                 <typeval>18</typeval>
             </observation>
-            <observation target="241313011" name="Spitzer/IRAC/4.5" unit="uJy" type="F">
+            <observation target="15" name="Spitzer/IRAC/4.5" unit="uJy" type="F">
                 <flux>29.4</flux>
                 <error>5.0</error>
                 <typeval>19</typeval>
             </observation>
-            <observation target="241313011" name="Spitzer/IRAC/5.8" unit="uJy" type="F">
+            <observation target="15" name="Spitzer/IRAC/5.8" unit="uJy" type="F">
                 <flux>51.5</flux>
                 <error>6.8</error>
                 <typeval>20</typeval>
             </observation>
-            <observation target="241313011" name="Spitzer/IRAC/8.0" unit="uJy" type="F">
+            <observation target="15" name="Spitzer/IRAC/8.0" unit="uJy" type="F">
                 <flux>41.1</flux>
                 <error>6.7</error>
                 <typeval>21</typeval>
             </observation>
-            <observation target="241313011" name="SMA/880um" unit="uJy" type="E">
+            <observation target="15" name="SMA/880um" unit="uJy" type="E">
                 <flux>9300</flux>
                 <error>1200</error>
                 <typeval>876.50</typeval>
             </observation>
-            <observation target="241313011" name="VLA/1.4GHz" unit="uJy" type="E">
+            <observation target="15" name="VLA/1.4GHz" unit="uJy" type="E">
                 <flux>420</flux>
                 <error>420</error>
                 <typeval>210000.0</typeval>
             </observation>
             <!-- Southern object-->
-            <observation target="241313012" name="GALEX/NUV/0.23um" unit="uJy" type="F">
+            <observation target="16" name="GALEX/NUV/0.23um" unit="uJy" type="F">
                 <flux>0.5</flux>
                 <error>0.5</error>
                 <typeval>121</typeval>
             </observation>
-            <observation target="241313012" name="CFHT/u*" unit="uJy" type="F">
+            <observation target="16" name="CFHT/u*" unit="uJy" type="F">
                 <flux>0.5</flux>
                 <error>0.1</error>
                 <typeval>352</typeval>
             </observation>
-            <observation target="241313012" name="CFHT/g" unit="uJy" type="F">
+            <observation target="16" name="CFHT/g" unit="uJy" type="F">
                 <flux>1.2</flux>
                 <error>0.1</error>
                 <typeval>74</typeval>
             </observation>
-            <observation target="241313012" name="CFHT/r" unit="uJy" type="F">
+            <observation target="16" name="CFHT/r" unit="uJy" type="F">
                 <flux>2.1</flux>
                 <error>0.2</error>
                 <typeval>75</typeval>
             </observation>
-            <observation target="241313012" name="CFHT/i" unit="uJy" type="F">
+            <observation target="16" name="CFHT/i" unit="uJy" type="F">
                 <flux>2.3</flux>
                 <error>0.3</error>
                 <typeval>76</typeval>
             </observation>
-            <observation target="241313012" name="CFHT/z" unit="uJy" type="F">
+            <observation target="16" name="CFHT/z" unit="uJy" type="F">
                 <flux>3.2</flux>
                 <error>0.6</error>
                 <typeval>77</typeval>
             </observation>
-            <observation target="241313012" name="HST/wfc3/F110W/1.16um" unit="uJy" type="F">
+            <observation target="16" name="HST/wfc3/F110W/1.16um" unit="uJy" type="F">
                 <flux>4.7</flux>
                 <error>0.3</error>
                 <typeval>241</typeval>
             </observation>
-            <observation target="241313012" name="WHT/LIRIS/J" unit="uJy" type="F">
+            <observation target="16" name="WHT/LIRIS/J" unit="uJy" type="F">
                 <flux>5.1</flux>
                 <error>0.6</error>
                 <typeval>354</typeval>
                 <!-- William Herschel Telescope / LIRIS / J band-->
                 <!-- https://www.ing.iac.es/Astronomy/instruments/liris/config.html -->
             </observation>
-            <observation target="241313012" name="WHT/LIRIS/Ks" unit="uJy" type="F">
+            <observation target="16" name="WHT/LIRIS/Ks" unit="uJy" type="F">
                 <flux>14.9</flux>
                 <error>2.7</error>
                 <typeval>355</typeval>
                 <!-- William Herschel Telescope / LIRIS / Ks band-->
                 <!-- https://www.ing.iac.es/Astronomy/instruments/liris/config.html -->
             </observation>
-            <observation target="241313012" name="Spitzer/IRAC/3.6" unit="uJy" type="F">
+            <observation target="16" name="Spitzer/IRAC/3.6" unit="uJy" type="F">
                 <flux>26.4</flux>
                 <error>2.8</error>
                 <typeval>18</typeval>
             </observation>
-            <observation target="241313012" name="Spitzer/IRAC/4.5" unit="uJy" type="F">
+            <observation target="16" name="Spitzer/IRAC/4.5" unit="uJy" type="F">
                 <flux>34.7</flux>
                 <error>2.9</error>
                 <typeval>19</typeval>
             </observation>
-            <observation target="241313012" name="Spitzer/IRAC/5.8" unit="uJy" type="F">
+            <observation target="16" name="Spitzer/IRAC/5.8" unit="uJy" type="F">
                 <flux>60.4</flux>
                 <error>9.6</error>
                 <typeval>20</typeval>
             </observation>
-            <observation target="241313012" name="Spitzer/IRAC/8.0" unit="uJy" type="F">
+            <observation target="16" name="Spitzer/IRAC/8.0" unit="uJy" type="F">
                 <flux>45.8</flux>
                 <error>10.6</error>
                 <typeval>21</typeval>
             </observation>
-            <observation target="241313012" name="SMA/880um" unit="uJy" type="E">
+            <observation target="16" name="SMA/880um" unit="uJy" type="E">
                 <flux>8300</flux>
                 <error>1100</error>
                 <typeval>876.50</typeval>
             </observation>
-            <observation target="241313012" name="VLA/1.4GHz" unit="uJy" type="E">
+            <observation target="16" name="VLA/1.4GHz" unit="uJy" type="E">
                 <flux>420</flux>
                 <error>420</error>
                 <typeval>210000.0</typeval>
             </observation>
         </source>
         <source name="Leung2019:XMM" link="https://iopscience.iop.org/article/10.3847/1538-4357/aaf860/meta">
-            <observation target="24131305" name="Spitzer/IRAC/5.8" unit="uJy" type="F">
+            <observation target="25" name="Spitzer/IRAC/5.8" unit="uJy" type="F">
                 <flux>8.61</flux>
                 <error>1.54</error>
                 <typeval>20</typeval>
             </observation>
-            <observation target="24131305" name="Spitzer/IRAC/8.0" unit="uJy" type="F">
+            <observation target="25" name="Spitzer/IRAC/8.0" unit="uJy" type="F">
                 <flux>8.14</flux>
                 <error>4.48</error>
                 <typeval>21</typeval>
             </observation>
-            <observation target="24131305" name="Spitzer/MIPS/24um" unit="mJy" type="F">
+            <observation target="25" name="Spitzer/MIPS/24um" unit="mJy" type="F">
                 <flux>1.08</flux>
                 <error>0.02</error>
                 <typeval>325</typeval>
             </observation>
-            <observation target="24131305" name="Herschel/PACS/160um" unit="mJy" type="F">
+            <observation target="25" name="Herschel/PACS/160um" unit="mJy" type="F">
                 <flux>86.3</flux>
                 <error>17.9</error>
                 <typeval>330</typeval>
             </observation>
-            <observation target="24131305" name="Herschel/SPIRE/250um" unit="mJy" type="F">
+            <observation target="25" name="Herschel/SPIRE/250um" unit="mJy" type="F">
                 <flux>106</flux>
                 <error>7</error>
                 <typeval>331</typeval>
             </observation>
-            <observation target="24131305" name="Herschel/SPIRE/350um" unit="mJy" type="F">
+            <observation target="25" name="Herschel/SPIRE/350um" unit="mJy" type="F">
                 <flux>120</flux>
                 <error>10</error>
                 <typeval>332</typeval>
             </observation>
-            <observation target="24131305" name="Herschel/SPIRE/500um" unit="mJy" type="F">
+            <observation target="25" name="Herschel/SPIRE/500um" unit="mJy" type="F">
                 <flux>92.1</flux>
                 <error>7.6</error>
                 <typeval>333</typeval>
             </observation>
-            <observation target="24131305" name="ALMA/635um" unit="mJy" type="E">
+            <observation target="25" name="ALMA/635um" unit="mJy" type="E">
                 <flux>52.5</flux>
                 <error>5.9</error>
                 <typeval>635</typeval>
             </observation>
-            <observation target="24131305" name="ALMA/870um" unit="mJy" type="E">
+            <observation target="25" name="ALMA/870um" unit="mJy" type="E">
                 <flux>18.0</flux>
                 <error>0.4</error>
                 <typeval>870</typeval>
             </observation>
-            <observation target="24131305" name="SMA/870um" unit="mJy" type="E">
+            <observation target="25" name="SMA/870um" unit="mJy" type="E">
                 <flux>21.5</flux>
                 <error>3.1</error>
                 <typeval>870</typeval>
             </observation>
-            <observation target="24131305" name="ALMA-ACA/1037um" unit="mJy" type="E">
+            <observation target="25" name="ALMA-ACA/1037um" unit="mJy" type="E">
                 <flux>11.8</flux>
                 <error>0.8</error>
                 <typeval>1037</typeval>
             </observation>
-            <observation target="24131305" name="IRAM/MAMBO/1200um" unit="mJy" type="E">
+            <observation target="25" name="IRAM/MAMBO/1200um" unit="mJy" type="E">
                 <flux>8.9</flux>
                 <error>0.9</error>
                 <typeval>1200</typeval>
             </observation>
-            <observation target="24131305" name="CARMA/3000um" unit="mJy" type="E">
+            <observation target="25" name="CARMA/3000um" unit="mJy" type="E">
                 <flux>0.5</flux>
                 <error>0.11</error>
                 <typeval>3000</typeval>
             </observation>
-            <observation target="24131305" name="VLA/9586.8um" unit="mJy" type="E">
+            <observation target="25" name="VLA/9586.8um" unit="mJy" type="E">
                 <flux>0.0184</flux>
                 <error>0.00314</error>
                 <typeval>9586.8</typeval>
             </observation>
         </source>
         <source name="Bussmann2013:XMM" link="https://iopscience.iop.org/article/10.1088/0004-637X/779/1/25/pdf">
-            <observation target="24131301" name="SDSS/i" unit="ABmag" type="F">
+            <observation target="31" name="SDSS/i" unit="ABmag" type="F">
                 <flux>20.32</flux>
                 <error>0.06</error>
                 <typeval>76</typeval>

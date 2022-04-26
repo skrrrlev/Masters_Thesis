@@ -1,75 +1,75 @@
 <?xml version='1.0' encoding='utf-8'?>
-<catalogue label="COSMOS:photometry" name="CAT-COSMOS">
+<catalogue label="COSMOS:photometry:1" name="CAT-COSMOS-1">
   <targets>
     <target>
       <name>877661</name>
       <id>3</id>
       <RA>149.98145</RA>
       <DEC>2.2532</DEC>
-      <z>1.4456</z>
+      <z>1.41487</z>
     </target>
     <target>
       <name>1024221</name>
       <id>10</id>
       <RA>149.7998823</RA>
       <DEC>2.3883955</DEC>
-      <z>1.49</z>
+      <z>4.22076</z>
     </target>
     <target>
       <name>911594</name>
       <id>29</id>
       <RA>149.877179</RA>
       <DEC>2.283875</DEC>
-      <z>3.3283</z>
+      <z>0.701111</z>
     </target>
     <target>
       <name>832735</name>
       <id>13</id>
       <RA>150.076</RA>
       <DEC>2.2118277</DEC>
-      <z>2.0</z>
+      <z>1.25517</z>
     </target>
     <target>
       <name>1452625</name>
       <id>2</id>
       <RA>150.431917</RA>
       <DEC>2.802611</DEC>
-      <z>0.6248</z>
+      <z>0.554946</z>
     </target>
     <target>
       <name>970128</name>
       <id>20</id>
       <RA>150.23701</RA>
       <DEC>2.33571</DEC>
-      <z>2.503</z>
+      <z>2.09871</z>
     </target>
     <target>
       <name>884363</name>
       <id>30</id>
       <RA>150.278342</RA>
       <DEC>2.258817</DEC>
-      <z>3.4</z>
+      <z>3.34596</z>
     </target>
     <target>
       <name>777178</name>
       <id>24</id>
       <RA>150.331442</RA>
       <DEC>2.162369</DEC>
-      <z>2.9342</z>
+      <z>3.02917</z>
     </target>
     <target>
       <name>970358</name>
       <id>22</id>
       <RA>150.23987</RA>
       <DEC>2.33645</DEC>
-      <z>2.51</z>
+      <z>1.9996</z>
     </target>
     <target>
       <name>972923</name>
       <id>19</id>
       <RA>150.23735</RA>
       <DEC>2.33814</DEC>
-      <z>2.494</z>
+      <z>0.015</z>
     </target>
   </targets>
   <data-sources>
