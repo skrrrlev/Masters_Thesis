@@ -5,7 +5,10 @@ from os.path import isdir
 from typing import Union
 import numpy as np
 from matplotlib import cm
-from matplotlib.gridspec import GridSpec
+from scipy import spatial
+
+from MTLib.plots import annotate_scatter_plot
+from MTLib import sfr
 
 root = 'Data/stardust/'
 files = [
@@ -48,7 +51,7 @@ def load_data():
             HDU: fits.hdu.table.BinTableHDU = f[1]
             fdata: fits.fitsrec.FITS_rec = HDU.data
         for i, idx in enumerate(fdata.field('id')):
-            if idx>30:
+            if idx>30 or fdata.field('mstar')[i] == 0 or fdata.field('sfr')[i] == 0:
                 continue
             ids.append(idx)
             z.append(fdata.field('z')[i])
@@ -116,7 +119,7 @@ def overview_plot(stellar_mass,sfr,z,zs_to_plot=[1,2,4],zlim=[1,4],logmstarlim=[
     plt.savefig(root+f'figures/ms_overview_{method}.png')
     plt.close()
 
-def group_plot(stellar_mass,sfrs,zs,Δstellar_mass,Δsfrs,groups=[(0.5,2),(2,3),(3,np.inf)],dex_scatter=0.3,dex_starburst=0.6,logmstarlim=[9,14],method:str='sargent'):
+def group_plot(stellar_mass,sfrs,zs,Δstellar_mass,Δsfrs,groups:"list[tuple]",dex_scatter=0.3,dex_starburst=0.6,logmstarlim=[9,14],method:str='sargent'):
     n_groups = len(groups)
     fig, axes = plt.subplots(ncols=n_groups, nrows=1, sharey=True)
     fig.tight_layout()
@@ -181,7 +184,7 @@ def group_plot(stellar_mass,sfrs,zs,Δstellar_mass,Δsfrs,groups=[(0.5,2),(2,3),
         ax.grid(alpha=0.25)
     
     fig.colorbar(im,ax=axes,label='Redshift')
-    plt.savefig(root+f'figures/ms_groups_{method}.png',bbox_inches='tight',)
+    plt.savefig(root+f'figures/ms_groups_{method}.png',bbox_inches='tight')
 
 def print_table(ids,mstar,sfrs,z):
     n = len(ids)
@@ -201,10 +204,81 @@ def print_table(ids,mstar,sfrs,z):
 
     print('~'*28)
 
+def plot_deviation_from_ms(mstar,sfrs,zs,ids,Δmstar,Δsfr,method='schreiber'):
+    n = len(mstar)
+
+    Δms = []
+    Δms_uncertainty = []
+    for i in range(n):
+        if method.lower() == 'schreiber':
+            tsfr = sfr.schreiber(mstar[i],zs[i])
+            Δtsfr = sfr.schreiber_uncertainty(mstar[i],zs[i],Δmstar[i])
+        elif method.lower() == 'sargent':
+            tsfr = sfr.sargent(mstar[i],zs[i])
+            Δtsfr = sfr.sargent_uncertainty(mstar[i],zs[i],Δmstar[i])
+        else:
+            raise ValueError('Method should be "schreiber" or "sargent".')
+        Δms.append(sfrs[i]/tsfr[0])
+        Δms_uncertainty.append(np.sqrt( (Δsfr[i]/tsfr[0])**2 + ((sfrs[i]*Δtsfr[0])/tsfr[0]**2)**2 ))
+
+    plt.figure(num=4, figsize=(10,5),dpi=150)
+    plt.scatter(zs, Δms, s=20,color='#e0c2a5',edgecolors='k',linewidths=0.5,zorder=10) # #7d9ac9
+    Δms = np.array(Δms)
+    annotate_scatter_plot(
+        strings = [f'{idx}' for idx in ids],
+        xs = zs,
+        ys = Δms,
+        pixel_offset=15,
+        min_x_offset=12,
+        min_y_offset=0,
+        distance_scale_factor=3,
+        zorder = 20,
+        size = 7
+    )
+    plt.errorbar(zs,Δms,yerr=Δms_uncertainty,fmt='none',capsize=2,capthick=0.8,ecolor='k',zorder=5)
+    
+    zlim = [min(zs)*0.8,max(zs)*1.2]
+    dex = 0.3
+    dex_sb = 0.6
+    plt.plot(zlim,[10**dex,10**dex,],'k--',alpha=0.5, zorder=0)
+    plt.plot(zlim,[10**-dex,10**-dex],'k--',alpha=0.5, zorder=0)
+    plt.plot(zlim,[10**dex_sb,10**dex_sb,],'k-.',alpha=0.5, zorder=0)
+    plt.xlim(zlim)
+    plt.grid(alpha=0.25)
+    plt.yscale('log')
+    plt.ylim(0.005,500)
+    plt.xlabel('Redshift')
+    plt.ylabel(r'$\Delta$ms')
+    plt.savefig(root+f'figures/Δms_{method}.png')
+    plt.close()
+
+
 def main():
     ids,z,stellar_mass,Δstellar_mass,sfr,Δsfr = load_data()
     
     print_table(ids,stellar_mass,sfr,z)
+
+    plot_deviation_from_ms(
+        mstar=stellar_mass,
+        sfrs=sfr,
+        zs=z,
+        ids=ids,
+        Δmstar=Δstellar_mass,
+        Δsfr=Δsfr,
+        method='schreiber'
+    )
+
+    plot_deviation_from_ms(
+        mstar=stellar_mass,
+        sfrs=sfr,
+        zs=z,
+        ids=ids,
+        Δmstar=Δstellar_mass,
+        Δsfr=Δsfr,
+        method='sargent'
+    )
+
+    return
 
     overview_plot(
         stellar_mass=stellar_mass,
@@ -240,7 +314,7 @@ def main():
         logmstarlim=[10,13],
         method='sargent'
     )
-    
+
     group_plot(
         stellar_mass=np.array(stellar_mass),
         sfrs=np.array(sfr),
