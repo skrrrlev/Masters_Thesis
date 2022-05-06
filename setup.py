@@ -17,7 +17,8 @@ setup(
         'MTLib.data.dataclasses',
         'MTLib.cosmos',
         'MTLib.plots',
-        'MTLib.sfr'
+        'MTLib.sfr',
+        'MTLib.fitstools'
     ],
     package_data={
         'MTLib.cosmos':['*.ini']
