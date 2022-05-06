@@ -1,3 +1,10 @@
+"""
+author: Ditlev Frickmann
+email: reimer.frickmann@gmail.com
+
+Create a input files for stardust based on the .xml data structure defined in this project.
+
+"""
 # imports
 from astropy import units as U
 import numpy as np

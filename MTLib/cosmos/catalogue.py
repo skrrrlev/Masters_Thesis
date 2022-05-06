@@ -4,7 +4,10 @@ import configparser
 from typing import Union
 
 class Catalogue:
+    """
+    Read data from the COSMOS catalogue used in this project.
 
+    """
     def __init__(self) -> None:
         self.config = configparser.ConfigParser()
         self.inipath = dirname(abspath(__file__))

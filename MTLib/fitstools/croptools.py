@@ -7,7 +7,7 @@ from astropy.nddata import Cutout2D
 
 
 def crop_using_region(fits_path: str, region_path: str, output_folder: str, output_name: str):
-    '''Use a region file in image units to cut out a crop of a fits file, and save it as a new fits file with a correct header.'''
+    '''Use a ds9 region file in image units to cut out a crop of a fits file, and save it as a new fits file with a correct header.'''
     if not exists(output_folder):
         makedirs(output_folder)
 

@@ -21,6 +21,7 @@ id_map: "dict[int,Union[int,None]]"= {
 '''Link the IDs from the deblended fits file to the IDs of the spec files.'''
 
 def get_data(unit: U.Quantity=U.mJy) -> "list[Observation]":
+    '''extract data from the super-deblended fits file'''
 
     observations: list[Observation] = []
 

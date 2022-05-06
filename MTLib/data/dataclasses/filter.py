@@ -4,6 +4,7 @@ from astropy.units.quantity import Quantity
 
 @dataclass(order=True,frozen=True)
 class Filter:
+    '''Dataclass describing a filter used for fitting purposes.'''
     instrument: str = field(compare=False)
     telescope: str = field(compare=False)
     band: str = field(compare=False)

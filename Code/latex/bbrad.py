@@ -1,7 +1,14 @@
-import wave
+"""
+author: Ditlev Frickmann
+email: reimer.frickmann@gmail.com
+
+This script plots the SED of a range of temperatures given by the <temperatures> array.
+Beneath, Wiens displacement law is plotted for the same wavelengths.
+
+"""
+
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
-import matplotlib.axes as axes
 import numpy as np
 from astropy import constants as c
 from astropy import units as u

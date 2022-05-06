@@ -1,7 +1,5 @@
 from typing import Union
 import numpy as np
-import sympy
-from latex2sympy2 import latex2sympy
 
 def sargent(mstar: "Union[float, list[float], np.ndarray]", z: "float")-> "np.ndarray[float]":
     '''From Sargent et al., 2014'''

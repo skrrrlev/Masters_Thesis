@@ -1,3 +1,11 @@
+
+"""
+author: Ditlev Frickmann
+email: reimer.frickmann@gmail.com
+
+Fit data sources using stardust and plot the results.
+
+"""
 import sys
 from os.path import isfile
 import stardust

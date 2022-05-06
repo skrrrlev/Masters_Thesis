@@ -1,3 +1,11 @@
+"""
+author: Ditlev Frickmann
+email: reimer.frickmann@gmail.com
+
+Based on the stardust fitting results in the <files> list, plot the data points in the SFR-M* space and the ΔMS-redshift space.
+
+"""
+
 from astropy.io import fits
 from matplotlib import pyplot as plt
 from os import mkdir
