@@ -33,10 +33,12 @@ def __walker(root: str, extension='*'):
             files.append(path)
     return files
 
-def walker(root: str, extension='*'):
-    '''Specify a root directory and get all files, within the directory and all directories under the root, with a given extension.
+def walker(root: str, extension='*') -> "list[str]":
+    '''
+    Specify a root directory and get all files, within the directory and all directories under the root, with a given extension.
     
-    If extension='*', then all files are returned.'''
+    If extension='*', then all files are returned.
+    '''
     with recursion_limit(10000):
         return __walker(root,extension)
 
