@@ -22,7 +22,8 @@ setup(
         'MTLib.files',
     ],
     package_data={
-        'MTLib.cosmos':['*.ini']
+        'MTLib.cosmos':['*.ini'],
+        'MTLib.fitstools.masktools': ['default*']
     },
     include_package_data=True,
     install_requires = [
