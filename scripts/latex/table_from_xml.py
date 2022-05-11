@@ -1,3 +1,10 @@
+"""
+author: Ditlev Frickmann
+email: reimer.frickmann@gmail.com
+
+Based on the .xml data structure used in this project, create latex tables.
+
+"""
 # imports
 from typing import NoReturn
 import sys

@@ -1,6 +1,7 @@
 # Custom
 Data/COSMOS/catalogue/*
 .DS_Store
+Externals/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

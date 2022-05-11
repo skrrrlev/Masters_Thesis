@@ -18,7 +18,8 @@ setup(
         'MTLib.cosmos',
         'MTLib.plots',
         'MTLib.sfr',
-        'MTLib.fitstools'
+        'MTLib.fitstools',
+        'MTLib.files',
     ],
     package_data={
         'MTLib.cosmos':['*.ini']
