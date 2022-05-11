@@ -11,6 +11,7 @@ from os.path import isdir
 
 from MTLib import files
 from MTLib.fitstools import crop_using_region
+from MTLib import PATH
 
 def setup():
     root = argv[1]
@@ -31,7 +32,7 @@ def main():
         file_name = files.extract_filename(fits_file)
         # define the output folder
         fits_file_path = files.extract_path(fits_file)
-        output_dir = fits_file_path + 'cutout_' + file_name
+        output_dir = fits_file_path.replace('Data','Output') + file_name
         # find the corresponding region file
         for reg_file in reg_files:
             if not file_name in reg_file:

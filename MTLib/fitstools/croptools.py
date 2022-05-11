@@ -18,7 +18,10 @@ def crop_using_region(fits_path: str, region_path: str, output_folder: str, outp
     for line in content:
         matches = findall(r'(\d+(?:\.\d+)?(?:e[+-]?\d+)?)\S', line)
         if len(matches) == 5:
-            region_name = findall(r'text=\{(\S+)\}', line)[0]
+            try:
+                region_name = findall(r'text=\{(\S+)\}', line)[0]
+            except IndexError: # A name was not defined for the region
+                continue
             crops[region_name] = {
                 'position' : (float(matches[0])-1,float(matches[1])-1), # -1 to account for zero-based index.
                 'size' : (float(matches[2]),float(matches[3])),

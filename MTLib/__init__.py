@@ -1,1 +1,1 @@
-from constants import PATH
+from .constants import PATH

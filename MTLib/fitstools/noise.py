@@ -1,6 +1,7 @@
 from re import findall
 from os import makedirs
-from os.path import exists
+from os import makedirs
+from os.path import exists, isdir
 from scipy.optimize import minimize
 
 import numpy as np
@@ -8,7 +9,7 @@ from astropy.io import fits
 from astropy.wcs import WCS
 from matplotlib import pyplot as plt
 
-from ..files import extract_filename
+from ..files import extract_filename, extract_path
 
 method:str = 'L-BFGS-B'
 Gaussian = lambda x,mu,sigma: (1 / (sigma * np.sqrt( 2*np.pi )) ) * np.exp(-0.5 * (((x-mu)**2)/(sigma**2)) )
@@ -61,6 +62,10 @@ def get_pixel_noise_distribution(fits_file: str, plot_file_name: str, bright_pix
     params = fit.x
 
     if plot_file_name:
+        plot_dir = extract_path(plot_file_name)
+        if not isdir(plot_dir):
+            makedirs(plot_dir)
+        print('Saving',plot_file_name, sep=' ')
         plt.figure(figsize=(7,4), dpi=150)
         plt.step(bins[:-1],full_counts/norm,color='k',alpha=0.25,linewidth=3,label='Real distribution')
         plt.step(region_bins[:-1],region_counts/norm,color='k',alpha=0.5,linewidth=3,label='Fitting distribution')
@@ -83,7 +88,7 @@ def create_sigma_image(fits_path: str, std:float, output_folder: str):
     wcs = WCS(hdu.header)
 
     # Put the cutout image in the FITS HDU
-    hdu.data = std*(hdu.data/hdu.data)
+    hdu.data = std*np.ones(hdu.data.shape,dtype=float)
 
     # Write the cutout to a new FITS file
     fits_file_name = extract_filename(fits_path)

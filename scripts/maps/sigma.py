@@ -14,6 +14,7 @@ from venv import create
 
 from MTLib import files
 from MTLib.fitstools import get_pixel_noise_distribution, create_sigma_image
+from MTLib import PATH
 
 def setup():
     root = argv[1]
@@ -32,14 +33,14 @@ def main():
         file_name = files.extract_filename(fits_file)
         # define the output folder
         fits_file_path = files.extract_path(fits_file)
-        cutout_dir = fits_file_path + 'cutout_' + file_name + '/'
+        cutout_dir = fits_file_path.replace('Data','Output') + file_name + '/'
         # find the cutout images 
         if not isdir(cutout_dir):
             continue
 
         _, std = get_pixel_noise_distribution(
-            fits_file=fits_file,
-            plot_file_name=cutout_dir + file_name + '_noise_distribution.png'
+            fits_file= fits_file,
+            plot_file_name= PATH.FIGURES.value + 'noise_distribution/' + file_name + '_noise_distribution.png'
         )
 
         cutouts = [file for file in listdir(cutout_dir) if file.endswith('.fits') and 'sigma' not in file]

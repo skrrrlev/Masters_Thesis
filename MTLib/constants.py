@@ -2,11 +2,15 @@
 from enum import Enum
 
 class PATH(Enum):
-    ROOT = __file__[:(__file__[:__file__.rfind('/')]).rfind('/')+1]
+    ROOT = '/Volumes/Git/Masters_Thesis/'
     FIGURES = ROOT + 'Figures/'
     DATA = ROOT + 'Data/'
-    MAPS = DATA + 'Maps/'
+    DATAMAPS = DATA + 'Maps/'
+    PHOTOMETRY = DATA + 'Photometry/'
     SCRIPTS = ROOT + 'Scripts/'
+    OUTPUT = ROOT + 'Output/'
+    OUTPUTMAPS = OUTPUT + 'Maps/'
 
 if __name__ == '__main__':
     print(PATH.ROOT.value)
+    
