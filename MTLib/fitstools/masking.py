@@ -1,4 +1,5 @@
 
+from decimal import InvalidContext
 from shutil import copyfile
 from os.path import isfile
 from os import listdir, remove, getcwd, chdir
@@ -10,8 +11,8 @@ from astropy.coordinates import SkyCoord, FK5, ICRS
 from subprocess import Popen, PIPE
 from numpy import isnan, round
 
-from MTLib.files import extract_filename, extract_path
-from MTLib import PATH
+from ..files import extract_filename, extract_path
+from .. import PATH
 
 def create_segmentation_map(fits_file: str) -> str:
     '''Use SExtractor to create a segmentation map for a fits file.'''
@@ -39,7 +40,8 @@ def create_segmentation_map(fits_file: str) -> str:
         if isfile(new_sex_file):
             remove(new_sex_file)
 
-        new_content = content.replace('<segmentation>',fits_file_name+'_segmentation')
+        segmentation_file_name = fits_file_name+'_segmentation'
+        new_content = content.replace('<segmentation>',segmentation_file_name)
         with open(new_sex_file,'w') as nsf:
             nsf.write(new_content)
         
@@ -56,49 +58,58 @@ def create_segmentation_map(fits_file: str) -> str:
         raise e
 
     '''Change directory and run SExtractor'''
+    segmentation_file = fits_file_dir + segmentation_file_name + '.fits'
+    print(f'Saving {segmentation_file}')
     chdir(fits_file_dir)
-    print(getcwd())
     try:
         process = Popen(['sex', fits_file_name+'.fits'], stdout=PIPE, stderr=PIPE)
         process.communicate()
     except Exception as e:
         chdir(out_of_scope_directory)
-        raise e
+        raise e(f'Failed to save {segmentation_file_name}.')
 
     '''Remove unessesary files and return the path to the segmentation map'''
+    chdir(out_of_scope_directory)
     new_items_in_dir = [item for item in listdir(fits_file_dir) if item not in items_in_dir and 'segmentation' not in item]
     for item in new_items_in_dir:
-        remove(item)
-    chdir(out_of_scope_directory)
-    segmentation_file = fits_file_dir + fits_file_name+'_segmentation.fits'
-    print(f'Saving {segmentation_file}')
+        remove(fits_file_dir+item)
     return segmentation_file
 
-def create_mask_from_segmentation_map(segmentation_map: str, ra: float, dec: float, frame=FK5):
+def create_mask_from_segmentation_map(segmentation_map: str, ra: float = None, dec: float = None, frame=FK5):
+    '''
+    Using a segmentation map and the coordinates of the source, create a mask for galfit.
+    If coordinates are not specified, will use the centre of the map.
+    '''
 
     '''Load the HDU and the WCS'''
     hdu = fits.open(segmentation_map)[0]
     wcs = WCS(hdu.header)
 
     '''Get the pixels at the centre of the source'''
-    sky = SkyCoord(ra,dec,frame=frame, unit='deg')
-    x, y = wcs.world_to_pixel(sky)
-    if isnan(x) or isnan(y):
-        raise ValueError('Input coordinates is not within image.')
+    N,M = hdu.data.shape
+    if ra is None or dec is None:
+        x = int(N/2)
+        y = int(M/2)
+    else:
+        sky = SkyCoord(ra,dec,frame=frame, unit='deg')
+        xp, yp = wcs.world_to_pixel(sky)
+        if isnan(xp) or isnan(yp):
+            raise ValueError('Input coordinates is not within image.')
+        x = int(round(xp,0))
+        y = int(round(M-yp,0))
 
     '''Get the value of the segmentation map at the source'''
-    N,M = hdu.data.shape
-    value_at_source = hdu.data[int(round(x,0)),int(round(M-y,0))]
-    
+    value_at_source = hdu.data[x,y]
+    if not value_at_source:
+        raise InvalidContext(f'Source value at ({x},{y}) in segmentation map was zero.')
+
     '''Remove the source from the mask'''
     hdu.data[hdu.data == value_at_source] = 0
 
     '''Save the mask'''
-    mask_file_name = extract_path(segmentation_map) + extract_filename(segmentation_map).replace('segmentation','mask') + '.fits'
+    mask_file_name = segmentation_map.replace('segmentation','mask')
     print(f'Saving {mask_file_name}')
     hdu.writeto(mask_file_name, overwrite=True)
-
-
 
 if __name__ == '__main__':
     a = create_segmentation_map(PATH.OUTPUTMAPS.value + 'HST/source13/source13_F160w/source13_F160w_galaxy.fits')
