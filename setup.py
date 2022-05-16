@@ -19,6 +19,7 @@ setup(
         'MTLib.plots',
         'MTLib.sfr',
         'MTLib.fitstools',
+        'MTLib.fitstools.masktools',
         'MTLib.files',
     ],
     package_data={
