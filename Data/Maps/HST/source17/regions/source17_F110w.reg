@@ -2,5 +2,5 @@
 global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
 image
 box(6,15,0,0,0)
-box(309.29212,102.45199,15,15,359.96525) # text={Galaxy}
-box(320.42528,170.55733,10,10,3.9812788e-10) # text={PointSource}
+box(309.29217,102.45198,50.053891,50.053891,359.96525) # text={Galaxy}
+box(320.42568,170.56013,25.026945,25.026945,3.9812788e-10) # text={PointSource}
