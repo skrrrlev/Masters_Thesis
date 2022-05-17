@@ -6,10 +6,8 @@ from astropy.wcs import WCS
 from astropy.nddata import Cutout2D
 
 
-def crop_using_region(fits_path: str, region_path: str, output_folder: str, output_name: str):
+def crop_using_region(fits_path: str, region_path: str, output_folder: str, output_name: str, extension:int=0):
     '''Use a ds9 region file in image units to cut out a crop of a fits file, and save it as a new fits file with a correct header.'''
-    if not exists(output_folder):
-        makedirs(output_folder)
 
     with open(region_path,'r') as f:
         content = f.read().lower().split('\n')
@@ -17,7 +15,7 @@ def crop_using_region(fits_path: str, region_path: str, output_folder: str, outp
     crops: "dict[str,dict[str,float]]" = {}
     for line in content:
         matches = findall(r'(\d+(?:\.\d+)?(?:e[+-]?\d+)?)\S', line)
-        if len(matches) == 5:
+        if len(matches) >= 5:
             try:
                 region_name = findall(r'text=\{(\S+)\}', line)[0]
             except IndexError: # A name was not defined for the region
@@ -28,13 +26,13 @@ def crop_using_region(fits_path: str, region_path: str, output_folder: str, outp
                 'angle' : float(matches[4]),
             }
     
-    for invalid_type in ['icrs','fk5','fk4']:
-        if invalid_type in line:
-            raise ValueError('Region map is not saved in image units.')
+        for invalid_type in ['icrs','fk5','fk4']:
+            if invalid_type in line:
+                raise ValueError('Region map is not saved in image units.')
     
     for region_name in crops:
         crop = crops[region_name]
-        hdu = fits.open(fits_path)[0]
+        hdu = fits.open(fits_path)[extension]
         wcs = WCS(hdu.header)
 
         # Make the cutout, including the WCS
@@ -47,7 +45,10 @@ def crop_using_region(fits_path: str, region_path: str, output_folder: str, outp
         hdu.header.update(cutout.wcs.to_header())
 
         # Write the cutout to a new FITS file
-        cutout_filename = output_folder + '/'*(not output_folder.endswith('/')) + output_name + '_' + region_name + '.fits'
+        crop_output_folder = output_folder + '/'*(not output_folder.endswith('/')) + region_name + '/'
+        if not exists(crop_output_folder):
+            makedirs(crop_output_folder)
+        cutout_filename = crop_output_folder + output_name + '.fits'
         print(f'Saving {cutout_filename}')
         hdu.writeto(cutout_filename, overwrite=True)
 

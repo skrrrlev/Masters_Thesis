@@ -59,6 +59,8 @@ def create_segmentation_map(fits_file: str) -> str:
 
     '''Change directory and run SExtractor'''
     segmentation_file = fits_file_dir + segmentation_file_name + '.fits'
+    if isfile(segmentation_file):
+        remove(segmentation_file)
     print(f'Saving {segmentation_file}')
     chdir(fits_file_dir)
     try:

@@ -1,5 +1,5 @@
 # Region file format: DS9 version 4.1
 global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
 image
-box(95.881888,84.103829,50.019447,50.019447,0.058262216) # text={Galaxy}
-box(220.65276,71.901698,40.015558,40.015558,0.058262216) # text={PointSource}
+box(351.8819,340.09383,50.019447,50.019447,0.058262216) # text={Galaxy}
+box(255.54247,317.09642,58.022159,58.022159,2.2163344e-06) # text={Star1}
