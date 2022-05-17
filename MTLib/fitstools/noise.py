@@ -1,20 +1,12 @@
-from doctest import DebugRunner
-from re import findall
-from os import makedirs
 from os import makedirs
 from os.path import exists, isdir
-from scipy.optimize import minimize
 from scipy.stats import norm
 
 import numpy as np
 from astropy.io import fits
-from astropy.wcs import WCS
 from matplotlib import pyplot as plt
 
 from ..files import extract_filename, extract_path
-
-method:str = 'L-BFGS-B'
-Gaussian = lambda x,mu,sigma: (1 / (sigma * np.sqrt( 2*np.pi )) ) * np.exp(-0.5 * (((x-mu)**2)/(sigma**2)) )
 
 def derive_weight_scale(fits_file: str, noise_pixel_mask_file: str, plot_file_name: str=''):
     '''

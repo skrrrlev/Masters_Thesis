@@ -1,5 +1,3 @@
-
-from decimal import InvalidContext
 from shutil import copyfile
 from os.path import isfile
 from os import listdir, remove, getcwd, chdir
@@ -13,6 +11,9 @@ from numpy import isnan, round
 
 from ..files import extract_filename, extract_path
 from .. import PATH
+
+class SegmentationMapSourceValueError(Exception):
+    '''Raised when the value in the segmentation map where the source is supposed to be is zero.'''
 
 def create_segmentation_map(fits_file: str) -> str:
     '''Use SExtractor to create a segmentation map for a fits file.'''
@@ -103,7 +104,7 @@ def create_mask_from_segmentation_map(segmentation_map: str, ra: float = None, d
     '''Get the value of the segmentation map at the source'''
     value_at_source = hdu.data[x,y]
     if not value_at_source:
-        raise InvalidContext(f'Source value at ({x},{y}) in segmentation map was zero.')
+        raise SegmentationMapSourceValueError(f'Source value at ({x},{y}) in segmentation map was zero.')
 
     '''Remove the source from the mask'''
     hdu.data[hdu.data == value_at_source] = 0
