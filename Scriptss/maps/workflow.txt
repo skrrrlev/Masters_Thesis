@@ -1,0 +1,14 @@
+
+
+1.  
+    Create dead pixel maps 
+    Create segmentation maps
+
+2.
+    Create sigma maps
+
+3.
+    Crop the regions
+
+4.
+    Create masks
