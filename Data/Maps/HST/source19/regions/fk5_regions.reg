@@ -1,6 +1,6 @@
 # Region file format: DS9 version 4.1
 global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
 fk5
-box(150.2372900,2.3381100,5.000",5.000",0) # width=2 text={Galaxy}
-box(150.2245829,2.3473885,5.000",5.300",0) # width=2 text={Star1}
-box(150.2425946,2.3367667,15.000",15.000",0) # width=2 text={Star2}
+box(150.2372962,2.3381051,7.000",7.000",360) # width=2 text={Galaxy}
+box(150.2417775,2.3279964,0.513",0.733",359.99714) # text={Out}
+box(150.2423087,2.3281683,5.000",5.000",359.99714) # width=2 text={PSF}

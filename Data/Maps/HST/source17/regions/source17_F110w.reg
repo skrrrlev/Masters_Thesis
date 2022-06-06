@@ -2,5 +2,6 @@
 global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
 image
 box(5.9993859,270.99916,0,0,6.1971549e-05)
-box(309.29217,358.45198,50.053783,50.053783,359.96531) # width=2 text={Galaxy}
-box(305.0303,459.34638,80.085252,80.085252,360) # width=2 text={Star1}
+box(309.29217,358.45198,60.06454,60.06454,359.96531) # width=2 text={Galaxy}
+box(238.2058,558.84484,30.03227,30.03227,359.96531) # text={PSF1}
+box(75.655638,402.9782,30.03227,30.03227,360) # text={PSF2}
