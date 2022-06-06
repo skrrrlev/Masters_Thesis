@@ -78,7 +78,7 @@ def create_segmentation_map(fits_file: str) -> str:
         remove(fits_file_dir+item)
     return segmentation_file
 
-def create_mask_from_segmentation_map(segmentation_map: str, ra: float = None, dec: float = None, frame=FK5):
+def create_mask_from_segmentation_map(segmentation_map: str, ra: float = None, dec: float = None, frame=FK5, exclude_list:"list[int]"=[]):
     '''
     Using a segmentation map and the coordinates of the source, create a mask for galfit.
     If coordinates are not specified, will use the centre of the map.
@@ -108,6 +108,10 @@ def create_mask_from_segmentation_map(segmentation_map: str, ra: float = None, d
 
     '''Remove the source from the mask'''
     hdu.data[hdu.data == value_at_source] = 0
+
+    '''Remove the sources in the exclude list'''
+    for value in exclude_list:
+        hdu.data[hdu.data == value] = 0
 
     '''Save the mask'''
     mask_file_name = segmentation_map.replace('segmentation','mask')
