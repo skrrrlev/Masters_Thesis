@@ -231,6 +231,7 @@ def _plot(data: np.ndarray, filename:str, adjust:str):
     if not isdir(path):
         makedirs(path)
     fig.savefig(filename,bbox_inches = 'tight')
+    plt.close()
 
 def create_psf(fits_file:str, sigma_file:str, region_file:str='', smooth_size=3):
     ''''''

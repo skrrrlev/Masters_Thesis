@@ -21,6 +21,8 @@ setup(
         'MTLib.fitstools',
         'MTLib.fitstools.masktools',
         'MTLib.files',
+        'MTLib.multithreading',
+        'MTLib.galfit',
     ],
     package_data={
         'MTLib.cosmos':['*.ini'],
