@@ -17,7 +17,7 @@ from sys import argv
 from click import style
 import numpy as np
 from re import findall
-from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt, tight_layout
 from os import makedirs, getcwd
 from os.path import isdir, isfile
 from shutil import rmtree, copyfile
@@ -30,26 +30,251 @@ from MTLib.fitstools import create_psf, create_from
 from MTLib.galfit import create_sersic, create_input_file, run_galfit
 from MTLib import files
 
+class TestPsfSmoothing:
+
+    def __init__(self, test_path:str, original_psf_file:str, rel_map_size: int) -> None:
+        self.test_path = test_path + '/'*(not test_path.endswith('/'))
+        self.original_psf_file = original_psf_file
+
+        with fits.open(original_psf_file) as hdul:
+            data: np.ndarray = hdul[0].data
+            self.psf_map = np.copy(data)
+            header = hdul[0].header
+
+        deg_per_pixel_y = float(header['CD1_1'])
+        self.dy = 3600*deg_per_pixel_y
+        deg_per_pixel_x = float(header['CD2_2'])
+        self.dx = 3600*deg_per_pixel_x
+
+        psf_pixel_height, psf_pixel_width = self.psf_map.shape # height is number of rows, and width is number of columns
+        self.shape = (psf_pixel_height*rel_map_size, psf_pixel_width*rel_map_size)
+
+        self.models = {}
+        self.results: dict[str,dict[str,list[float]]] = {}
+        self.accuracy: dict[str,dict[str,list[float]]] = {}
+        self.smoothing = []
+
+    def add_model(self, name:str, effective_radius: float, sersic_index: float, position_angle:float, axis_ratio:float, signal_to_noise_ratio:float):
+        path = f'{self.test_path}{name}'
+        if not isdir(path):
+            makedirs(path)
+        self.models[name] = {
+            're':effective_radius,
+            'n':sersic_index,
+            'pa':position_angle,
+            'ar':axis_ratio,
+            'snr':signal_to_noise_ratio,
+            'path':path,
+            'model':f'{path}/model.fits',
+            'convolved':f'{path}/convolved.fits',
+            'input':f'{path}/input.fits',
+            'sigma':f'{path}/sigma.fits',
+            'out':{}
+        }
+        self.results[name] = {'re':[],'n':[],'pa':[],'ar':[],'mag':[],'δre':[],'δn':[],'δpa':[],'δar':[],'δmag':[]}
+        self.accuracy[name] = {'re':[],'n':[],'pa':[],'ar':[],'mag':[],'δre':[],'δn':[],'δpa':[],'δar':[],'δmag':[]}
+
+    def create_synthetic_maps(self):
+        for name in self.models:
+            
+            # Create the basic model
+            create_sersic(
+                filename=self.models[name]["model"],
+                re=self.models[name]['re'],
+                n=self.models[name]['n'],
+                shape=self.shape,
+                dx=self.dx,
+                dy=self.dy,
+                **{'position_angle':self.models[name]['pa'],'axis_ratio':self.models[name]['ar']}
+            )
+
+            # Convolve the model with the psf
+            with create_from(from_file=self.models[name]["model"],to_file=self.models[name]["convolved"],index=0) as hdu:
+                hdu.data = convolve(hdu.data, self.psf_map, mode='same')
+                peak_brightness = np.max(hdu.data)
+
+            # Create the noise distribution
+            std = peak_brightness/self.models[name]['snr']
+            noise = np.random.normal(loc=0,scale=std,size=self.shape)
+
+            # Add the noise to the convolved model
+            with create_from(from_file=self.models[name]['convolved'], to_file=self.models[name]['input'], index=0) as hdu:
+                hdu.data += noise
+
+            # Create the sigma-map
+            with create_from(from_file=self.models[name]['input'],to_file=self.models[name]["sigma"], index=0) as hdu:
+                hdu.data = np.ones(self.shape)*std
+            
+    def fit_maps(self,smoothing:"list[int]"):
+        self.smoothing = smoothing
+        for name in self.models:
+            out_path = f'{self.models[name]["path"]}/fits'
+            if not isdir(out_path):
+                makedirs(out_path)
+
+            for s in smoothing:
+                # Create psf with current smoothing
+                create_psf(
+                    fits_file=f'{self.test_path}/source.fits',
+                    sigma_file=f'{self.test_path}/sigma.fits',
+                    region_file=f'{self.test_path}/region.reg',
+                    smooth_size=s
+                )
+                
+                # Create the galfit input file
+                self.models[name]['out'][s] = f'{out_path}/fit_s{s}.fits'
+                parameters = {
+                    'A': [self.models[name]['input']],
+                    'B': [self.models[name]['out'][s]],
+                    'C': [self.models[name]['sigma']],
+                    'D': [f'{self.test_path}source_psf.fits'],
+                    'J': ['26.563'],
+                    'K': [str(self.dx), str(self.dy)],
+                } 
+                pixel_re = self.models[name]['re']/self.dx
+                sersic = {
+                    '0': ['sersic'],
+                    '1': [f'{self.shape[1]/2}',f'{self.shape[0]/2}','0','0'],
+                    '3': ['20.0','1'],
+                    '4': [f'{pixel_re}','1'],
+                    '5': [f'{self.models[name]["n"]}','1'],
+                    '9': [f'{self.models[name]["ar"]}','1'],
+                    '10': [f'{self.models[name]["pa"]}','1'],
+                    'Z': ['0']
+                }
+
+                sky_bg = {
+                    '0': ['sky'],
+                    '1': ['0','1'],
+                    '2': ['0.0000','0'],
+                    '3': ['0.0000','0'],
+                    'Z': ['0']
+                }
+
+                input_file = f'{self.models[name]["path"]}/galfit.input'
+                create_input_file(input_file, parameters, [sersic,sky_bg])
+                run_galfit(input_file, log_file=self.models[name]['out'][s].replace('.fits','.log'))
+
+    def find_maps(self,smoothing:"list[int]"):
+        self.smoothing = smoothing
+        for name in self.models:
+            out_path = f'{self.models[name]["path"]}/fits'
+            if not isdir(out_path):
+                print(f'Could not find any fits for model: "{name}".')
+                continue
+            for s in smoothing:
+                current_file = f'{out_path}/fit_s{s}.fits'
+                if isfile(current_file):
+                    self.models[name]['out'][s] = f'{out_path}/fit_s{s}.fits'
+                else:
+                    raise ValueError(f'No such file as {current_file}.')
+
+    def read_result_from_fit(self,name,key):
+        with fits.open(self.models[name]['out'][key]) as hdul:
+            header = hdul[2].header
+            
+            fit_string = header['1_RE']
+            if '*' in fit_string:
+                fit_string = fit_string.replace('*','')
+                print(f'Uncertain fit of "effective radius" for {name} with smoothing {key}')
+            fit_val, fit_error = findall(r'([0-9]+\.[0-9]+) \+/- ([0-9]+\.[0-9]+)', fit_string)[0]
+            self.results[name]['re'].append(float(fit_val))
+            self.results[name]['δre'].append(float(fit_error))
+            
+            fit_string = header['1_MAG']
+            if '*' in fit_string:
+                fit_string = fit_string.replace('*','')
+                print(f'Uncertain fit of "integrated magnitude" for {name} with smoothing {key}')
+            fit_val, fit_error = findall(r'([0-9]+\.[0-9]+) \+/- ([0-9]+\.[0-9]+)', fit_string)[0]
+            self.results[name]['mag'].append(float(fit_val))
+            self.results[name]['δmag'].append(float(fit_error))
+            
+            fit_string = header['1_N']
+            if '*' in fit_string:
+                fit_string = fit_string.replace('*','')
+                print(f'Uncertain fit of "sersic index" for {name} with smoothing {key}')
+            fit_val, fit_error = findall(r'([0-9]+\.[0-9]+) \+/- ([0-9]+\.[0-9]+)', fit_string)[0]
+            self.results[name]['n'].append(float(fit_val))
+            self.results[name]['δn'].append(float(fit_error))
+            
+            fit_string = header['1_AR']
+            if '*' in fit_string:
+                fit_string = fit_string.replace('*','')
+                print(f'Uncertain fit of "effective radius" for {name} with smoothing {key}')
+            fit_val, fit_error = findall(r'([0-9]+\.[0-9]+) \+/- ([0-9]+\.[0-9]+)', fit_string)[0]
+            self.results[name]['ar'].append(float(fit_val))
+            self.results[name]['δar'].append(float(fit_error))
+            
+            fit_string = header['1_PA']
+            if '*' in fit_string:
+                fit_string = fit_string.replace('*','')
+                print(f'Uncertain fit of "effective radius" for {name} with smoothing {key}')
+            fit_val, fit_error = findall(r'([0-9]+\.[0-9]+) \+/- ([0-9]+\.[0-9]+)', fit_string)[0]
+            self.results[name]['pa'].append(float(fit_val))
+            self.results[name]['δpa'].append(float(fit_error))
+    
+    def calculate_accuracy(self):
+        for name in self.models:
+            for result in ['re','n','mag','pa','ar']:
+                fitted_values = self.results[name][result]
+                fitted_errors = self.results[name][f'δ{result}']
+                if result == 'mag':
+                    actual_val = 20.0
+                elif result == 're':
+                    actual_val = self.models[name][result]/self.dx
+                else:
+                    actual_val = self.models[name][result]
+                self.accuracy[name][result] = (np.array(fitted_values)-actual_val)/actual_val
+                self.accuracy[name][f'δ{result}'] = np.array(fitted_errors)/(actual_val*np.array(fitted_values))
+    
+    def read_results(self):
+        for name in self.models:
+            for key in self.models[name]['out']:
+                self.read_result_from_fit(name,key)
+            
+    def get_results(self):
+        return self.results
+            
+    def get_accuracy(self):
+        return self.accuracy
+
+    def plot(self, result:dict):
+
+        number_of_models = len(result)
+        number_of_cols = int(np.ceil(np.sqrt(number_of_models)))
+        number_of_rows = int(np.ceil(number_of_models/number_of_cols))
+
+        fig, axes = plt.subplots(number_of_rows,number_of_cols,sharex=True, sharey=True)
+        fig.set_size_inches(3*number_of_cols,3*number_of_rows, forward=True)
+        plt.subplots_adjust(wspace=0)
+        flat_axes = axes.flatten()
+
+        for i, name in enumerate(result):
+            ax: plt.axes._subplots.AxesSubplot = flat_axes[i]
+            ax.set_title(name.replace('-', ' '))
+            ax.plot(self.smoothing, result[name]['re'], f'-k',label='effective radius',zorder=5)
+            ax.scatter(self.smoothing,result[name]['re'],color='k',s=10,zorder=10)
+            ax.plot(self.smoothing, result[name]['n'], f'--k',label='sersic index',zorder=5)
+            ax.scatter(self.smoothing,result[name]['n'],color='k',s=10,zorder=10)
+            ax.legend(frameon=False,prop={'size': 7})
+            ax.grid(alpha=0.25)
+            if i>=number_of_cols*(number_of_rows-1):
+                ax.set_xlabel('Smoothing factor')
+
+        # Handle empty axis
+        for j in range(number_of_models, len(flat_axes)):
+            fig.delaxes(flat_axes[j])
+
+        return fig, axes
+
 # Constants
+FIT = False
 REL_MAP_SIZE = 2    # Relative size of the sersic map to the PSF map.
-
 PSF_FWHM = 0.16     # arcseconds
-RE_LIST = [PSF_FWHM*0.8/2,PSF_FWHM*2/2,PSF_FWHM*3/2]
-RE_STRING_LIST = ['unresolved','slightly_resolved','resolved']
-
-SERSIC_INDEX_LIST = [4,2,2] 
-MODEL_KWARGS = {
-        'position_angle':30,
-        'axis_ratio':0.8,
-    }
-
-NOISE_SNR_LIST = [10,50] # brightest pixel of synthetic source divided by standard deviation of added noise.
-NOISE_STRING_LIST = ['low_SNR','high_SNR']
+RE_SMALL, RE_MEDIUM, RE_LARGE = PSF_FWHM*0.8/2, PSF_FWHM*2/2, PSF_FWHM*3/2
+SNR_LOW, SNR_HIGH = 25, 100
 
 SMOOTHING_LIST = [2,3,4,5,6,7,8]
-
-COLOURS = ['#f2bC94','#30110d','#722620']
-SHAPES = ['--','-.']
 
 np.random.seed(1)
 
@@ -61,47 +286,18 @@ source_region_file = 'Data/Maps/HST/source20/regions/source20_F160w.reg'
 def setup():
     test_name = f'psf_smoothing_test_{files.extract_filename(psf_source_file)}'
     test_path = f'Output/tests/{test_name}/'
-    if isdir(test_path):
-        rmtree(test_path)
-    
-    makedirs(test_path)
-    copyfile(psf_source_file, f'{test_path}/source.fits')
-    copyfile(psf_sigma_file, f'{test_path}/sigma.fits')
-    copyfile(source_region_file, f'{test_path}/region.reg')
-
-    makedirs(f'{test_path}/models/')
-    makedirs(f'{test_path}/convolved/')
-    makedirs(f'{test_path}/noisy/')
-    makedirs(f'{test_path}tmp/')
+    if FIT:
+        if isdir(test_path):
+            rmtree(test_path)
+        makedirs(test_path)
+        copyfile(psf_source_file, f'{test_path}/source.fits')
+        copyfile(psf_sigma_file, f'{test_path}/sigma.fits')
+        copyfile(source_region_file, f'{test_path}/region.reg')
 
     return test_path
 
-def plot_map(map: np.ndarray):
-    fig = plt.figure(figsize=(5,5), dpi=150)
-
-    norm = simple_norm(map, 'sqrt', percent=99.9)
-    plt.imshow(map, norm=norm, origin='lower', cmap='gist_heat')
-
-    return fig
-
-def get_sersic_map(width,height,r_eff):
-    sersic = Sersic2D(
-        amplitude = SOURCE_AMPLITUDE,   # surface brightness at <r_eff>
-        r_eff = r_eff,                  # effective radius (half-light radius)
-        n = 2,                          # sersic index
-        x_0 = width/2,
-        y_0 = height/2,
-        ellip = 0.3,                    # ellipticity
-        theta = np.pi/3,                # rotation angle in radians
-    )
-
-    x,y = np.meshgrid(np.arange(width), np.arange(height))
-
-    return sersic(x,y)
-
-
-
 def main():
+    
     
     test_path = setup()
 
@@ -113,142 +309,46 @@ def main():
         smooth_size=3
     )
     psf_file = f'{test_path}/source_psf.fits'
-    copyfile(psf_file,f'{test_path}/original_psf.fits' )
+    copyfile(psf_file,f'{test_path}/original_psf.fits')
 
-    '''Load in the psf_file and set some constants from it.'''
-    with fits.open(psf_file) as hdul:
-        data: np.ndarray = hdul[0].data
-        psf_map = np.copy(data)
-        header = hdul[0].header
+    ctrl = TestPsfSmoothing(test_path, f'{test_path}/original_psf.fits', REL_MAP_SIZE)
 
-    deg_per_pixel_y = float(header['CD1_1'])
-    dy = 3600*deg_per_pixel_y
-    deg_per_pixel_x = float(header['CD2_2'])
-    dx = 3600*deg_per_pixel_x
+    ctrl.add_model('unresolved-low-snr', RE_SMALL, 4, 30, 0.8, SNR_LOW)
+    ctrl.add_model('barely-resolved-low-snr', RE_MEDIUM, 2, 30, 0.8, SNR_LOW)
+    ctrl.add_model('resolved-low-snr', RE_LARGE, 2, 30, 0.8, SNR_LOW)
 
-    psf_pixel_height, psf_pixel_width = psf_map.shape # height is number of rows, and width is number of columns
-    shape = (psf_pixel_height*REL_MAP_SIZE, psf_pixel_width*REL_MAP_SIZE)
+    ctrl.add_model('unresolved-high-snr', RE_SMALL, 4, 30, 0.8, SNR_HIGH)
+    ctrl.add_model('barely-resolved-high-snr', RE_MEDIUM, 2, 30, 0.8, SNR_HIGH)
+    ctrl.add_model('resolved-high-snr', RE_LARGE, 2, 30, 0.8, SNR_HIGH)
 
-    '''Create synthetic maps'''
+    ctrl.create_synthetic_maps()
+    if FIT:
+        ctrl.fit_maps(SMOOTHING_LIST)
+    else:
+        ctrl.find_maps(SMOOTHING_LIST)
 
-    for re_arcsec, sersic_index, name in zip(RE_LIST,SERSIC_INDEX_LIST, RE_STRING_LIST):
-        create_sersic(
-            filename=f'{test_path}/models/{name}.fits',
-            re=re_arcsec,
-            n=sersic_index,
-            shape=shape,
-            dx=dx,
-            dy=dy,
-            **MODEL_KWARGS)
-
-        with create_from(f'{test_path}/models/{name}.fits',f'{test_path}/convolved/{name}.fits',index=0) as hdu:
-            hdu.data = convolve(hdu.data, psf_map, mode='same')
-            peak_brightness = np.max(hdu.data)
-
-        for snr, snr_name in zip(NOISE_SNR_LIST, NOISE_STRING_LIST):
-            std = peak_brightness/snr
-            noise = np.random.normal(loc=0,scale=std,size=shape)
-            with create_from(f'{test_path}/convolved/{name}.fits',f'{test_path}/noisy/{name}_{snr_name}.fits', index=0) as hdu:
-                hdu.data += noise
-            with create_from(f'{test_path}/noisy/{name}_{snr_name}.fits',f'{test_path}/noisy/{name}_{snr_name}_sigma.fits', index=0) as hdu:
-                hdu.data = np.ones(shape)*std
-
-    total_results = []
-    total_errors = []
-    for re, sersic_index, name in zip(RE_LIST,SERSIC_INDEX_LIST,RE_STRING_LIST):
-        for snr_name in NOISE_STRING_LIST:
-            results = {'Effective radius':[],'Integrated magnitude':[],'Position angle':[],'Axis ratio':[], 'Sersic index':[]}
-            errors = {'Effective radius':[],'Integrated magnitude':[],'Position angle':[],'Axis ratio':[], 'Sersic index':[]}
-            for smoothing_factor in SMOOTHING_LIST:
-                create_psf(
-                    fits_file=f'{test_path}/source.fits',
-                    sigma_file=f'{test_path}/sigma.fits',
-                    region_file=f'{test_path}/region.reg',
-                    smooth_size=smoothing_factor
-                )
-
-                fits_file = f'{test_path}/noisy/{name}_{snr_name}.fits'
-                sigma_file = f'{test_path}/noisy/{name}_{snr_name}_sigma.fits'
-                out_file = f'{test_path}tmp/out.fits'
-                parameters = {
-                    'A': [fits_file],
-                    'B': [out_file],
-                    'C': [sigma_file],
-                    'D': [psf_file],
-                    'J': ['26.563'],
-                    'K': [str(dx), str(dy)],
-                } 
-
-                sersic = {
-                    '0': ['sersic'],
-                    '1': [f'{shape[1]/2}',f'{shape[0]/2}','0','0'],
-                    '3': ['20.0','1'],
-                    '4': [f'{re/dx}','1'],
-                    '5': [f'{sersic_index}','1'],
-                    '9': [str(MODEL_KWARGS['axis_ratio']),'1'],
-                    '10': [str(MODEL_KWARGS['position_angle']),'1'],
-                    'Z': ['0']
-                }
-
-                sky_bg = {
-                    '0': ['sky'],
-                    '1': ['0','1'],
-                    '2': ['0.0000',0],
-                    '3': ['0.0000',0],
-                    'Z': ['0']
-                }
-
-                create_input_file('galfit.INPUT', parameters, [sersic,sky_bg])
-                run_galfit('galfit.INPUT', log_file=f'{test_path}tmp/out.log')
-
-                with fits.open(out_file) as hdul:
-                    header = hdul[2].header
-                    
-                    fit_string = header['1_RE']
-                    fit_val, fit_error = findall(r'([0-9]+\.[0-9]+) \+/- ([0-9]+\.[0-9]+)', fit_string)[0]
-                    results['Effective radius'] += [(float(fit_val)-(re/dx))/(re/dx)]
-                    errors['Effective radius'] += [abs(float(fit_error)/((re/dx)*float(fit_val)))]
-                    
-                    fit_string = header['1_MAG']
-                    fit_val, fit_error = findall(r'([0-9]+\.[0-9]+) \+/- ([0-9]+\.[0-9]+)', fit_string)[0]
-                    results['Integrated magnitude'] += [(float(fit_val)-(20.0))/(20.0)]
-                    errors['Integrated magnitude'] += [abs(float(fit_error)/(20.0*float(fit_val)))]
-                    
-                    fit_string = header['1_AR']
-                    fit_val, fit_error = findall(r'([0-9]+\.[0-9]+) \+/- ([0-9]+\.[0-9]+)', fit_string)[0]
-                    results['Position angle'] += [(float(fit_val)-(MODEL_KWARGS['axis_ratio']))/(MODEL_KWARGS['axis_ratio'])]
-                    errors['Position angle'] += [abs(float(fit_error)/(MODEL_KWARGS['axis_ratio']*float(fit_val)))]
-                    
-                    fit_string = header['1_PA']
-                    fit_val, fit_error = findall(r'([0-9]+\.[0-9]+) \+/- ([0-9]+\.[0-9]+)', fit_string)[0]
-                    results['Axis ratio'] += [(float(fit_val)-(MODEL_KWARGS['axis_ratio']))/(MODEL_KWARGS['axis_ratio'])]
-                    errors['Axis ratio'] += [abs(float(fit_error)/(MODEL_KWARGS['axis_ratio']*float(fit_val)))]
-
-                    fit_string:str = header['1_N']
-                    if '*' in fit_string:
-                        fit_string = fit_string.replace('*','')
-                        print(f'Error in "{name} {snr_name}".')
-                    fit_val, fit_error = findall(r'([0-9]+\.[0-9]+) \+/- ([0-9]+\.[0-9]+)', fit_string)[0]
-                    results['Sersic index'] += [(float(fit_val)-(sersic_index))/(sersic_index)]
-                    errors['Sersic index'] += [abs(float(fit_error)/(sersic_index*float(fit_val)))]
-
-            total_results.append(results)
-            total_errors.append(errors)
+    ctrl.read_results()
+    results = ctrl.get_results()
+    ctrl.calculate_accuracy()
+    accuracy = ctrl.get_accuracy()
     
-    print(total_results)
-    print()
-    print(total_errors)
+    for name in ctrl.models:
+        print(f'Model: "{name}"')
+        print(f're = {ctrl.models[name]["re"]/ctrl.dx:.3f}, n = {ctrl.models[name]["n"]:.3f}, mag = 20.000, pa = {ctrl.models[name]["pa"]:.3f}, ar = {ctrl.models[name]["ar"]:.3f}')
+        for key in ['re','n','mag','pa','ar']:
+            print(f'\t{key} = ')
+            print(f'\t\tResults:   {", ".join([f"{val:.3f}" for val in results[name][key]])}')
+            print(f'\t\tAccuracy:  {", ".join([f"{val:.3f}" for val in accuracy[name][key]])}')
 
-    for key in ['Effective radius','Integrated magnitude','Position angle','Axis ratio', 'Sersic index']:
-        plt.figure(figsize=(5,5),dpi=100)
-        plt.title(key)
-        i = 0
-        for name,colour in zip(RE_STRING_LIST,COLOURS):
-            for snr_name,shape in zip(NOISE_STRING_LIST,SHAPES):
-                plt.plot(SMOOTHING_LIST,total_results[i][key],shape,color=colour,label=f'{name} {snr_name}')
-                i += 1
-        plt.legend(frameon=False)
-        plt.savefig(f'par_{key.replace(" ", "_")}.png')
+    fig, axes = ctrl.plot(accuracy)
+    for ax in axes[:,0]:
+        ax.set_ylabel('Residuals')
+    plt.savefig('figures/psfs/smoothing_test_residuals.png',bbox_inches='tight')
+
+    fig, axes = ctrl.plot(results)
+    for ax in axes[:,0]:
+        ax.set_ylabel('Recovered value')
+    plt.savefig('figures/psfs/smoothing_test_values.png',bbox_inches='tight')
 
 if __name__ == '__main__':
     main()
