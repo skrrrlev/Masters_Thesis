@@ -20,7 +20,7 @@ from re import findall
 from matplotlib import pyplot as plt, tight_layout
 from os import makedirs, getcwd
 from os.path import isdir, isfile
-from shutil import rmtree, copyfile
+from shutil import rmtree, copyfile, move
 from astropy.io import fits
 from astropy.modeling.models import Sersic2D
 from astropy.visualization import simple_norm
@@ -113,13 +113,6 @@ class TestPsfSmoothing:
                 makedirs(out_path)
 
             for s in smoothing:
-                # Create psf with current smoothing
-                create_psf(
-                    fits_file=f'{self.test_path}/source.fits',
-                    sigma_file=f'{self.test_path}/sigma.fits',
-                    region_file=f'{self.test_path}/region.reg',
-                    smooth_size=s
-                )
                 
                 # Create the galfit input file
                 self.models[name]['out'][s] = f'{out_path}/fit_s{s}.fits'
@@ -127,14 +120,14 @@ class TestPsfSmoothing:
                     'A': [self.models[name]['input']],
                     'B': [self.models[name]['out'][s]],
                     'C': [self.models[name]['sigma']],
-                    'D': [f'{self.test_path}source_psf.fits'],
+                    'D': [f'{self.test_path}/psfs/psf_s{s}.fits'],
                     'J': ['26.563'],
                     'K': [str(self.dx), str(self.dy)],
                 } 
                 pixel_re = self.models[name]['re']/self.dx
                 sersic = {
                     '0': ['sersic'],
-                    '1': [f'{self.shape[1]/2}',f'{self.shape[0]/2}','0','0'],
+                    '1': [f'{self.shape[1]/2+1}',f'{self.shape[0]/2+1}','0','0'],
                     '3': ['20.0','1'],
                     '4': [f'{pixel_re}','1'],
                     '5': [f'{self.models[name]["n"]}','1'],
@@ -238,24 +231,29 @@ class TestPsfSmoothing:
     def get_accuracy(self):
         return self.accuracy
 
-    def plot(self, result:dict):
+    @staticmethod
+    def plot(smoothing:"list[int]", result:dict, percentage=False):
 
         number_of_models = len(result)
         number_of_cols = int(np.ceil(np.sqrt(number_of_models)))
         number_of_rows = int(np.ceil(number_of_models/number_of_cols))
 
-        fig, axes = plt.subplots(number_of_rows,number_of_cols,sharex=True, sharey=True)
+        fig, axes = plt.subplots(number_of_rows,number_of_cols,sharex=True)
         fig.set_size_inches(3*number_of_cols,3*number_of_rows, forward=True)
-        plt.subplots_adjust(wspace=0)
+        #plt.subplots_adjust(wspace=0)
         flat_axes = axes.flatten()
-
+        if percentage:
+            factor=100
+        else:
+            factor=1
         for i, name in enumerate(result):
             ax: plt.axes._subplots.AxesSubplot = flat_axes[i]
-            ax.set_title(name.replace('-', ' '))
-            ax.plot(self.smoothing, result[name]['re'], f'-k',label='effective radius',zorder=5)
-            ax.scatter(self.smoothing,result[name]['re'],color='k',s=10,zorder=10)
-            ax.plot(self.smoothing, result[name]['n'], f'--k',label='sersic index',zorder=5)
-            ax.scatter(self.smoothing,result[name]['n'],color='k',s=10,zorder=10)
+            ax.set_title(name.replace('-0','').replace('-', ' '))
+            
+            ax.plot(smoothing, factor*result[name]['re'], f'-k',label='effective radius',zorder=5)
+            ax.scatter(smoothing,factor*result[name]['re'],color='k',s=10,zorder=10)
+            ax.plot(smoothing, factor*result[name]['n'], f'--k',label='sersic index',zorder=5)
+            ax.scatter(smoothing,factor*result[name]['n'],color='k',s=10,zorder=10)
             ax.legend(frameon=False,prop={'size': 7})
             ax.grid(alpha=0.25)
             if i>=number_of_cols*(number_of_rows-1):
@@ -267,11 +265,25 @@ class TestPsfSmoothing:
 
         return fig, axes
 
+    @staticmethod
+    def add_to_plot(axes, smoothing, result, j, percentage=False):
+        flat_axes = axes.flatten()
+        if percentage:
+            factor=100
+        else:
+            factor=1
+        for i, name in enumerate(result):
+            ax: plt.axes._subplots.AxesSubplot = flat_axes[i]           
+            ax.plot(smoothing, factor*result[name]['re'], f'-C{j}',label='effective radius',zorder=5)
+            ax.scatter(smoothing,factor*result[name]['re'],color=f'C{j}',s=10,zorder=10)
+            ax.plot(smoothing, factor*result[name]['n'], f'C{j}--',label='sersic index',zorder=5)
+            ax.scatter(smoothing,factor*result[name]['n'],color=f'C{j}',s=10,zorder=10)
+
 # Constants
 FIT = False
 REL_MAP_SIZE = 2    # Relative size of the sersic map to the PSF map.
-PSF_FWHM = 0.16     # arcseconds
-RE_SMALL, RE_MEDIUM, RE_LARGE = PSF_FWHM*0.8/2, PSF_FWHM*2/2, PSF_FWHM*3/2
+PSF_FWHM = 0.25     # arcseconds
+RE_SMALL, RE_MEDIUM, RE_LARGE = PSF_FWHM*0.8/2, PSF_FWHM*3/2, PSF_FWHM*10/2
 SNR_LOW, SNR_HIGH = 25, 100
 
 SMOOTHING_LIST = [2,3,4,5,6,7,8]
@@ -311,44 +323,84 @@ def main():
     psf_file = f'{test_path}/source_psf.fits'
     copyfile(psf_file,f'{test_path}/original_psf.fits')
 
-    ctrl = TestPsfSmoothing(test_path, f'{test_path}/original_psf.fits', REL_MAP_SIZE)
-
-    ctrl.add_model('unresolved-low-snr', RE_SMALL, 4, 30, 0.8, SNR_LOW)
-    ctrl.add_model('barely-resolved-low-snr', RE_MEDIUM, 2, 30, 0.8, SNR_LOW)
-    ctrl.add_model('resolved-low-snr', RE_LARGE, 2, 30, 0.8, SNR_LOW)
-
-    ctrl.add_model('unresolved-high-snr', RE_SMALL, 4, 30, 0.8, SNR_HIGH)
-    ctrl.add_model('barely-resolved-high-snr', RE_MEDIUM, 2, 30, 0.8, SNR_HIGH)
-    ctrl.add_model('resolved-high-snr', RE_LARGE, 2, 30, 0.8, SNR_HIGH)
-
-    ctrl.create_synthetic_maps()
     if FIT:
-        ctrl.fit_maps(SMOOTHING_LIST)
-    else:
-        ctrl.find_maps(SMOOTHING_LIST)
+        makedirs(f'{test_path}/psfs/')
+        for s in SMOOTHING_LIST:
+            create_psf(
+                fits_file=f'{test_path}/source.fits',
+                sigma_file=f'{test_path}/sigma.fits',
+                region_file=f'{test_path}/region.reg',
+                smooth_size=s
+            )
+            move(f'{test_path}/source_psf.fits',f'{test_path}/psfs/psf_s{s}.fits')
 
-    ctrl.read_results()
-    results = ctrl.get_results()
-    ctrl.calculate_accuracy()
-    accuracy = ctrl.get_accuracy()
-    
+    accuracies = {}
+    for i in range(10):
+        ctrl = TestPsfSmoothing(test_path, f'{test_path}/original_psf.fits', REL_MAP_SIZE)
+        re_offset = (1.2 - 0.8) * np.random.random_sample() + 0.8
+        n_offset = (1.2 - 0.8) * np.random.random_sample() + 0.8
+
+        ctrl.add_model(f'unresolved-low-snr-{i}', RE_SMALL*re_offset, 4*n_offset, 30, 0.8, SNR_LOW)
+        ctrl.add_model(f'resolved-low-snr-{i}', RE_MEDIUM*re_offset, 2*n_offset, 30, 0.8, SNR_LOW)
+        ctrl.add_model(f'extended-low-snr-{i}', RE_LARGE*re_offset, 2*n_offset, 30, 0.8, SNR_LOW)
+
+        ctrl.add_model(f'unresolved-high-snr-{i}', RE_SMALL*re_offset, 4*n_offset, 30, 0.8, SNR_HIGH)
+        ctrl.add_model(f'resolved-high-snr-{i}', RE_MEDIUM*re_offset, 2*n_offset, 30, 0.8, SNR_HIGH)
+        ctrl.add_model(f'extended-high-snr-{i}', RE_LARGE*re_offset, 2*n_offset, 30, 0.8, SNR_HIGH)
+
+        ctrl.create_synthetic_maps()
+        if FIT:
+            ctrl.fit_maps(SMOOTHING_LIST)
+        else:
+            ctrl.find_maps(SMOOTHING_LIST)
+
+        ctrl.read_results()
+        ctrl.calculate_accuracy()
+        accuracy = ctrl.get_accuracy()
+        accuracies[i] = accuracy
+
+        if not i:
+            fig, axes = TestPsfSmoothing.plot(SMOOTHING_LIST, accuracy, percentage=True)
+            for ax in axes[:,0]:
+                ax.set_ylabel('Percentage Residuals')
+        else:
+            TestPsfSmoothing.add_to_plot(axes,SMOOTHING_LIST,accuracy,i-1,percentage=True)
+
+    plt.savefig('figures/psfs/combined_smoothing_test_residuals.png',bbox_inches='tight')
+
+    '''
     for name in ctrl.models:
         print(f'Model: "{name}"')
         print(f're = {ctrl.models[name]["re"]/ctrl.dx:.3f}, n = {ctrl.models[name]["n"]:.3f}, mag = 20.000, pa = {ctrl.models[name]["pa"]:.3f}, ar = {ctrl.models[name]["ar"]:.3f}')
         for key in ['re','n','mag','pa','ar']:
             print(f'\t{key} = ')
-            print(f'\t\tResults:   {", ".join([f"{val:.3f}" for val in results[name][key]])}')
             print(f'\t\tAccuracy:  {", ".join([f"{val:.3f}" for val in accuracy[name][key]])}')
 
-    fig, axes = ctrl.plot(accuracy)
+    
+    fig, axes = ctrl.plot(accuracy, percentage=True)
     for ax in axes[:,0]:
-        ax.set_ylabel('Residuals')
+        ax.set_ylabel('Percentage Residuals')
     plt.savefig('figures/psfs/smoothing_test_residuals.png',bbox_inches='tight')
-
-    fig, axes = ctrl.plot(results)
+    '''
+    for key in accuracies:
+        if not key:
+            accuracy: dict = accuracies[key]
+            names = list(accuracy.keys())
+            for name in names:   
+                accuracy[name]['re'] /= 10
+                accuracy[name]['n'] /= 10
+            continue
+        
+        other:dict = accuracies[key]
+        other_names = list(other.keys())
+        for name,other_name in zip(names,other_names):
+            accuracy[name]['re'] += other[other_name]['re']/10
+            accuracy[name]['n'] += other[other_name]['n']/10
+    
+    fig, axes = TestPsfSmoothing.plot(SMOOTHING_LIST, accuracy, percentage=True)
     for ax in axes[:,0]:
-        ax.set_ylabel('Recovered value')
-    plt.savefig('figures/psfs/smoothing_test_values.png',bbox_inches='tight')
+        ax.set_ylabel('Percentage Residuals')
+    plt.savefig('figures/psfs/average_smoothing_test_residuals.png',bbox_inches='tight')
 
 if __name__ == '__main__':
     main()
