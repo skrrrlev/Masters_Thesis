@@ -2,7 +2,7 @@
 
 die () {
     echo >&2 "$@"
-    exit 1
+    exit 9
 }
 
 [ "$#" -eq 1 ] || die "1 argument required, $# provided"
@@ -14,3 +14,4 @@ python Scripts/maps/segmentation_map.py $1
 python Scripts/maps/sigma.py $1
 python Scripts/maps/crop.py $1
 python Scripts/maps/mask.py $1
+python Scripts/maps/psf.py $1

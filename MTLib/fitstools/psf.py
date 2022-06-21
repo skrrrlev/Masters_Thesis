@@ -233,9 +233,8 @@ def _plot(data: np.ndarray, filename:str, adjust:str):
     fig.savefig(filename,bbox_inches = 'tight')
     plt.close()
 
-def create_psf(fits_file:str, sigma_file:str, region_file:str='', smooth_size=3):
+def create_psf(fits_file:str, sigma_file:str, region_file:str='', smooth_size=3, output_file:str = ''):
     ''''''
-    print(f'\nWorking on {files.extract_path(fits_file)}')
     with fits.open(fits_file) as hdul:
         data: np.ndarray = hdul[0].data
         psf = np.copy(data)
@@ -251,21 +250,24 @@ def create_psf(fits_file:str, sigma_file:str, region_file:str='', smooth_size=3)
 
     '''Save the psf.'''
     # Get the weight image in the fits file
-    hdu = fits.open(fits_file)[0]
-    hdu.header['EXTVER'] = 'PSF'
-    hdu.data = psf
+    with fits.open(fits_file) as hdul:
+        hdu = hdul[0]
+        hdu.header['EXTVER'] = 'PSF'
+        hdu.data = psf
 
-    # Now we save the psf
-    current_filename = files.extract_filename(fits_file)
-    output_folder = files.extract_path(fits_file).replace('Data','Output')
-    folder_name = files.extract_folder_name(output_folder)
-    output_name = current_filename + '_psf'
-    output_file = output_folder + output_name + '.fits'
-    print(f'Saving psf: {output_file}')
-    hdu.writeto(output_file, overwrite=True)
+        # Now we save the psf
+        if not output_file:
+            current_filename = files.extract_filename(fits_file)
+            output_folder = files.extract_path(fits_file).replace('Data','Output')
+            output_name = current_filename + '_psf'
+            output_file = output_folder + output_name + '.fits'
+        else:
+            output_name = files.extract_filename(output_file)
+        print(f'Saving psf: {output_file}')
+        hdu.writeto(output_file, overwrite=True)
 
-    _plot(psf,f'{constants.PATH.FIGURES.value}psfs/{current_filename}_{folder_name}/psf.png',adjust="right")
-    _plot(data,f'{constants.PATH.FIGURES.value}psfs/{current_filename}_{folder_name}/before_psf.png',adjust="left")
+    _plot(psf,f'{constants.PATH.FIGURES.value}psfs/{output_name}.png',adjust="right")
+    _plot(data,f'{constants.PATH.FIGURES.value}psfs/{output_name}_before_psf.png',adjust="left")
 
 if __name__ == '__main__':
     create_psf(

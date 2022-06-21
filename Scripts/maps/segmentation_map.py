@@ -3,38 +3,31 @@ author: Ditlev Frickmann
 email: reimer.frickmann@gmail.com
 
 This script will create a segmentation map for all fits files beneath the specified root directory.
-
+Takes either a .ini file or a directory as argument.
+    - If a .ini file is given, the script will only be applied to it.
+    - If a directory is given, the script will be applied to all .ini files in and below that directory.
 """
 
 from sys import argv
 from shutil import move
-from os.path import isdir
-
-from MTLib import files
+from MTLib.files import MapPipelineManager as MPP
 from MTLib.fitstools import create_segmentation_map
 
-def setup():
-    root = argv[1]
-    if not isdir(root):
-        raise ValueError('Root must be a directory.')
-    return root
 
 def main():
-    root = setup()
-    
-    # get fits files in root and below root
-    fits_files = files.walker(root,extension='.fits')
 
-    for fits_file in fits_files:
+    ini_files = MPP.read_input(argv)
+    ini_files = MPP.get_output_files(ini_files)
 
-        '''
-        We're going to create a mask of all the sources in the fits file.
-        We use SExtractor to create a segmentation map, and then we create a source mask from that.
-        '''
-        segmentation_map = create_segmentation_map(fits_file)
-        segmentation_map_out = segmentation_map.replace('Data','Output')
-        print(f'Moving segmentation map to {segmentation_map_out}')
-        move(segmentation_map, segmentation_map_out)
+    for ini_file in ini_files:
+        with MPP(ini_file) as ini:
+            tab='DEFAULT'
+            name = ini.get_item_from(tab,item='name')
+            path = ini.get_item_from(tab,item='path')
+            source_file = ini.get_item_from(tab, 'source_file')
+            
+            segmentation_map = create_segmentation_map(source_file)
+            ini.add_item_to(tab,item='segmentation_map_file',value=segmentation_map)
 
 
 if __name__ == '__main__':

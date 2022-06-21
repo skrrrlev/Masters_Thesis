@@ -8,71 +8,47 @@ This script will apply crops to all fits files beneath the specified root direct
 
 from sys import argv
 from os.path import isdir, isfile
+from os import makedirs
+from shutil import rmtree
 
+from matplotlib.pyplot import get
+
+from MTLib.files import MapPipelineManager as MPP
 from MTLib import files
-from MTLib.fitstools import crop_using_region
+from MTLib.fitstools import crop_using_region, get_regions
+from MTLib.fitstools.croptools import crop_using_MPP, crop_using_ini_tab
 
-def setup():
-    root = argv[1]
-    if not isdir(root):
-        raise ValueError('Root must be a directory.')
-    return root
 
 def main():
-    root = setup()
-    
-    # get fits files in root and below root
-    fits_files = files.walker(root,extension='.fits')
+    ini_files = MPP.read_input(argv)
+    ini_files = MPP.get_output_files(ini_files)
 
-    for fits_file in fits_files:
-        # get name of current source from the fits file
-        file_name = files.extract_filename(fits_file)
-        # define the output folder
-        fits_file_path = files.extract_path(fits_file)
-        output_dir = fits_file_path.replace('Data','Output')
-        # Define the region file
-        region_file = fits_file_path + 'regions/' + file_name + '.reg'
-        if not isfile(region_file):
-            print(f'Skipped creating crops for {file_name}. Could not find region file at {region_file}')
-            continue
-        
-        crop_using_region(
-                fits_path=fits_file,
-                region_path=region_file,
-                output_folder=output_dir,
-                output_name=file_name,
-                extension=0
-            )
-        
-        dead_pixels = output_dir + file_name + '_dead.fits'
-        if isfile(dead_pixels):
-            crop_using_region(
-                fits_path=dead_pixels,
-                region_path=region_file,
-                output_folder=output_dir,
-                output_name=files.extract_filename(dead_pixels),
-                extension=1
-            )
-        
-        segmentation_map = output_dir + file_name + '_segmentation.fits'
-        if isfile(segmentation_map):
-            crop_using_region(
-                fits_path=segmentation_map,
-                region_path=region_file,
-                output_folder=output_dir,
-                output_name=files.extract_filename(segmentation_map),
-                extension=1
-            )
+    for ini_file in ini_files:
+        with MPP(ini_file) as ini:
+            tab = 'DEFAULT'
+            path = ini.get_item_from(tab, item="path")
+            name = ini.get_item_from(tab, item="name")
+            
+            if not ini.contains(tab, item="region_file"):
+                print(f'Skipped creating crops for {name}. Region file did not exist.')
+                continue
+            region_file = ini.get_item_from(tab, item="region_file")
+            regions = get_regions(region_file)
+            
+            for region in regions:
+                ini.add_tab(region)
 
-        sigma_map = output_dir + file_name + '_sigma.fits'
-        if isfile(sigma_map):
-            crop_using_region(
-                fits_path=sigma_map,
-                region_path=region_file,
-                output_folder=output_dir,
-                output_name=files.extract_filename(sigma_map),
-                extension=1
-            )
+                region_path = f'{path}/{region}'
+                if isdir(region_path):
+                    rmtree(region_path)
+                makedirs(region_path)
+                ini.add_item_to(region, item=f'{region}_path', value=region_path)
+
+            crop_using_MPP(ini, file_key='source_file', output_name=f'{name}', extension=0)
+            crop_using_MPP(ini, file_key='dead_mask_file', output_name=f'{name}_dead_mask', extension=1)
+            crop_using_MPP(ini, file_key='segmentation_map_file', output_name=f'{name}_segmentation_map', extension=1)
+            crop_using_MPP(ini, file_key='sigma_file', output_name=f'{name}_sigma', extension=1)
+                
 
 if __name__ == '__main__':
     main()

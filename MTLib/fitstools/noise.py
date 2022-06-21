@@ -97,6 +97,7 @@ def create_sigma_image_from_noise_distribution(fits_file: str, noise_pixel_mask_
     # Now we save the sigma image.
     print(f'Saving σ-image: {output_file}')
     hdu.writeto(output_file, overwrite=True)
+    return output_file
 
 
 

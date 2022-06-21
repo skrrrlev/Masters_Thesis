@@ -12,6 +12,7 @@ from os import listdir
 import configparser
 
 from MTLib import files
+from MTLib.files import MapPipelineManager as MPP
 from MTLib.fitstools import create_mask_from_segmentation_map
 
 
@@ -22,42 +23,36 @@ def setup():
     return root
 
 def main():
-    root = setup()
-    if 'Output/' in root:
-        raise ValueError('Specify root in data directory.')
-    
-    # get fits files in root and below root
-    fits_files = [file for file in files.walker(root,extension='.fits')]
 
-    for fits_file in fits_files:
-        # get name of current source from the fits file
-        file_name = files.extract_filename(fits_file)
-        output_dir = files.extract_path(fits_file).replace('Data','Output')
+    ini_files = MPP.read_input(argv)
+    ini_files = MPP.get_output_files(ini_files)
 
-        exclude_list = []
-        ini_file = output_dir+file_name+'.ini'
-        if isfile(ini_file):
-            config = configparser.ConfigParser()
-            config.read(ini_file)
-            if 'MASK' in config:
-                if 'exclude' in config['MASK'].keys():
-                    exclude = config['MASK']['exclude']
-                    exclude_list = [int(val) for val in exclude.split(',')]
+    for ini_file in ini_files:
+        with MPP(ini_file) as ini:
+            
+            # Check whether some segments should be excluded from the map
+            # as defined by the 'exclude_from_mask' keyword in the .ini file.
+            exclude_from_mask = ini.get_item_from('DEFAULT',item='exclude_from_mask')
+            exclude_list = [int(val) for val in exclude_from_mask.split(',') if val]
+            
+            # If the .ini contains the right ascension and declination, use those coordinates, to create the mask.
+            # Otherwise, use the centre of the cutout.
+            if ini.contains('DEFAULT','ra') and ini.contains('DEFAULT','dec'):
+                right_ascension = float(ini.get_item_from('DEFAULT','ra'))
+                declination = float(ini.get_item_from('DEFAULT','dec'))
             else:
-                config['MASK'] = {}
-            with open(ini_file, 'w') as config_file:
-                config.write(config_file)
-        print(f'Exclude in ini: {exclude_list}')
+                right_ascension = None
+                declination = None
 
-        cutout_directories = [output_dir+item+'/' for item in listdir(output_dir) if isdir(output_dir+item+'/')]
-
-        for subdir in cutout_directories:
-        
-            try:
-                segmentation_map = subdir + file_name + '_segmentation.fits'
-                create_mask_from_segmentation_map(segmentation_map, exclude_list)
-            except Exception as e:
-                print(f'Failed to create mask for {segmentation_map}: {e}')
+            segmentation_map_file = ini.get_item_from('galaxy',item='galaxy_segmentation_map_file')
+            
+            mask_file = create_mask_from_segmentation_map(
+                segmentation_map=segmentation_map_file,
+                ra=right_ascension,
+                dec=declination,
+                exclude_list=exclude_list
+            )
+            ini.add_item_to('galaxy',item='mask_file', value=mask_file)
 
 if __name__ == '__main__':
     main()

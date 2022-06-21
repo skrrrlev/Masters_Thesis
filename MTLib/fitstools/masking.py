@@ -41,7 +41,7 @@ def create_segmentation_map(fits_file: str) -> str:
         if isfile(new_sex_file):
             remove(new_sex_file)
 
-        segmentation_file_name = fits_file_name+'_segmentation'
+        segmentation_file_name = fits_file_name+'_segmentation_map'
         new_content = content.replace('<segmentation>',segmentation_file_name)
         with open(new_sex_file,'w') as nsf:
             nsf.write(new_content)
@@ -78,14 +78,16 @@ def create_segmentation_map(fits_file: str) -> str:
         remove(fits_file_dir+item)
     return segmentation_file
 
-def create_mask_from_segmentation_map(segmentation_map: str, ra: float = None, dec: float = None, frame=FK5, exclude_list:"list[int]"=[]):
+def create_mask_from_segmentation_map(segmentation_map: str, ra: float = None, dec: float = None, frame=ICRS, exclude_list:"list[int]"=[]):
     '''
     Using a segmentation map and the coordinates of the source, create a mask for galfit.
     If coordinates are not specified, will use the centre of the map.
+    If coordinates are specified, will use the astropy.coordinates class that is specified, to convert the coordinate values to pixel indices.
     '''
 
     '''Load the HDU and the WCS'''
-    hdu = fits.open(segmentation_map)[0]
+    hdul = fits.open(segmentation_map)
+    hdu = hdul[0]
     wcs = WCS(hdu.header)
 
     '''Get the pixels at the centre of the source'''
@@ -99,12 +101,13 @@ def create_mask_from_segmentation_map(segmentation_map: str, ra: float = None, d
         if isnan(xp) or isnan(yp):
             raise ValueError('Input coordinates is not within image.')
         x = int(round(xp,0))
-        y = int(round(M-yp,0))
+        y = int(round(yp,0))
 
     '''Get the value of the segmentation map at the source'''
-    value_at_source = hdu.data[x,y]
+    value_at_source = hdu.data[y,x]
     if not value_at_source:
-        raise SegmentationMapSourceValueError(f'Source value at ({x},{y}) in segmentation map was zero.')
+        raise SegmentationMapSourceValueError(f'Source value at (col={x},row={y}) in segmentation map ({segmentation_map}) was zero.')
+    print((f'Source value at (col={x},row={y}) is {value_at_source} in segmentation map ({segmentation_map}). [zero-based index from top-left]'))
 
     '''Remove the source from the mask'''
     hdu.data[hdu.data == value_at_source] = 0
@@ -114,9 +117,11 @@ def create_mask_from_segmentation_map(segmentation_map: str, ra: float = None, d
         hdu.data[hdu.data == value] = 0
 
     '''Save the mask'''
-    mask_file_name = segmentation_map.replace('segmentation','mask')
+    mask_file_name = segmentation_map.replace('segmentation_map','mask')
     print(f'Saving {mask_file_name}')
     hdu.writeto(mask_file_name, overwrite=True)
+    hdul.close()
+    return mask_file_name
 
 if __name__ == '__main__':
     a = create_segmentation_map(PATH.OUTPUTMAPS.value + 'HST/source13/source13_F160w/source13_F160w_galaxy.fits')
