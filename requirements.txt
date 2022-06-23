@@ -43,6 +43,7 @@ scipy==1.5.4
 six==1.16.0
 stack-data==0.2.0
 stardust @ git+https://github.com/VasilyKokorev/stardust.git@1c5c21728b44e3cd6cc000b65ef2fb08985519c7
+C4S @ git+https://github.com/skrrrlev/Cataloguer-4-Stardust
 tomli==1.2.3
 tornado==6.1
 tqdm==4.62.3
