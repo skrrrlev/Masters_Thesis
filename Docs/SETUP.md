@@ -36,7 +36,7 @@ python -V
 ```
 
 ## Virtual environment
-Often when working with something in Python, it is beneficial to setup a virtual environment. It is basically a clean sheet of python, where only the built-in modules is installed. Other packages that might come in handy, can easily be installed with _pip_.
+Often when working with something in Python, it is beneficial to setup a virtual environment. It is basically a clean sheet of python, where only the built-in modules are installed. Other packages that might come in handy, can easily be installed with _pip_.
 
 This can simply be done by invoking the _virtualenv_ python package from the console. 
 The package is usually installed already
@@ -69,10 +69,10 @@ I set up a list of requirements in the root folder of this project. These are pa
 ```console
 python -m pip install -r requirements.txt
 ```
-This list also includes the _Stardust_ package, which will be installed directly from its GitHub page. Moreover, it also includes the package _Cataloguer 4 Stardust_ (C4S) that I created to make it easier to work with _Stardust_.
+This list also includes the _Stardust_ package, which will be installed directly from its GitHub page. Moreover, it also includes the package [Cataloguer 4 Stardust (C4S)](https://github.com/skrrrlev/Cataloguer-4-Stardust) that I created to make it easier to work with _Stardust_.
 
 ## MTLib: Master Thesis Library
 I've created a library of methods and classes used in the scripts of this project. Install them to your virtual environment using the _setup.py_ script in the root folder:
 ```console
-python -m pip install .                     # installs the library I built for this project.
+python -m pip install .
 ```
