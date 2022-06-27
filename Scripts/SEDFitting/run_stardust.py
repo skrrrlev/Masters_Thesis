@@ -220,6 +220,11 @@ def main(ctf: stardust.main.ctf):
         print('Making COSMOS plots')
         cosmos_plots(ctf)
 
+    with open(f'{ctf.config["PATH"]}/fitted_params.txt', 'w') as f:
+        f.write(f'{"ID)":10}{"REDSHIFT)":10}{"MSTAR)":10}{"δMSTAR)":10}{"SFR)":10}{"δSFR)":10}{"SFR-OPT)":10}{"δSFR-OPT)":10}\n')
+        for id,z,mstar,dmstar,sfr,dsfr,osfr,dosfr in zip(ctf.tab['id'],ctf.tab['z'],ctf.tab['mstar'],ctf.tab['e_mstar'],ctf.tab['sfr'],ctf.tab['e_sfr'],ctf.tab['sfr_opt'],ctf.tab['e_sfr_opt']):
+            f.write(f'{f"{id:02}":10}{f"{z:.2f}":10}{f"{mstar:.2e}":10}{f"{dmstar:.2e}":10}{f"{sfr:.2e}":10}{f"{dsfr:.2e}":10}{f"{osfr:.2e}":10}{f"{dosfr:.2e}":10}\n')
+
 
 if __name__ == '__main__':
     ctf = setup()
