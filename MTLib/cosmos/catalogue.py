@@ -13,7 +13,7 @@ class Catalogue:
         self.inipath = dirname(abspath(__file__))
         self.config.read(self.inipath + '/properties.ini')
 
-        with fits.open('Data/COSMOS/catalogue/COSMOS2020_CLASSIC_R1_v2.0.fits') as hdul:
+        with fits.open('Data/Photometry/COSMOS/catalogue/COSMOS2020_CLASSIC_R1_v2.0.fits') as hdul:
             hdu: fits.hdu.table.BinTableHDU = hdul[1]
             self.data = hdu.data
             self.columns = hdu.columns

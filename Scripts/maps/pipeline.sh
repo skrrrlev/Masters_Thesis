@@ -15,3 +15,4 @@ python Scripts/maps/sigma.py $1
 python Scripts/maps/crop.py $1
 python Scripts/maps/mask.py $1
 python Scripts/maps/psf.py $1
+python Scripts/maps/galfit_input.py $1

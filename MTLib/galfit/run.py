@@ -5,6 +5,7 @@ from shutil import move
 from os import listdir, remove
 from os.path import isfile
 from re import search
+from astropy.io import fits
 
 class GalfitError(Exception):
     '''Raised when galfit didn't complete'''
@@ -81,23 +82,25 @@ def create_input_file(filename:str, parameters:"dict[str,list[str]]", objects: "
                 parameters[key][i] = str(parameters[key][i])
                 print(f'Converted: {parameters[key][i]}')
 
-    shape = (100,100)
+    if not 'H' in parameters or not 'I' in parameters:
+        with fits.open(parameters['A'][0]) as hdul:
+            shape = hdul[0].data.shape
     
     input_file_as_list = [
-        f'# {"IMAGE PARAMETERS":^40}',
-        f" A) {' '.join(parameters['A']):40} # Input data image (FITS file)",
-        f" B) {' '.join(parameters['B']):40} # Output data image block",
-        f" C) {' '.join(parameters['C']) if 'C' in parameters else 'none':40} # Sigma image name (made from data if blank or 'none')",
-        f" D) {' '.join(parameters['D']):40} # Input PSF image and (optional) diffusion kernel",
-        f" E) {' '.join(parameters['E']) if 'E' in parameters else '1':40} # PSF fine sampling factor relative to data",
-        f" F) {' '.join(parameters['F']) if 'F' in parameters else 'none':40} # Bad pixel mask (FITS image or ASCII coord list)",
-        f" G) {' '.join(parameters['G']) if 'G' in parameters else 'none':40} # File with parameter constraints (ASCII file)",
-        f" H) {' '.join(parameters['H']) if 'H' in parameters else f'0 {shape[1]} 0 {shape[0]}':40} # Image region to fit (xmin xmax ymin ymax)",
-        f" I) {' '.join(parameters['I']) if 'I' in parameters else f'{shape[1]} {shape[0]}':40} # Size of the convolution box (x y)",
-        f" J) {' '.join(parameters['J']):40} # Magnitude photometric zeropoint",
-        f" K) {' '.join(parameters['K']):40} # Plate scale (dx dy) [arcsec per pixel]",
-        f" O) {' '.join(parameters['0']) if '0' in parameters else 'both':40} # Display type (regular, curses, both)",
-        f" P) {' '.join(parameters['P']) if 'P' in parameters else '0':40}",
+        f'# {"IMAGE PARAMETERS":^60}',
+        f" A) {' '.join(parameters['A']):60} # Input data image (FITS file)",
+        f" B) {' '.join(parameters['B']):60} # Output data image block",
+        f" C) {' '.join(parameters['C']) if 'C' in parameters else 'none':60} # Sigma image name (made from data if blank or 'none')",
+        f" D) {' '.join(parameters['D']):60} # Input PSF image and (optional) diffusion kernel",
+        f" E) {' '.join(parameters['E']) if 'E' in parameters else '1':60} # PSF fine sampling factor relative to data",
+        f" F) {' '.join(parameters['F']) if 'F' in parameters else 'none':60} # Bad pixel mask (FITS image or ASCII coord list)",
+        f" G) {' '.join(parameters['G']) if 'G' in parameters else 'none':60} # File with parameter constraints (ASCII file)",
+        f" H) {' '.join(parameters['H']) if 'H' in parameters else f'1 {shape[1]+1} 1 {shape[0]+1}':60} # Image region to fit (xmin xmax ymin ymax)",
+        f" I) {' '.join(parameters['I']) if 'I' in parameters else f'{shape[1]} {shape[0]}':60} # Size of the convolution box (x y)",
+        f" J) {' '.join(parameters['J']):60} # Magnitude photometric zeropoint",
+        f" K) {' '.join(parameters['K']):60} # Plate scale (dx dy) [arcsec per pixel]",
+        f" O) {' '.join(parameters['0']) if '0' in parameters else 'both':60} # Display type (regular, curses, both)",
+        f" P) {' '.join(parameters['P']) if 'P' in parameters else '0':60}",
     ]
 
     for object in objects:
@@ -107,12 +110,12 @@ def create_input_file(filename:str, parameters:"dict[str,list[str]]", objects: "
                     object[key][i] = str(object[key][i])
                     print(f'Converted: {object[key][i]}')
 
-    input_file_as_list.append(f'# {"OBJECTS":^40}')
+    input_file_as_list.append(f'# {"OBJECTS":^60}')
 
     for i, object in enumerate(objects):
         input_file_as_list.append(f'# Object {i+1}')
         for key in object:
-            input_file_as_list.append(f"{key:>2}) {' '.join(object[key]):40} #")
+            input_file_as_list.append(f"{key:>2}) {' '.join(object[key]):60} #")
 
     with open(filename,'w') as f:
         f.write("\n".join(input_file_as_list))
