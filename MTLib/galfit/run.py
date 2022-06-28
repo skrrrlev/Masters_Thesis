@@ -83,7 +83,8 @@ def create_input_file(filename:str, parameters:"dict[str,list[str]]", objects: "
                 print(f'Converted: {parameters[key][i]}')
 
     if not 'H' in parameters or not 'I' in parameters:
-        with fits.open(parameters['A'][0]) as hdul:
+        file_to_fit = parameters['A'][0].replace("[0]","")
+        with fits.open(file_to_fit) as hdul:
             shape = hdul[0].data.shape
     
     input_file_as_list = [

@@ -33,14 +33,14 @@ def main():
                 # zero-point: https://www.stsci.edu/hst/instrumentation/acs/data-analysis/zeropoints
 
             parameters = {
-                'A': [file_to_fit], # A: file to fit
+                'A': [f'{file_to_fit}[0]'], # A: file to fit
                 'B': [f'{path}/{name}_output.fits'], # B: output file
-                'C': [ini.get_item_from(tab,item='galaxy_sigma_file')], # C: weight file
-                'D': [ini.get_item_from(tab,item='psf_file')], # D: psf file
-                'F': [ini.get_item_from(tab,item='mask_file')], # F: bad pixel mask
-                'H': ['1', f'{M+1}', '1', f'{N+1}'], # image region: xmin, xmax, ymin, ymax
-                'J': [f'{zero_point:.3f}'], # magnitude zero-point
-                'K': [f'{x_scale}', f'{y_scale}'] # plate scale in arcseconds per pixel
+                'C': [f"{ini.get_item_from(tab,item='galaxy_sigma_file')}[1]"], # C: weight file
+                'D': [f"{ini.get_item_from(tab,item='psf_file')}[0]"], # D: psf file
+                'F': [f"{ini.get_item_from(tab,item='mask_file')}[1]"], # F: bad pixel mask
+                'H': ['1', f'{M}', '1', f'{N}'], # image region: xmin, xmax, ymin, ymax
+                'J': [f'{zero_point:.4f}'], # magnitude zero-point
+                'K': [f'{x_scale:.4f}', f'{y_scale:.4f}'] # plate scale in arcseconds per pixel
 
             }
 
@@ -59,7 +59,7 @@ def main():
                 fits_file=file_to_fit,
                 sigma_file=ini.get_item_from(tab,item='galaxy_sigma_file'),
                 mask_file=ini.get_item_from(tab,item='mask_file'),
-                zero_point=zero_point,
+                zero_point=-48.60,
                 brightness_mask_file=brightness_mask_file
             )
 
