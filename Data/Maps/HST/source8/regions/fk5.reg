@@ -1,0 +1,9 @@
+# Region file format: DS9 version 4.1
+global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
+fk5
+box(334.0016325,-17.6285594,3.500",3.500",359.86147) # text={PSF}
+box(333.9998638,-17.6389564,4.000",4.000",0) # text={PSF2}
+box(333.9907987,-17.6332589,2.600",2.600",359.86147) # text={PSF1}
+box(334.0091996,-17.6326792,3.100",3.100",359.86039) # text={psf3}
+box(334.0079683,-17.6318758,5.000",5.000",359.86039) # text={psf4}
+box(333.9987917,-17.6330560,7.000",7.000",359.85929) # text={Galaxy}
