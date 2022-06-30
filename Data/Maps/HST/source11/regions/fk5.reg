@@ -1,6 +1,0 @@
-# Region file format: DS9 version 4.1
-global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
-fk5
-box(36.4419900,-3.9243800,7.000",7.000",0.17074361) # text={Galaxy}
-box(36.4538779,-3.9192908,6.000",6.000",0.17074361) # text={PSF}
-box(36.4412979,-3.9226150,3.000",3.000",0.17074361) # text={PSF1}
