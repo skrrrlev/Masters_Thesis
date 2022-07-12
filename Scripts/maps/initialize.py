@@ -10,6 +10,7 @@ from sys import argv
 from MTLib.files import MapPipelineManager as MPP
 
 def main():
+    print("\nInitializing pipeline...")
     ini_files = MPP.read_input(argv)
     for ini_file in ini_files:
         MPP.initialize_from_file(ini_file)

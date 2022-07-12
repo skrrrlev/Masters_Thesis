@@ -7,13 +7,9 @@ This script will create a sigma image for all fits files beneath the specified r
 """
 
 from sys import argv
-from os.path import isdir, isfile
-from os import listdir
-import configparser
-
-from MTLib import files
+from os.path import isdir
 from MTLib.files import MapPipelineManager as MPP
-from MTLib.fitstools import create_mask_from_segmentation_map
+from MTLib.fitstools import create_mask_from_segmentation_map_and_dead_mask, SegmentationMapSourceValueError
 
 
 def setup():
@@ -23,10 +19,11 @@ def setup():
     return root
 
 def main():
-
+    print("\nCreating masks...")
     ini_files = MPP.read_input(argv)
     ini_files = MPP.get_output_files(ini_files)
 
+    failures = []
     for ini_file in ini_files:
         with MPP(ini_file) as ini:
             
@@ -45,14 +42,28 @@ def main():
                 declination = None
 
             segmentation_map_file = ini.get_item_from('galaxy',item='galaxy_segmentation_map_file')
+            dead_mask_file = ini.get_item_from('galaxy',item='galaxy_dead_mask_file')
+            try:
+                mask_file = create_mask_from_segmentation_map_and_dead_mask(
+                    segmentation_map=segmentation_map_file,
+                    dead_mask=dead_mask_file,
+                    ra=right_ascension,
+                    dec=declination,
+                    exclude_list=exclude_list
+                )
+                ini.add_item_to('galaxy',item='mask_file', value=mask_file)
+            except SegmentationMapSourceValueError as e:
+                print("No source at the specified coordinates.")
+                failures.append(e)
+            except IndexError:
+                print(f"Incorrect region map for {ini.get_item_from('DEFAULT',item='name')}")
+                failures.append(e)
             
-            mask_file = create_mask_from_segmentation_map(
-                segmentation_map=segmentation_map_file,
-                ra=right_ascension,
-                dec=declination,
-                exclude_list=exclude_list
-            )
-            ini.add_item_to('galaxy',item='mask_file', value=mask_file)
+
+    if failures:
+        print("Failures when generating masks:")
+        for e in failures:
+            print(e)
 
 if __name__ == '__main__':
     main()

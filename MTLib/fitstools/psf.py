@@ -23,7 +23,7 @@ def _parse_region_file(region_file:str):
     with open(region_file,'r') as rf:
         content = rf.readlines()
     
-    regions: dict[str,dict[str,float]] = {}
+    regions: dict[str,dict[str,dict[str,float]]] = {}
     for line in content:
         matches = findall(r'(\d+(?:\.\d+)?(?:e[+-]?\d+)?)\S', line)
         if len(matches) >= 5:
@@ -49,23 +49,24 @@ def _apply_region_mask(data:np.ndarray, region_file:str):
     '''If a region with the name "out" is overlapping the psf region, set all the values to zero in the psf for that region'''
     
     regions = _parse_region_file(region_file)
-    if 'out' in regions:
-        out = regions.pop('out')
-    else:
+    
+    psf = regions["psf"]
+    outs = [regions[key] for key in regions if 'out' in key]
+    
+    if not outs:
         return data
     
-    for region_name in regions:
-        region = regions[region_name]
-        if out['bottom-left']['x']>=region['top-right']['x'] or region['bottom-left']['x']>=out['top-right']['x']or out['top-right']['y']<=region['bottom-left']['y'] or region['top-right']['y']<=out['bottom-left']['y']:
+    for out in outs:
+        if out['bottom-left']['x']>=psf['top-right']['x'] or psf['bottom-left']['x']>=out['top-right']['x']or out['top-right']['y']<=psf['bottom-left']['y'] or psf['top-right']['y']<=out['bottom-left']['y']:
             # out does not overlap with the region
             continue
 
-        ylim = region['top-right']['y']-region['bottom-left']['y']
-        ymin = int(max(0,np.floor((out['bottom-left']['y']-region['bottom-left']['y']))))
-        ymax = int(min(ylim,np.ceil(out['top-right']['y']-region['bottom-left']['y']-1)))
-        xlim = region['top-right']['x']-region['bottom-left']['x']
-        xmin = int(max(0,np.floor(out['bottom-left']['x']-region['bottom-left']['x'])))
-        xmax = int(min(xlim,np.ceil(out['top-right']['x']-region['bottom-left']['x'])))
+        ylim = psf['top-right']['y']-psf['bottom-left']['y']
+        ymin = int(max(0,np.floor((out['bottom-left']['y']-psf['bottom-left']['y']))))
+        ymax = int(min(ylim,np.ceil(out['top-right']['y']-psf['bottom-left']['y']-1)))
+        xlim = psf['top-right']['x']-psf['bottom-left']['x']
+        xmin = int(max(0,np.floor(out['bottom-left']['x']-psf['bottom-left']['x'])))
+        xmax = int(min(xlim,np.ceil(out['top-right']['x']-psf['bottom-left']['x'])))
 
         data[ymin:ymax,xmin:xmax] = 0
 

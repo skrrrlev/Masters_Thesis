@@ -1,3 +1,5 @@
+
+import numpy as np
 from shutil import copyfile
 from os.path import isfile
 from os import listdir, remove, getcwd, chdir
@@ -78,14 +80,18 @@ def create_segmentation_map(fits_file: str) -> str:
         remove(fits_file_dir+item)
     return segmentation_file
 
-def create_mask_from_segmentation_map(segmentation_map: str, ra: float = None, dec: float = None, frame=ICRS, exclude_list:"list[int]"=[]):
+def create_mask_from_segmentation_map_and_dead_mask(segmentation_map: str, dead_mask:str, ra: float = None, dec: float = None, frame=ICRS, exclude_list:"list[int]"=[]):
     '''
     Using a segmentation map and the coordinates of the source, create a mask for galfit.
     If coordinates are not specified, will use the centre of the map.
     If coordinates are specified, will use the astropy.coordinates class that is specified, to convert the coordinate values to pixel indices.
     '''
 
-    '''Load the HDU and the WCS'''
+    '''Extract the dead pixel mask'''
+    with fits.open(dead_mask) as hdul:
+        dead_mask = hdul[1].data
+
+    '''Load the HDU and the WCS of the segmentation map'''
     hdul = fits.open(segmentation_map)
     hdu = hdul[0]
     wcs = WCS(hdu.header)
@@ -116,15 +122,12 @@ def create_mask_from_segmentation_map(segmentation_map: str, ra: float = None, d
     for value in exclude_list:
         hdu.data[hdu.data == value] = 0
 
+    '''Add the pixels from the dead pixel mask'''
+    hdu.data = np.array(np.logical_or(hdu.data,dead_mask),dtype=int)
+
     '''Save the mask'''
     mask_file_name = segmentation_map.replace('segmentation_map','mask')
     print(f'Saving {mask_file_name}')
     hdu.writeto(mask_file_name, overwrite=True)
     hdul.close()
     return mask_file_name
-
-if __name__ == '__main__':
-    a = create_segmentation_map(PATH.OUTPUTMAPS.value + 'HST/source13/source13_F160w/source13_F160w_galaxy.fits')
-    #print(a)
-    create_mask_from_segmentation_map('Output/Maps/HST/source13/source13_F160w/source13_F160w_galaxy_segmentation.fits',150.07597,2.2118269,frame=ICRS)
-    #create_mask_from_segmentation_map('Output/Maps/HST/source13/source13_F814w/source13_F814w_galaxy_segmentation.fits',2,2.2118269)

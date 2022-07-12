@@ -18,7 +18,7 @@ def setup():
     
 
 def main():
-    print('Creating PSFs...')
+    print('\nCreating PSFs...')
     ini_files = MPP.read_input(argv)
     ini_files = MPP.get_output_files(ini_files)
     

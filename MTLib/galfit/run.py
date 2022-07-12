@@ -10,7 +10,7 @@ from astropy.io import fits
 class GalfitError(Exception):
     '''Raised when galfit didn't complete'''
 
-def run_galfit(input_file:str, log_file:str=''):
+def run_galfit(input_file:str, log_file:str='', output_file:str = ''):
     
     if not isfile(input_file):
         raise ValueError(f'The variable <input_file>={input_file} is not a file.')
@@ -25,6 +25,13 @@ def run_galfit(input_file:str, log_file:str=''):
     restart_file = [file for file in listdir('.') if bool(search(r"galfit\.[0-9]+", file))]
     for file in restart_file:
         remove(file)
+
+    if not output_file:
+        return
+    hdul = fits.open(output_file, mode='update')
+    hdul[2].data = 100 * hdul[2].data / hdul[0].data
+    hdul.close()
+
 
 
 def create_input_file(filename:str, parameters:"dict[str,list[str]]", objects: "list[dict[str,list[str]]]"):
@@ -116,7 +123,7 @@ def create_input_file(filename:str, parameters:"dict[str,list[str]]", objects: "
     for i, object in enumerate(objects):
         input_file_as_list.append(f'# Object {i+1}')
         for key in object:
-            input_file_as_list.append(f"{key:>2}) {' '.join(object[key]):60} #")
+            input_file_as_list.append(f"{key:>2}) {' '.join(object[key]):60}")
 
     with open(filename,'w') as f:
         f.write("\n".join(input_file_as_list))

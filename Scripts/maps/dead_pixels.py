@@ -17,6 +17,7 @@ from os import remove
 from os.path import isfile
 
 def main():
+    print("\nCreating dead pixel maps...")
     ini_files = MPP.read_input(argv)
     ini_files = MPP.get_output_files(ini_files)
 

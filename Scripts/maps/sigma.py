@@ -21,7 +21,7 @@ SOURCE_MASK_PIXEL_DILATION = 7 # pixels
 
 
 def main():
-
+    print("\nCreating sigma maps...")
     ini_files = MPP.read_input(argv)
     ini_files = MPP.get_output_files(ini_files)
 

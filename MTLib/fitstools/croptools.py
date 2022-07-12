@@ -68,7 +68,7 @@ def get_regions(region_file:str) -> "list[str]":
         if len(matches) >= 5:
             try:
                 region_name = findall(r'text=\{(\S+)\}', line)[0]
-                if region_name == 'out':
+                if 'out' in region_name:
                     continue
                 regions.append(region_name)
             except IndexError: # A name was not defined for the region
@@ -89,7 +89,7 @@ def crop_using_ini_tab(ini_tab:configparser.SectionProxy, file_key: str, name:st
         if len(matches) >= 5:
             try:
                 region_name = findall(r'text=\{(\S+)\}', line)[0]
-                if region_name == 'out':
+                if 'out' in region_name:
                     continue
             except IndexError: # A name was not defined for the region
                 continue
@@ -136,7 +136,7 @@ def crop_using_MPP(ini: MPP, file_key:str, output_name:str, extension:int=0):
         if len(matches) >= 5:
             try:
                 region_name = findall(r'text=\{(\S+)\}', line)[0]
-                if region_name == 'out':
+                if 'out' in region_name:
                     continue
             except IndexError: # A name was not defined for the region
                 continue

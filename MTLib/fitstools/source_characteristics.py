@@ -5,11 +5,12 @@ from astropy.wcs import WCS
 from astropy.coordinates import SkyCoord, FK5, ICRS
 from numpy import isnan
 from typing import Union
+from astropy import units as U
 
 from matplotlib import pyplot as plt
 
 
-def estimate_brightness(fits_file:str, sigma_file:str, mask_file:str, zero_point:float = 0, brightness_mask_file:str = '') -> float:
+def estimate_brightness(fits_file:str, sigma_file:str, mask_file:str, zero_point:float, brightness_mask_file:str = '') -> float:
     '''
     By specifying the fits file, the standard deviation file and the mask file, estimate the brightness of the source in mag.
     
@@ -20,14 +21,14 @@ def estimate_brightness(fits_file:str, sigma_file:str, mask_file:str, zero_point
     Procedure:
     - Create a rough mask of the source pixels by selecting all pixels with a std>3
     - Create the mask by selecting all pixels in the rough mask, and all pixels not in the <mask_file>
-    - Sum all pixels in the mask, and multiply them by the 'PHOTOFNU' keyword from the map-header, to get the flux-density in Janskys.
+    - Sum all pixels in the mask, and divide them by the 'EXPTIME' keyword from the map-header, to get the total photo-electrons/s.
     - Calculate the magnitude using m=-2.5*log10(flux-density) + <zero_point>
     '''
     
     '''Load in the data from the files'''
     with fits.open(fits_file) as hdul:
         sci_data: np.ndarray = hdul[0].data
-        photfnu = float(hdul[0].header['PHOTFNU'])
+        exptime = float(hdul[0].header['EXPTIME'])
     with fits.open(sigma_file) as hdul:
         sigma_data: np.ndarray = hdul[1].data
     with fits.open(mask_file) as hdul:
@@ -57,25 +58,31 @@ def estimate_brightness(fits_file:str, sigma_file:str, mask_file:str, zero_point
             hdu.writeto(brightness_mask_file, overwrite=True)
 
     '''Calculate the estimate of the flux density and magnitude of the source'''
-    flux_density = np.sum(pixels_to_sum)*photfnu
+    #flux_density = (np.sum(pixels_to_sum)*photfnu * U.Jy)#.to(U.Unit("erg cm^−2 s^−1 Hz^−1"))
+    flux_density = np.sum(pixels_to_sum)/exptime
     magnitude = -2.5*np.log10(flux_density) + zero_point
 
     return magnitude
 
-def get_pixel_in_map_from_coordinates(map:str, extension:int, ra:float, dec:float, frame=ICRS, unit='deg') -> "tuple[float]":
+def get_pixel_in_map_from_coordinates(map:str, extension:int, ra:float, dec:float, frame=ICRS, unit='deg', anchor_quadrant:int=3) -> "tuple[float]":
     '''
-    Get the zero-based pixel-index, from the top left of a map,
+    Get the zero-based pixel-index, from the edge of the <anchor_quadrant> of a map,
     that corresponds to the right ascension <ra> and the declination <dec>,
     using the <frame> in <unit>.
         - Default frame is astropy.coordinates.ICRS, and default unit is degrees ('deg')
     
     If coordinates are not within image bounds, a ValueError is raised.
     
-    Returns (pixel_row, pixel_column).'''
+    Returns (pixel_row, pixel_column).
+    
+    <anchor_quadrant> corresponds to pixel coordinates from the edge of the specified quadrant. 
+    e.g. quadrant 1: top-right, quadrant 2: top-left, ...
+    '''
     
     '''Load the HDU and the WCS'''
     hdul = fits.open(map)
     wcs = WCS(hdul[extension].header)
+    rows,columns = hdul[extension].data.shape
     hdul.close()
 
     sky = SkyCoord(ra,dec,frame=frame, unit=unit)
@@ -84,8 +91,44 @@ def get_pixel_in_map_from_coordinates(map:str, extension:int, ra:float, dec:floa
         raise ValueError('Input coordinates is not within image.')
     x = int(np.round(xp,0))
     y = int(np.round(yp,0))
+    if anchor_quadrant == 1:
+        return columns-x, rows-y
+    elif anchor_quadrant == 2:
+        return x,rows-y
+    elif anchor_quadrant == 3:
+        return x,y
+    elif anchor_quadrant == 4:
+        return columns-x, y
+    else: 
+        raise ValueError(f"Anchor quadrant = [1,2,3,4]. Recieved {anchor_quadrant}")
 
-    return x,y
+
+def get_pixel_in_map_from_brightest_pixel(map:str, extension:int, brightness_mask: str, anchor_quadrant:int=3) -> "tuple[float]":
+    with fits.open(map) as hdul:
+        data: np.ndarray = hdul[extension].data
+        nrows, ncols = data.shape
+        print(nrows, ncols)
+
+    with fits.open(brightness_mask) as hdul:
+        mask: np.ndarray = np.array(hdul[0].data,dtype='bool')
+
+    masked_data = np.copy(data)
+    masked_data[np.logical_not(mask)] = 0
+
+    centre = np.unravel_index(np.argmax(masked_data),masked_data.shape) # row and column of brightest pixel
+    bp_row: int = centre[0]+1 # traditionally the y-coordinate (not zero-based)
+    bp_col: int = centre[1]+1 # traditionally the x-coordinate (not zero-based)
+    print(f'brightest pixel from bottom-right: {bp_col}, {bp_row}')
+    if anchor_quadrant == 1:
+        return ncols+1-bp_col, nrows+1-bp_row
+    elif anchor_quadrant == 2:
+        return bp_col, nrows+1-bp_row
+    elif anchor_quadrant == 3:
+        return bp_col,bp_row
+    elif anchor_quadrant == 4:
+        return ncols+1-bp_col, bp_row 
+    else: 
+        raise ValueError(f"Anchor quadrant = [1,2,3,4]. Recieved {anchor_quadrant}")
 
 def estimate_half_light_radius(map:str, extension:int, brightness_mask: str) -> float:
     '''

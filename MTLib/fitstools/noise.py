@@ -58,6 +58,7 @@ def derive_weight_scale(fits_file: str, noise_pixel_mask_file: str, plot_file_na
         plt.xlabel('Bins of ADU/σ')
         plt.ylabel('Density')
         plt.savefig(plot_file_name,bbox_inches='tight')
+        plt.close()
     
     return 1/std**2
 
@@ -99,28 +100,22 @@ def create_sigma_image_from_noise_distribution(fits_file: str, noise_pixel_mask_
     hdu.writeto(output_file, overwrite=True)
     return output_file
 
+def get_sigma_sky(fits_file: str, noise_pixel_mask_file: str):
+    with fits.open(fits_file) as hdul:
+            wht_data: np.ndarray = hdul[1].data
+    with fits.open(noise_pixel_mask_file) as hdul:
+        noise_pixel_mask = np.array(hdul[0].data,dtype=bool)
+    
+    wht_noise_pixels = wht_data[noise_pixel_mask].flatten()
+
+    distribution = 1/np.sqrt(wht_noise_pixels)
+
+    return np.std(distribution)
 
 
 if __name__ == '__main__':
-    '''
-    mean, std = get_pixel_noise_distribution(
-        fits_file='Data/Maps/HST/source13/source13_F160w.fits',
-        plot_file_name='sigma_img_noise_distribution.png',
-        n_bin_factor=100
+    a = get_sigma_sky(
+        fits_file='Output/Maps/s13_F160w/s13_F160w.fits',
+        noise_pixel_mask_file='Output/Maps/s13_F160w/s13_F160w_noise_mask.fits'
     )
-
-    print(f'Mean: {mean:.2e}',f'Standard deviation {std:.2e}',sep='\n')
-
-    create_sigma_image(
-        fits_path='Data/Maps/HST/source13/cutout_source13_F160w/source13_F160w_galaxy.fits',
-        std=std,
-        output_folder='.'
-    )
-    '''
-    #derive_weight_scale('Data/Maps/HST/source13/source13_F160w.fits','Output/Maps/HST/source13/source13_F160w_noise.fits')
-    create_sigma_image_from_noise_distribution(
-        'Data/Maps/HST/source13/source13_F160w.fits',
-        'Output/Maps/HST/source13/source13_F160w_noise.fits',
-        'Output/Maps/HST/source13/source13_F160w_dead.fits',
-        'Figures/noise_distribution/source13_F160w_noise_distribution.png'
-    )
+    print(a)

@@ -1,8 +1,10 @@
 
 import configparser
-from os import makedirs, remove
+from os import makedirs
 from os.path import isdir, isfile
 from shutil import rmtree, copyfile
+from astropy.io import fits
+import numpy as np
 
 from . import walker
 
@@ -27,6 +29,7 @@ class MapPipelineManager:
             raise ValueError('Root must be a directory or an .ini file.')
 
     def __enter__(self):
+        print(f"Opening {self.config['DEFAULT']['name']}")
         return self
     
     def __exit__(self ,type, value, traceback):
@@ -47,6 +50,7 @@ class MapPipelineManager:
             # Load tab and get parameters
             try:
                 tab = in_config['INPUT'][f'item{i}']
+                print(f"Initializing {tab}")
             except Exception as e:
                 raise e(f'Expected n={number_of_input} number of input items in {ini_file}, but could not find item{i}.')
             try:
@@ -70,6 +74,17 @@ class MapPipelineManager:
             # Move fits file and region file
             out_config['DEFAULT']['source_file'] = f'{output_path}/{tab}.fits'
             copyfile(input_source_file,out_config['DEFAULT']['source_file'])
+            with fits.open(out_config['DEFAULT']['source_file'],'update') as hdul:
+                header = hdul[0].header
+                if "PHOTOFNU" in header:
+                    ZP = -2.5*np.log10(header['PHOTFNU'])+8.90
+                elif 'PHOTFLAM' in header and 'PHOTPLAM' in header:
+                    ZP = (-2.5*np.log10(header['PHOTFLAM']) - 21.10 -5*np.log10(header['PHOTPLAM']) + 18.6921)
+            fits.setval(out_config['DEFAULT']['source_file'],'ABMAGZP',value=ZP,ext=0)
+            fits.setval(out_config['DEFAULT']['source_file'],'EXPTIME',value=1,ext=0)
+
+
+
             out_config['DEFAULT']['region_file'] = f'{output_path}/{tab}.reg'
             copyfile(input_region_file,out_config['DEFAULT']['region_file'])
 

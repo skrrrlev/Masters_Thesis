@@ -20,6 +20,7 @@ from MTLib.fitstools.croptools import crop_using_MPP, crop_using_ini_tab
 
 
 def main():
+    print("\nApplying crops...")
     ini_files = MPP.read_input(argv)
     ini_files = MPP.get_output_files(ini_files)
 
