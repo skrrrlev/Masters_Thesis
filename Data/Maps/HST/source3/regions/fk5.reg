@@ -3,3 +3,5 @@ global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" select=
 fk5
 box(149.9814500,2.2532000,8.000",8.000",359.99273) # text={Galaxy}
 box(149.9822417,2.2595536,6.000",6.000",359.99273) # text={PSF}
+box(149.9827915,2.2596053,1.060",0.893",359.99273) # text={out}
+box(149.9784338,2.2585461,6.000",6.000",359.99273) # text={PSF2}

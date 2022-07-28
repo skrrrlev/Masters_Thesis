@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalogue name="CAT-ADF">
     <targets>
-    <target>
+        <target>
             <name>ADF22.1</name>
             <id>26</id>
             <RA>334.3851344</RA>
