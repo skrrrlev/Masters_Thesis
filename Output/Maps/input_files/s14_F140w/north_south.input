@@ -1,0 +1,41 @@
+#                       IMAGE PARAMETERS                      
+ A) Output/Maps/s14_F140w/galaxy/s14_F140w.fits[0]               # Input data image (FITS file)
+ B) Output/Maps/s14_F140w/s14_F140w_output.fits                  # Output data image block
+ C) Output/Maps/s14_F140w/galaxy/s14_F140w_sigma.fits[1]         # Sigma image name (made from data if blank or 'none')
+ D) Output/Maps/s14_F140w/galaxy/s14_F140w_psf.fits[0]           # Input PSF image and (optional) diffusion kernel
+ E) 1                                                            # PSF fine sampling factor relative to data
+ F) Output/Maps/s14_F140w/galaxy/s14_F140w_mask.fits[0]          # Bad pixel mask (FITS image or ASCII coord list)
+ G) none                                                         # File with parameter constraints (ASCII file)
+ H) 1 60 1 60                                                    # Image region to fit (xmin xmax ymin ymax)
+ I) 60 60                                                        # Size of the convolution box (x y)
+ J) 26.4508                                                      # Magnitude photometric zeropoint
+ K) 0.1000 -0.1000                                               # Plate scale (dx dy) [arcsec per pixel]
+ O) both                                                         # Display type (regular, curses, both)
+ P) 0                                                           
+#                           OBJECTS                           
+# Object 1: a
+ 0) sersic                                                       #
+ 1) 32.30 25.96 1 1                                                    #
+ 3) 22.55 1                                                     #
+ 4) 4.12 1                                                      #
+ 5) 1.17 1                                                          #
+ 9) 0.66 1                                                        #
+10) -25.80 1                                                          #
+ Z) 0
+ 
+ # Object 1: b
+ 0) sersic                                                       #
+ 1) 29.36 32.64 1 1                                                    #
+ 3) 23.14 1                                                     #
+ 4) 3.59 1                                                      #
+ 5) 1.12 1                                                          #
+ 9) 0.73 1                                                       #
+10) -14.01 1                                                          #
+ Z) 0 #
+ 
+# Object 2
+ 0) sky                                                          #
+ 1) 0 1                                                          #
+ 2) 0.0000 0                                                     #
+ 3) 0.0000 0                                                     #
+ Z) 0                                                            #

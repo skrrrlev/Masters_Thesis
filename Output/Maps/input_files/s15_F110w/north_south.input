@@ -1,0 +1,39 @@
+#                       IMAGE PARAMETERS                      
+ A) Output/Maps/s15_F110w/galaxy/s15_F110w.fits[0]               # Input data image (FITS file)
+ B) Output/Maps/s15_F110w/s15_F110w_output.fits                  # Output data image block
+ C) Output/Maps/s15_F110w/galaxy/s15_F110w_sigma.fits[1]         # Sigma image name (made from data if blank or 'none')
+ D) Output/Maps/s15_F110w/galaxy/s15_F110w_psf.fits[0]           # Input PSF image and (optional) diffusion kernel
+ E) 1                                                            # PSF fine sampling factor relative to data
+ F) Output/Maps/s15_F110w/galaxy/s15_F110w_mask.fits[0]          # Bad pixel mask (FITS image or ASCII coord list)
+ G) none                                                         # File with parameter constraints (ASCII file)
+ H) 1 50 1 50                                                    # Image region to fit (xmin xmax ymin ymax)
+ I) 50 50                                                        # Size of the convolution box (x y)
+ J) 26.8191                                                      # Magnitude photometric zeropoint
+ K) 0.1000 -0.1000                                               # Plate scale (dx dy) [arcsec per pixel]
+ O) both                                                         # Display type (regular, curses, both)
+ P) 0                                                           
+#                           OBJECTS                           
+# Object 1: Upper
+ 0) sersic                                                      
+ 1) 25 28 1 1 # x, y [pix]                                      
+ 3) 23.5 1 # mag                                              
+ 4) 1 1 # re                                                
+ 5) 1 1 # n                                                     
+ 9) 0.05 0 # AR                                                  
+10) 16.48 1 # PA                                                    
+ Z) 0    
+# Object 2: Lower
+ 0) sersic                                                      
+ 1) 26 23 0 0 # x, y [pix]                                      
+ 3) 23.5 1 # mag                                              
+ 4) 1 1 # re                                                
+ 5) 1 1 # n                                                     
+ 9) 0.2 1 # AR                                                  
+10) 16.48 1 # PA                                                    
+ Z) 0
+# Object 2
+ 0) sky                                                         
+ 1) 0 1                                                         
+ 2) 0.0000 0                                                    
+ 3) 0.0000 0                                                    
+ Z) 0                                                           

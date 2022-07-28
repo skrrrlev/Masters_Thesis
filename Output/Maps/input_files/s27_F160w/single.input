@@ -1,0 +1,30 @@
+#                       IMAGE PARAMETERS                      
+ A) Output/Maps/s27_F160w/galaxy/s27_F160w.fits[0]               # Input data image (FITS file)
+ B) Output/Maps/s27_F160w/s27_F160w_output.fits                  # Output data image block
+ C) Output/Maps/s27_F160w/galaxy/s27_F160w_sigma.fits[1]         # Sigma image name (made from data if blank or 'none')
+ D) Output/Maps/s27_F160w/galaxy/s27_F160w_psf.fits[0]           # Input PSF image and (optional) diffusion kernel
+ E) 1                                                            # PSF fine sampling factor relative to data
+ F) Output/Maps/s27_F160w/galaxy/s27_F160w_mask.fits[0]          # Bad pixel mask (FITS image or ASCII coord list)
+ G) none                                                         # File with parameter constraints (ASCII file)
+ H) 1 70 1 70                                                    # Image region to fit (xmin xmax ymin ymax)
+ I) 70 70                                                        # Size of the convolution box (x y)
+ J) 25.9377                                                      # Magnitude photometric zeropoint
+ K) 0.1000 -0.1000                                               # Plate scale (dx dy) [arcsec per pixel]
+ O) both                                                         # Display type (regular, curses, both)
+ P) 0                                                           
+#                           OBJECTS                           
+# Object 1
+ 0) sersic                                                      
+ 1) 36.50 34.90 0 0 # x, y [pix]                                      
+ 3) 23.91 1 # mag                                              
+ 4) 4.91 1 # re                                                
+ 5) 1 1 # n                                                     
+ 9) 0.51 0 # AR                                                  
+10) -5.47 0 # PA                                                    
+ Z) 0                                                           
+# Object 2
+ 0) sky                                                         
+ 1) 0 1                                                         
+ 2) 0.0000 0                                                    
+ 3) 0.0000 0                                                    
+ Z) 0                                                           

@@ -1,0 +1,49 @@
+#                       IMAGE PARAMETERS                      
+ A) Output/Maps/s13_F160w_3/galaxy/s13_F160w_3.fits[0]           # Input data image (FITS file)
+ B) Output/Maps/s13_F160w_3/s13_F160w_3_output.fits              # Output data image block
+ C) Output/Maps/s13_F160w_3/galaxy/s13_F160w_3_sigma.fits[1]     # Sigma image name (made from data if blank or 'none')
+ D) Output/Maps/s13_F160w_3/galaxy/s13_F160w_3_psf.fits[0]       # Input PSF image and (optional) diffusion kernel
+ E) 1                                                            # PSF fine sampling factor relative to data
+ F) Output/Maps/s13_F160w_3/galaxy/s13_F160w_3_mask.fits[0]      # Bad pixel mask (FITS image or ASCII coord list)
+ G) none                                                         # File with parameter constraints (ASCII file)
+ H) 1 50 1 50                                                    # Image region to fit (xmin xmax ymin ymax)
+ I) 50 50                                                        # Size of the convolution box (x y)
+ J) 25.9377                                                      # Magnitude photometric zeropoint
+ K) 0.1000 -0.1000                                               # Plate scale (dx dy) [arcsec per pixel]
+ O) both                                                         # Display type (regular, curses, both)
+ P) 0                                                           
+#                           OBJECTS                           
+# Object 1: Main component
+ 0) sersic                                                      
+ 1) 25.2045 25.3839 1 1 # x, y [pix]                                      
+ 3) 21.7051 1 # mag                                              
+ 4) 11.4650 1 # re                                                
+ 5) 3.5743 1 # n                                                     
+ 9) 0.8301 1 # AR                                                  
+10) -15.8469 1 # PA                                                    
+ Z) 0
+# Object 1: Small upper component
+ 0) sersic                                                      
+ 1) 12.2207 31.2288 0 0 # x, y [pix]                                      
+ 3) 23.5690 0 # mag                                              
+ 4) 0.6750 0 # re                                                
+ 5) 1.8387 0 # n                                                     
+ 9) 0.6371 0 # AR                                                  
+10) 13.9586 0 # PA                                                    
+ Z) 0   
+# Object 1: Large lower component: Bulge
+ 0) sersic                                                      
+ 1) 33.1682 16.4501 0 0 # x, y [pix]                                      
+ 3) 22.2414 1 # mag                                              
+ 4) 3.4310 1 # re                                                
+ 5) 0.6069 1 # n                                                     
+ 9) 0.7348 1 # AR                                                  
+10) 7.3152 1 # PA                                                    
+ Z) 0
+
+# Object 2
+ 0) sky                                                         
+ 1) 0 1                                                         
+ 2) 0.0000 0                                                    
+ 3) 0.0000 0                                                    
+ Z) 0                                                           
