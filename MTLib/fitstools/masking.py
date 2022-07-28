@@ -10,6 +10,7 @@ from astropy.coordinates import SkyCoord, FK5, ICRS
 
 from subprocess import Popen, PIPE
 from numpy import isnan, round
+from scipy.ndimage import median_filter
 
 from ..files import extract_filename, extract_path
 from .. import PATH
@@ -89,7 +90,7 @@ def create_mask_from_segmentation_map_and_dead_mask(segmentation_map: str, dead_
 
     '''Extract the dead pixel mask'''
     with fits.open(dead_mask) as hdul:
-        dead_mask = hdul[1].data
+        dead_mask = np.array(hdul[1].data,dtype=bool)
 
     '''Load the HDU and the WCS of the segmentation map'''
     hdul = fits.open(segmentation_map)
@@ -122,8 +123,11 @@ def create_mask_from_segmentation_map_and_dead_mask(segmentation_map: str, dead_
     for value in exclude_list:
         hdu.data[hdu.data == value] = 0
 
+    '''Smooth the binary source mask'''
+    smooth_source_mask = median_filter(np.array(hdu.data,dtype=bool),size=3)
+
     '''Add the pixels from the dead pixel mask'''
-    hdu.data = np.array(np.logical_or(hdu.data,dead_mask),dtype=int)
+    hdu.data = np.array(np.logical_or(smooth_source_mask,dead_mask),dtype=int)
 
     '''Save the mask'''
     mask_file_name = segmentation_map.replace('segmentation_map','mask')
